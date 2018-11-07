@@ -1,0 +1,146 @@
+﻿@model DischargeTransportManagement.Models.Caller
+
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="content-wrapper">
+            <div class="panel panel-default" id="editContactPanel">
+                <div class="panel-body">
+                    @*<p class="lead bb">Caller Information</p>*@
+                    <div class="row pv-lg">
+                        <div class="col-sm-12">
+                            <div class="form-horizontal">
+                                <p class="lead bb">Caller Information</p>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.CallerId)
+
+                                        @Html.Label("Title", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.CallerTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CallerTitle, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        @Html.Label("Assignment", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.Assignment, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Assignment, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.Label("First Name", new { @class = "control-label col-md-1", @id = "extendedLabel" })
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.CallerFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CallerFirstName, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        @Html.Label("Last Name", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.CallerLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CallerLastName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="lead bb">Contact Information</p>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @*@Html.LabelFor(model => model.CallerPhone, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        @Html.Label("Office", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-3">
+                                            @Html.EditorFor(model => model.OfficePhone, new { htmlAttributes = new { @class = "form-control", onblur = "ValidateOffice(this)" } })
+                                            @*@Html.ValidationMessageFor(model => model.OfficePhone, "", new { @class = "text-danger" })*@
+                                            <span class="text-danger field-validation-error">
+                                                <label id="OfficePhone-error"></label>
+                                            </span>
+                                        </div>
+
+                                        @Html.Label("Pager", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-3">
+                                            @Html.EditorFor(model => model.CallerPager, new { htmlAttributes = new { @class = "form-control", onblur = "ValidatePager(this)" } })
+                                            @*@Html.ValidationMessageFor(model => model.CallerPager, "", new { @class = "text-danger" })*@
+                                            <span class="text-danger field-validation-error">
+                                                <label id="PagerPhone-error"></label>
+                                            </span>
+                                        </div>
+
+                                        @Html.Label("Mobile", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-3">
+                                            @Html.EditorFor(model => model.MobilePhone, new { htmlAttributes = new { @class = "form-control", onblur = "ValidateMobile(this)" } })
+                                            @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "text-danger" })
+                                            <span class="text-danger field-validation-error">
+                                                <label id="MobilePhone-error"></label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @*@Html.LabelFor(model => model.PreferredNumberType, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        @Html.Label("Preferred", new { @class = "control-label col-md-1" })
+                                        @*<div class="col-sm-5">
+                                                <select id="preferredNumberSelection" name="PreferredNumberType" class="form-control">
+                                                    <option value="Phone">Phone</option>
+                                                    <option value="Pager">Pager</option>
+                                                    <option value="Fax">Fax</option>
+                                                </select>
+                                            </div>*@
+                                        <div class="col-sm-5">
+                                            @Html.DropDownList("PreferredNumberType", Model.PreferredNumberTypes, "-Choose One-", new { @class = "form-control" })
+                                        </div>
+
+                                        @*@Html.LabelFor(model => model.CallerEmail, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        @Html.Label("Email", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.CallerEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CallerEmail, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.Label("Active", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+
+                                            @if (Model.Active)
+                                            {
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-two" name="Active" value="false" checked data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="false" name="checkResp" type="hidden" />
+                                            </div>
+                                            }
+                                            else if (!Model.Active)
+                                            {
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-two" name="Active" value="true" data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="true" name="checkResp" type="hidden" />
+                                            </div>
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="pull-right" style="margin-right: 10px;">
+                                            <label style="color:red;" id="lblError"></label>
+                                            <input type="submit" value="Save" class="btn btn-success" />
+                                            @*onclick="$(this).closest('form').submit();"*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

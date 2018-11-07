@@ -1,0 +1,1320 @@
+﻿@model DischargeTransportManagement.Models.SubmittedRequestModel
+
+@{
+    ViewBag.Title = "DischargeInfo";
+}
+
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+
+
+@*Trying the vertical panel*@
+<h4></h4>
+<div class="row">
+    <div class="form-group"></div>
+    <div class="col-md-4">
+        @*Aside Panel*@
+        <div class="panel b">
+            <div class="panel-body bb text-bold text-center">
+                @if (Model.EnableEdit)
+                {
+                    <button class="btn btn-info" onclick="ShowDemographPop()">
+                        <span class="glyphicon glyphicon-pencil"></span> Demographic Details
+                    </button>
+                }
+                else
+                {
+                    <p>Demographic Details</p>
+                }
+            </div>
+            <table class="table bb">
+                <tbody>
+                    <tr>
+                        <td hidden>PatientID</td>
+                        <td hidden id="patientId">@Model.submittedPatient.PatientId</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Name:</strong></td>
+                        <td>@(Model.submittedPatient.FirstName + " " + Model.submittedPatient.LastName)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Date Of Birth:</strong></td>
+                        <td>@Model.submittedPatient.DOB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Age:</strong></td>
+                        <td>@Model.submittedPatient.Age</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weight:</strong></td>
+                        <td>@Model.submittedPatient.Weight</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social:</strong></td>
+                        <td>@Model.submittedPatient.Social</td>
+                    </tr>
+                    <tr>
+                        <td hidden id="patientState">@Model.submittedPatient.State</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Address:</strong></td>
+                        <td>@(Model.submittedPatient.Address + " " + Model.submittedPatient.City + " " + Model.submittedPatient.State + " " + Model.submittedPatient.Zip)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone:</strong></td>
+                        <td>@Model.submittedPatient.Phone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MR Number:</strong></td>
+                        <td id="txtMrN">@Model.submittedPatient.MRN</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Case Number:</strong></td>
+                        <td id="txtMrN">@Model.submittedDischarge.CaseNumber</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group"></div>
+    <div class="col-md-4">
+        @if (Model.RequestType == "Discharge")
+        {
+            <div class="panel b">
+
+                <div class="panel-body bb text-bold text-center">
+                    @*editLocationModal*@
+                    @*<p>Location Details</p>*@
+                    <button class="btn btn-info" onclick="ShowLocationPop()">
+                        <span class="glyphicon glyphicon-pencil"></span> Location Details
+                    </button>
+                </div>
+                
+                    <table class="table bb">
+                        <tbody>
+                            <tr>
+                                <td><strong>Location:</strong></td>
+                                <td>@Model.LocationDetails</td>
+                                <td hidden id="txtPavillionCode">@Model.submittedCensus.PavillionCode</td>
+                                <td hidden id="txtUnit">@Model.submittedCensus.Unit</td>
+                                <td hidden id="txtBed">@Model.submittedCensus.Bed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+            </div>
+        }
+        else
+        {
+            <div class="panel b">
+
+                <div class="panel-body bb text-bold text-center">
+                    @if (Model.EnableEdit)
+                    {
+                        <button class="btn btn-info" onclick="ShowPickupPop()">
+                            <span class="glyphicon glyphicon-pencil"></span> Pickup Details
+                        </button>
+                    }
+                    else
+                    {
+                        <p>Pickup Details</p>
+                    }
+
+                </div>
+                <table class="table bb">
+                    <tbody>
+                        <tr>
+                            <td hidden>Pickup ID:</td>
+                            <td hidden id="PickupId">@Model.submittedPickup.PickupId</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pickup Location:</strong></td>
+                            <td id="txtPickupLocationName">@Model.submittedPickup.PickupLocationName</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Instructions:</strong></td>
+                            <td id="txtPickupInstructions">@Model.submittedPickup.PickupInstructions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Address:</strong></td>
+                            <td id="txtPickupAddress">@Model.submittedPickup.AddressLineOne</td>
+                        </tr>
+                        <tr>
+                            <td><strong>City, State, Zip:</strong></td>
+                            <td id="txtPickupCityStateZip">@Model.submittedPickup.City, @Model.submittedPickup.State, @Model.submittedPickup.Zip</td>
+                        </tr>
+                        <tr hidden>
+                            <td><strong>City:</strong></td>
+                            <td id="txtPickupCity">@Model.submittedPickup.City</td>
+                        </tr>
+                        <tr hidden>
+                            <td><strong>State:</strong></td>
+                            <td id="txtPickupState">@Model.submittedPickup.State</td>
+                        </tr>
+                        <tr hidden>
+                            <td><strong>Zip:</strong></td>
+                            <td id="txtPickupZip">@Model.submittedPickup.Zip</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <p></p>
+        <div class="panel b">
+            <div class="panel-body bb text-bold text-center">
+                <p>Who Is Paying</p>
+            </div>
+            <table class="table bb">
+                <tbody>
+                    <tr>
+                        <td><strong>Paid By:</strong></td>
+                        <td>
+                            @Html.DropDownList("ddlPayors", Model.Payors, "-Choose One-", new { @class = "form-control", onchange = "PayorChange()" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paying Reason:</strong></td>
+                        <td id="tdpayingReasonddl">
+                            @Html.DropDownList("ddlPayingReason", Model.VumcPayorReasons, "-Choose Reason-", new { @class = "form-control", disabled = true })
+                        </td>
+                        <td></td>
+                        <td id="tdPayingReasonTxt" hidden>
+                            <input type="text" id="txtpayingReason" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost:</strong></td>
+                        <td id="tdCost"><input type="number" id="txtCost" class="form-control" placeholder="$0" value="@Model.Cost.ToString()" /></td>
+                        <td>
+                            <input type="button" class="btn btn-info" value="Directions" onclick="Directions('@Model.submittedDischarge.DischargeRequestId')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>AT#</strong></td>
+                        <td id="tdATNumber">
+                            <input type="text" id="txtATNumber" class="form-control" value="@Model.ATNumber">
+                        </td>
+                        @if (Model.EnableEdit)
+                        {
+                            <td id="tdsaveclearAT">
+                                <button id="btnATNumber" class="btn btn-circle btn-green" title="Save" onclick="GenerateATNumber('@Model.submittedDischarge.DischargeRequestId')"><em class="fa fa-plus-square"></em></button>
+                                <button id="btnClearATNumber" class="btn btn-circle btn-warning" title="Clear" onclick="ClearATNumber('@Model.submittedDischarge.DischargeRequestId')"><em class="fa fa-minus-square"></em></button>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td><strong>Invoice#</strong></td>
+                        <td id="tdInvoice#"><input type="text" id="txtInvoiceNumber" class="form-control" value="@Model.InvoiceNumber" /></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PO#</strong></td>
+                        <td id="tdPO#"><input type="text" id="txtPONumber" class="form-control" value="@Model.PONumber" /></td>
+                    </tr>
+                    <tr>
+                        <td><strong></strong></td>
+                        <td>
+                            <input type="button" class="btn btn-primary" value="Save" onclick="SaveNumbers('@Model.submittedDischarge.DischargeRequestId')" />
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-primary" value="Clear" onclick="ClearNumbers('@Model.submittedDischarge.DischargeRequestId')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Calculate Charges:</strong></td>
+                        <td>
+                            <input type="button" class="btn btn-primary" value="Medicare Allowable Charges" onclick="CalculateMedicareCharges('@Model.submittedDischarge.DischargeRequestId')" />
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-primary" value="Cab Rate" onclick="CalculateCabCharges('@Model.submittedDischarge.DischargeRequestId')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <label id="lblATError" style="color:red;" hidden></label>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group"></div>
+    <div class="col-md-4">
+        @*Aside Panel*@
+        <div class="panel b">
+            <div class="panel-body bb text-bold text-center">
+                @*@if (Model.RequestType == "VHAN")
+                    {*@
+                @if (Model.EnableEdit)
+                {
+                    if (Model.RequestType != "VHAN")
+                    {
+                        <button class="btn btn-info" onclick="ShowInsurancePop(false)">
+                            <span class="glyphicon glyphicon-pencil"></span> Insurance Details
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-info" onclick="ShowInsurancePop(true)">
+                            <span class="glyphicon glyphicon-pencil"></span> Insurance Details
+                        </button>
+                    }
+
+                }
+                else
+                {
+                    <p>Insurance Details</p>
+                }
+                @*}
+                    else
+                    {
+                    <p>Insurance Details</p>
+                    }*@
+
+            </div>
+            @*@if (Model.submittedInsurance.InsuranceId != 999)
+                {*@
+            <table class="table bb">
+                <tbody>
+                    <tr hidden>
+                        <td id="mbrInsuranceId">@Model.submittedInsurance.MbrInsuranceId</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insurance ID:</strong></td>
+                        <td id="insuranceId">@Model.submittedInsurance.InsuranceId</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payor Name:</strong></td>
+                        <td id="payorNametd">
+                            <input type="button" id="payorName" class="btn btn-primary" value="@Model.submittedInsurance.Payorname" onclick="ShowInsuranceDetails()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone:</strong></td>
+                        <td>@Model.insuranceDetails.InsurancePhone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Medipac Plan ID:</strong></td>
+                        <td>@Model.submittedInsurance.PlanId</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Plan Name:</strong></td>
+                        <td id="planName">@Model.submittedInsurance.PlanName</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Plan Type:</strong></td>
+                        <td id="planType">@Model.submittedInsurance.PlanType</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Subscriber Name:</strong></td>
+                        <td>@Model.submittedInsurance.SubscriberName</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Effective Date:</strong></td>
+                        <td>@(Model.submittedInsurance.EffectiveDate.HasValue ? Model.submittedInsurance.EffectiveDate.Value.ToShortDateString() : "N/A")</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Termination Date:</strong>
+                        </td>
+                        <td>@(Model.submittedInsurance.TerminationDate.HasValue ? Model.submittedInsurance.TerminationDate.Value.ToShortDateString() : "N/A")</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Authorization Code:</strong>
+                        </td>
+                        <td id="authCode">@Model.submittedInsurance.AuthCode</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>ICD Code:</strong>
+                        </td><td id="Diagnosis">@Model.submittedInsurance.ICDCode</td>
+                    </tr>
+                    <tr id="showPdf" hidden>
+                        <td>
+                            <strong>Print PDF</strong>
+                        </td>
+                        <td><a href="#" class="btn btn-primary" onclick="GeneratePdf()" id="btnPrint">Print</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            @*}*@
+            @*else
+                {
+                    <div class="text-center">
+                        <label>No Insurance Info available for this patient</label>
+                        <input type="text" id="authCode1" value="@Model.submittedInsurance.AuthCode" hidden />
+                    </div>
+                }*@
+        </div>
+    </div>
+</div>
+
+<div class="form-group"></div>
+
+<div class="row">
+    <div class="form-group"></div>
+    <div class="col-md-4">
+        <div class="panel b">
+            <div class="panel-body bb text-bold text-center">
+                @if (Model.EnableEdit)
+                {
+                    <button class="btn btn-info" onclick="ShowEditPop()">
+                        <span class="glyphicon glyphicon-pencil"></span> Caller Details
+                    </button>
+                }
+                else
+                {
+                    <p>Caller Details</p>
+                }
+            </div>
+            <table class="table bb">
+                <tbody>
+                    <tr>
+                        <td hidden>CallerID</td>
+                        <td hidden id="callerId">@Model.submittedCaller.CallerId</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Caller Name:</strong></td>
+                        <td id="editcallerName">@(Model.submittedCaller.CallerFirstName + " " + Model.submittedCaller.CallerLastName)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Title:</strong></td>
+                        <td>@Model.submittedCaller.CallerTitle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Assignment:</strong></td>
+                        <td>@Model.submittedCaller.Assignment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Office:</strong></td>
+                        <td>@Model.submittedCaller.OfficePhone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pager:</strong></td>
+                        <td>@Model.submittedCaller.CallerPager</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile:</strong></td>
+                        <td>@Model.submittedCaller.MobilePhone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CallReceivedBy:</strong></td>
+                        <td>@Model.CallReceivedBy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CallReceivedAt:</strong></td>
+                        <td>@Model.CallReceivedAt</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group"></div>
+    <div class="col-md-4">
+        <div class="panel b">
+            <div class="panel-body bb text-bold text-center">
+                @if (Model.EnableEdit)
+                {
+                    <button class="btn btn-info" onclick="ShowDestinationPop()">
+                        <span class="glyphicon glyphicon-pencil"></span> Destination Details
+                    </button>
+                }
+                else
+                {
+                    <p>Destination Details</p>
+                }
+            </div>
+            <table class="table bb">
+                <tbody>
+                    <tr>
+                        <td><strong>Destination Type:</strong></td>
+                        <td id="destinationType">@Model.submittedDestination.DestinationType</td>
+                    </tr>
+                    @if (Model.submittedDestination.DestinationType == "Hospital/NursingHome")
+                    {
+                        <tr>
+                            <td><strong>Destination Name:</strong></td>
+                            <td id="destinationName">@Model.submittedDestination.DestinationName</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><strong>Instructions:</strong></td>
+                        <td id="destInstructions">@Model.submittedDestination.DestInstructions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Address:</strong></td>
+                        <td id="destinationAddress">@Model.submittedDestination.Address</td>
+                    </tr>
+                    <tr hidden>
+                        <td id="destinationCity">@Model.submittedDestination.City</td>
+                        <td id="destinationState">@Model.submittedDestination.State</td>
+                        <td id="destinationZip">@Model.submittedDestination.Zip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>City, State, Zip:</strong></td>
+                        <td>@Model.submittedDestination.City, @Model.submittedDestination.State, @Model.submittedDestination.Zip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone:</strong></td>
+                        <td id="destinationPhone">@Model.submittedDestination.Phone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Miles:</strong></td>
+                        <td id="destinationMiles">@Model.submittedDestination.Miles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TravelTime:</strong></td>
+                        <td id="destinationTravelTime">@Model.submittedDestination.TravelTime</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group"></div>
+    <div class="col-md-4">
+        <div class="panel b">
+            <div class="panel-body bb text-bold text-center">
+                @if (Model.EnableEdit)
+                {
+                    <button class="btn btn-info" onclick="ShowTransportPop('@Model.submittedDischarge.DischargeRequestId')">
+                        <span class="glyphicon glyphicon-pencil"></span> Transport Details
+                    </button>
+                }
+                else
+                {
+                    <p>Transport Details</p>
+                }
+            </div>
+            <table class="table bb">
+                <tbody>
+                    <tr>
+                        <td><strong>Mode:</strong></td>
+                        <td id="modeOfTransport">@Model.MOTSelected</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EmsAgency:</strong></td>
+                        <td id="emsAgency">@Model.EmsAgency</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Discharge Time:</strong></td>
+                        <td id="dischargeTime">@Model.submittedDischarge.DischargeTime</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agency Arrival:</strong></td>
+                        <td id="agencyArrived">@Model.submittedDischarge.AgencyArrivalTime</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SpecialInstructions:</strong></td>
+                        <td id="splInstructions">@Model.submittedDischarge.SpecialInstructions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RequestStatus:</strong></td>
+                        <td>@Model.RequestStatus</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SpecialNeeds:</strong></td>
+                        <td id="splNeeds">
+                            @for (var i = 0; i < Model.SpecialNeedsSubmitted.Count(); i++)
+                            {
+                                <label class="checkbox-inline" id="ckSplNeeds">
+                                    @if (Model.SpecialNeedsSubmitted[i].Selected)
+                                    {
+                                        <input type="checkbox" value="@Model.SpecialNeedsSubmitted[i].Value" disabled="disabled" checked="checked" />@Model.SpecialNeedsSubmitted[i].Text
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="@Model.SpecialNeedsSubmitted[i].Value" disabled="disabled" />@Model.SpecialNeedsSubmitted[i].Text
+                                    }
+                                </label>
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Care Level:</strong></td>
+                        <td id="lifeSupport">@Model.submittedDischarge.LifeSupport</td>
+                    </tr>
+                    @if (!string.IsNullOrEmpty(Model.submittedDischarge.Notes))
+                    {
+                        <tr>
+                            <td><strong>Notes:</strong></td>
+                            <td id="agentNotes">@Model.submittedDischarge.Notes</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*Modal Region*@
+
+@*Demograph Modal*@
+<div class="modal fade" id="editDemographModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Edit Patient</h4>
+            </div>
+            <div class="modal-body" id="patientModalBody">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2" hidden>
+                            <input hidden id="txtPatientIdHidden" value="@Model.submittedPatient.PatientId" />
+                        </div>
+                        <div class="col-sm-2"><label>First Name</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtpFirstName" name="FirstName" value="@Model.submittedPatient.FirstName" /></div>
+                        <div class="col-sm-2"><Label>Last Name</Label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtpLastName" name="LastName" value="@Model.submittedPatient.LastName" /></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2"><label>Date Of Birth</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtpDateOfBirth" name="DOB" value="@Model.submittedPatient.DOB" /></div>
+                        <div class="col-sm-2"><label>Age</label></div>
+                        <div class="col-sm-4"><input type="number" class="form-control" id="txtpAge" name="Age" value="@Model.submittedPatient.Age" /></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2"><label>Weight</label></div>
+                        <div class="col-sm-4"><input type="number" class="form-control" id="txtpWeight" name="Weight" value="@Model.submittedPatient.Weight" /></div>
+                        <div class="col-sm-2"><label>Phone</label></div>
+                        <div class="col-sm-4"><input type="tel" class="form-control" id="txtpPhone" name="Phone" value="@Model.submittedPatient.Phone" /></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2"><label>Social</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtpSocial" name="Social" value="@Model.submittedPatient.Social" /></div>
+                        <div class="col-sm-2"><label>Address</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtpAddress" name="Address" value="@Model.submittedPatient.Address" /></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2"><label>City</label></div>
+                        <div class="col-sm-2"><input type="text" class="form-control" id="txtpCity" name="City" value="@Model.submittedPatient.City" /></div>
+                        <div class="col-sm-2"><label>State</label></div>
+                        <div class="col-sm-2">@Html.DropDownList("State", Model.GetStatesListFromRequestModel(), new { @class = "form-control" })</div>
+                        <div class="col-sm-2"><label>Zip</label></div>
+                        <div class="col-sm-2"><input type="text" class="form-control" name="Zip" id="txtpZip" value="@Model.submittedPatient.Zip" /></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2"><label>MR#</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtpMrn" name="MRN" value="@Model.submittedPatient.MRN" /></div>
+                        <div class="col-sm-2"><label>Case#</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtpCaseNumber" name="CaseNumber" value="@Model.submittedDischarge.CaseNumber" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="UpdatePatient();">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*Caller Modal*@
+<div class="modal fade" id="editCallerModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Edit Caller</h4>
+            </div>
+            <div class="modal-body" id="callerModalBody">
+                <div id="yesCaller">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                @Html.Label("Name")
+                                <input hidden="hidden" id="txtcallerIdHidden" />
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="callerSearch" name="CallerName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                @Html.Label("Title")
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" disabled="disabled" id="txtTitle" name="Title" />
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.Label("Assignment")
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" disabled="disabled" id="txtAssignment" name="Assignment" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                @Html.Label("Phone")
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" disabled="disabled" id="txtphoneNumber" name="PhoneNumber" />
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.Label("Pager")
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" disabled="disabled" id="txtpagerNumber" name="PagerNumber" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="noCaller">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label style="color:mediumvioletred;" id="lblNoCaller" class="text-center">No caller was selected while entering the request. If it is a new caller, click <b>"New Caller"</b> to add them. <br /> <b>NOTE:</b> Enter the new caller in the name field above. </label>
+                                
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-default" onclick="window.open('@Url.Action("Create", "Callers", new { targe="_blank" })')">New Caller</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="btnUpdateCaller" onclick="UpdateCaller('@Model.submittedDischarge.DischargeRequestId');">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Destination Modal*@
+<div class="modal fade" id="editDestinationModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Edit Destination</h4>
+            </div>
+            <div class="modal-body" id="destinationModalBody">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            @Html.Label("Destination Type")
+                        </div>
+                        <div class="col-sm-3">
+                            <select id="destinationTypeSelection1" name="DestinationType" class="form-control">
+                                <option value=""></option>
+                                <option value="Address On File">Address On File</option>
+                                <option value="Hospital/NursingHome">Hospital/NursingHome</option>
+                                <option value="Other">Other</option> @*Add Instruction to modal*@
+                            </select>
+                        </div>
+                        <div class="col-sm-2" id="lblhospitalName">
+                            <label class="control-label">Destination Name</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="txthospitalName">
+                                <input type="text" class="form-control" id="txtDischargeDestinationSearch" name="txtDischargeDestinationSearch" style="width:315px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div id="lblhospitalName" hidden>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.Label("Address")
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="AddressLineOne" id="txtaddressln1" />
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.Label("Instructions")
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="Instructions" id="txtdestInstructions" style="width:315px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label class="control-label col-sm-2" id="lblCity">City</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="City" id="txtCity" />
+                        </div>
+                        <div class="col-sm-1">
+                            <label class="control-label" id="lblState">State</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.DropDownList("dState", Model.GetStatesListFromRequestModel(), new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-1">
+                            <label class="control-label">Zip</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" name="Zip" id="txtZip" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <label id="lblPhone">Phone</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="txtPhone" name="Phone" />
+                        </div>
+                        <div class="col-sm-1">
+                            <label id="lblMiles">Miles</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="txtMiles" name="Miles" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label id="lblTravelTime">TravelTime</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="txtTravelTime" name="TravelTime" />
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="button" class="btn btn-info" value="Get Directions" onclick="Directions('@Model.submittedDischarge.DischargeRequestId')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="UpdateDestination('@Model.submittedDischarge.DischargeRequestId');">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Transport Modal*@
+
+<div class="modal fade" id="editTransportModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" style="width:50%; height:90%; padding:0;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Edit Transport</h4>
+            </div>
+            <div class="modal-body" id="transportModalBody">
+                <label style="color:red;" id="lblTransError"></label>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label class="control-label">Transport Mode</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="ddlModes" onchange="ddlTModesChange()"></select>
+                        </div>
+                        <div class="col-sm-2" id="lblhospitalName">
+                            <label class="control-label" id="lblEmsAgency">Ems Agency</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="txthospitalName">
+                                <select class="form-control" id="ddlAgencies"></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            @*<input type="checkbox" id="cbNonLocalAgencies1" onclick="UpdateAgencies1()" /> Show All*@
+                            <input type="checkbox" id="toggle-ems" data-toggle="toggle" data-on="On" data-off="Off" />
+                        </div>
+                        <div class="col-sm-1" id="helpQuestionContainer">
+                            <a href="#" title="Agency Selection" data-toggle="popover" data-trigger="hover" data-content="Select 'ON' to view a full list of agenices. Select 'OFF' to view the filtered short list."><span class="icon-question" id="helpQuestion"></span></a>
+                            @*<span><em class="icon-question"></em></span>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label class="control-label">Discharge Time</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="datetimepicker" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label id="lblCareLevel" class="control-label">CareLevel</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <select id="lifeSupportSelection" name="LifeSupport" class="form-control">
+                                <option value="N/A">N/A</option>
+                                <option value="ALS">ALS</option>
+                                <option value="BLS">BLS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label class="control-label">Agency Arrived</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="dtpAgencyArrival" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="control-label">Status:</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <div>
+                                @Html.DropDownList("ddlStatus", Model.Statuses, "-Choose One-", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label class="control-label" id="lblSpecialInstructions">Special Instructions</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <textarea rows="2" cols="10" class="form-control" id="txtSpecialInstructions" name="SpecialInstructions"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label class="control-label" id="lblNotes">Notes</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <textarea rows="2" cols="10" class="form-control" id="txtNotes" name="Notes"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label id="lblSpecialNeeds" class="control-label">Special Needs:</label>
+                        </div>
+                        <div class="col-sm-8" id="mckSplNeeds">
+                            @for (var i = 0; i < Model.SpecialNeedsSubmitted.Count(); i++)
+                            {
+                                <label class="checkbox-inline" id="mckSplNeeds">
+                                    @if (Model.SpecialNeedsSubmitted[i].Selected)
+                                    {
+                                        <input type="checkbox" value="@Model.SpecialNeedsSubmitted[i].Value" checked="checked" />@Model.SpecialNeedsSubmitted[i].Text
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="@Model.SpecialNeedsSubmitted[i].Value" />@Model.SpecialNeedsSubmitted[i].Text
+                                    }
+                                </label>
+                            }
+                            @*<label id="lblSplNeeds" class="checkbox-inline">
+
+                                </label>*@
+                            @*@for (var i = 0; i < Model.SpecialNeedsSubmitted.Count(); i++)
+                                {
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" value="@Model.SpecialNeedsSubmitted[i].Value" />@Model.SpecialNeedsSubmitted[i].Text
+                                    </label>
+                                }*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="UpdateTransportData('@Model.submittedDischarge.DischargeRequestId');">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Pickup Modal*@
+<div class="modal fade" id="editPickupModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" style="width:50%; height:90%; padding:0;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Edit Pickup</h4>
+            </div>
+            <div class="modal-body" id="pickupModalBody">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Label("Pickup Location")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtPickupModalLocationName" name="PickupModalLocationName" /></div>
+                        <div class="col-sm-2">@Html.Label("Pickup Instructions")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtPickpModalInstructions" name="PickupInstructions" /></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Label("Address")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="AddressLineOne" id="txtPikcupModaladdressln1" /></div>
+                        @*<div class="col-sm-2">@Html.Label("Pickup Instructions")</div>
+                            <div class="col-sm-4"><input type="text" class="form-control" id="txtPickpModalInstructions" name="PickupInstructions" /></div>*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-1">@Html.Label("City")</div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="City" id="txtPickupModalCity" /></div>
+                        <div class="col-sm-1">@Html.Label("State")</div>
+                        <div class="col-sm-2">@Html.DropDownList("PickupModalState", Model.GetStatesListFromRequestModel(), new { @class = "form-control" })</div>
+                        <div class="col-sm-1">@Html.Label("Zip")</div>
+                        <div class="col-sm-2"><input type="text" class="form-control" name="Zip" id="txtPickupModalZip" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="UpdatePickup('@Model.submittedDischarge.DischargeRequestId');">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editLocationModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" style="width:50%; height:90%; padding:0;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Edit Location</h4>
+            </div>
+            <div class="modal-body" id="locationModalBody">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-1">@Html.Label("Building")</div>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="ddlPavillionCodes" onchange="ddlPavillionChange()"></select>
+                        </div>
+                        <div class="col-sm-1">@Html.Label("Unit")</div>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="ddlUnits" disabled></select>
+                        </div>
+                        <div class="col-sm-1">@Html.Label("Bed")</div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="txtModalBed" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="UpdateLocation('@Model.submittedDischarge.DischargeRequestId');">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Insurance Modal*@
+<div class="modal fade" id="editInsuranceModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" style="width:50%; height:90%; padding:0;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Edit Insurance</h4>
+            </div>
+            <div class="modal-body" id="insuranceModalBody">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2" hidden>
+                            <input id="txtMbrInsuranceId" />
+                        </div>
+                        <div class="col-sm-2">@Html.Label("Payor Name")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtPatientInsuranceProvider" name="PatientInsuranceProvider" /></div>
+                        <div class="col-sm-2">@Html.Label("Insurance Id")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtPatientInsuranceId" name="PatientInsuranceId" /></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Label("Plan Name")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtPlanName" name="PlanName" /></div>
+                        <div class="col-sm-2">@Html.Label("Plan Type")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtPlanType" name="PlanType" /></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Label("Authorization Code")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtAuthCode" name="AuthCode" /></div>
+                        <div class="col-sm-2">@Html.Label("ICD Code")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtDiagnosis" name="ICDCode"/></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="btnUpdateCaller" onclick="UpdateInsurance('@Model.submittedDischarge.DischargeRequestId');">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Insurance Details*@
+<div id="insuranceDetailsModal" class="modal fade" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" style="width:50%; height:90%; padding:0;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Insurance Details</h4>
+            </div>
+            <div class="modal-body">
+                @if (Model.insuranceDetails.InsuranceId == 0)
+                {
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Insurance Details Unavailable !!!</label>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-1"><label class="control-label">Name</label></div>
+                            <div class="col-sm-4"><input type="text" class="form-control" readonly value="@Model.insuranceDetails.InsuranceName" /></div>
+                            <div class="col-sm-1"><label class="control-label">Phone</label></div>
+                            <div class="col-sm-2"><input type="text" class="form-control" readonly value="@Model.insuranceDetails.InsurancePhone" /></div>
+                            <div class="col-sm-1"><label class="control-label">Fax</label></div>
+                            <div class="col-sm-2"><input type="text" class="form-control" readonly value="@Model.insuranceDetails.InsuranceFax" /></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="divReadOnlyFields">
+                            <div class="form-group">
+                                <div class="col-sm-2"><label class="control-label">Pre Auth Required</label></div>
+                                <div class="col-sm-4">
+
+                                    @if (Model.insuranceDetails.PreAuthRequired)
+                                    {
+                                        <div class="checkbox" style="width:50px; height:25px;">
+                                            <input type="checkbox" id="toggle-3" name="checkResp" value="false" checked data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                            <input value="false" name="checkResp" type="hidden" />
+                                        </div>
+                                    }
+                                    else if (!Model.insuranceDetails.PreAuthRequired)
+                                    {
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="toggle-3" name="checkResp" value="true" data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                            <input value="true" name="checkResp" type="hidden" />
+                                        </div>
+                                    }
+                                </div>
+                                @*<div class="col-sm-3"><input type="checkbox" class="form-control" readonly value="@Model.insuranceDetails.PreAuthRequired" /></div>*@
+                                <div class="col-sm-2"><label class="control-label">Has Own Paperwork</label></div>
+                                <div class="col-sm-4">
+                                    @if (Model.insuranceDetails.HasOwnPaperWork)
+                                    {
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="toggle-4" name="checkResp1" value="false" checked data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                            <input value="false" name="checkResp1" type="hidden" />
+                                        </div>
+                                    }
+                                    else if (!Model.insuranceDetails.HasOwnPaperWork)
+                                    {
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="toggle-4" name="checkResp1" value="true" data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                            <input value="true" name="checkResp1" type="hidden" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-2"><label class="control-label">Special Instructions</label></div>
+                            <div class="col-sm-10"><textarea rows="5" cols="20" class="form-control" readonly>@Model.insuranceDetails.Instructions</textarea></div>
+                        </div>
+                    </div>
+                    if (Model.insuranceDetails.contactModels.Count > 0)
+                    {
+                        <p class="lead bb">Contact Information</p>
+                        foreach (var item in Model.insuranceDetails.contactModels)
+                        {
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-2"><label class="control-label">Contact Name</label></div>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" readonly class="form-control" value="@item.ContactName" />
+                                    </div>
+                                    <div class="col-sm-2"><label class="control-label">Contact Email</label></div>
+                                    <div class="col-sm-4">
+                                        <input type="text" readonly class="form-control" value="@item.ContactEmail" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-2"><label class="control-label">Contact Phone</label></div>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" readonly class="form-control" value="@item.ContactPhone" />
+                                    </div>
+                                    <div class="col-sm-2"><label class="control-label">Contact Fax</label></div>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" readonly class="form-control" value="@item.ContactFax" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-2"><label class="control-label">Contact Note</label></div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="2" cols="20" readonly class="form-control">@item.ContactNote</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                }
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Medicare Allowable Charges*@
+<div class="modal fade" id="CalculateChargesModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" style="width:50%; height:90%; padding:0;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Allowable Charges</h4>
+            </div>
+            <div class="modal-body" id="chargesModalBody">
+                <div class="content-wrapper">
+                    <div class="panel panel-default" id="editContactPanel">
+                        <div class="panel-body">
+                            <div class="row pv-lg">
+                                <div class="col-sm-12">
+                                    <div class="form-horizontal" id="rowCharges">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">@Html.Label("ALS Non Emergency (A0426)")</div>
+                                                <div class="col-sm-3"><input type="text" class="form-control" id="txtAls" disabled /></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">@Html.Label("BLS Non Emergency (A0428)")</div>
+                                                <div class="col-sm-3"><input type="text" class="form-control" id="txtBls" disabled /></div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">@Html.Label("Critical Care Transport (A0434)")</div>
+                                                <div class="col-sm-3"><input type="text" class="form-control" id="txtCct" disabled /></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">@Html.Label("Fixed Wing Transport (A0430)")</div>
+                                                <div class="col-sm-3"><input type="text" class="form-control" id="txtFwt" disabled /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-horizontal" id="cabCharges">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">@Html.Label("Yellow Cab Metro")</div>
+                                                <div class="col-sm-3"><input type="text" class="form-control" id="txtYc" disabled /></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">@Html.Label("Checker Cab")</div>
+                                                <div class="col-sm-3"><input type="text" class="form-control" id="txtCc" disabled /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-horizontal" id="rowNoMiles">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">@Html.Label("There is no mileage entered for this transport !!!")</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        showPdfButton();
+        checkReadonly();
+    });
+
+    function checkReadonly() {
+        var isEditable = @Model.EnableEdit.ToString().ToLower();
+        if (!isEditable) {
+            $('#txtCost').attr('readonly', true);
+            $('#txtATNumber').attr('readonly', true);
+        };
+    };
+    function showPdfButton() {
+        var insN = $('#planName').text().toLowerCase();
+        if (insN.indexOf("wellcare") >= 0 || insN.indexOf("windsor") >= 0) {
+            console.log("I'm in yaaay!!!")
+            $('#showPdf').show();
+        };
+    };
+    function GeneratePdf() {
+        var dischargeRequestId = @Model.submittedDischarge.DischargeRequestId;
+
+        var insuranceName = $('#planName').text().toLowerCase();
+        if (insuranceName.indexOf("wellcare") >= 0) {
+            window.open('GenerateWellCarePdf' + '?DischargeRequestId=' + dischargeRequestId, "newPage");
+        }
+        else if (insuranceName.indexOf("windsor") >= 0) {
+            window.open('GenerateWindsorPdf' + '?DischargeRequestId=' + dischargeRequestId, "newPage");
+        }
+    };
+
+</script>

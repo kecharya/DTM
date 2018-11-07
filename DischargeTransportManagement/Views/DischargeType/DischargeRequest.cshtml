@@ -1,0 +1,83 @@
+﻿@model DischargeTransportManagement.Models.TransportRequestViewModel
+
+@{
+    ViewBag.Title = "DischargeRequest";
+}
+
+<h2>DischargeRequest</h2>
+
+
+@using (Html.BeginForm("DischargeRequest", "DischargeType", FormMethod.Post))
+{
+
+    <table class="table table-borderless">
+        <tr>
+            <td style="width:15%">
+                @Html.Label("Mode Of Transport: ", new { @class = "control-label" })
+            </td>
+            <td>
+
+                @Html.DropDownList("TransportModes", Model.GetTransportModes(), new { @onchange = "this.form.submit()" })
+            </td>
+        </tr>
+        <tr>
+            <td style="width:15%">
+                @Html.Label("Care Level: ", new { @class = "control-label" })
+            </td>
+            <td>
+                @Html.DropDownList("Carelevels", Model.GetCareLevels())
+            </td>
+        </tr>
+        <tr>
+            <td style="width:15%">
+                @Html.Label("State: ")
+            </td>
+            <td>
+                @Html.DropDownList("States", Model.GetStates(), "Select a State", new { @onchange = "this.form.submit()" })
+            </td>
+        </tr>
+        <tr>
+            <td style="width:15%">
+                @Html.Label("EMS Agencies: ", new { @class = "control-label" })
+            </td>
+            <td>
+                @Html.DropDownList("EmsAgencies", Model.GetEmsAgencies(), "Choose the Agency", new { @onchange = "this.form.submit()" })
+            </td>
+        </tr>
+        <tr>
+            <td style="width:15%">
+                @Html.Label("Agency Phone: ", new { @id = "lblAgencyPhone" })
+            </td>
+            <td>
+                @Html.TextBox("txtAgencyPhone", Model.AgencyPhone, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td style="width:15%">
+                @Html.Label("Agency Tax ID: ", new { @id = "lblAgencytaxId" })
+            </td>
+            <td>
+                @Html.TextBox("txtAgencyTaxId", Model.AgencyTaxId, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td style="width:15%">
+                @Html.Label("Special Instructions: ", new { @id = "lblSpecialInstructions" })
+            </td>
+            <td>
+                @Html.TextArea("txtSpecialInstructions", null, 10, 55, null)
+            </td>
+        </tr>
+    </table>
+
+
+
+}
+
+@using (Html.BeginForm("DestinationList", "Destination", new { caller = ViewData["CallerInfo"], coverages = ViewData["CovInfo"], trasport = ViewData["TransInfo"] }, FormMethod.Get))
+{
+    <input type="submit" value="Destination" />
+}
+
+
+

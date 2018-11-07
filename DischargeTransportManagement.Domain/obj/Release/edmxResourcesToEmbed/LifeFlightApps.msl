@@ -1,0 +1,1021 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="lifeflightappsModelStoreContainer" CdmEntityContainer="lifeflightapps">
+    <EntitySetMapping Name="tblAmerigroupEmails">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblAmerigroupEmail">
+        <MappingFragment StoreEntitySet="tblAmerigroupEmail">
+          <ScalarProperty Name="emailedBy" ColumnName="emailedBy" />
+          <ScalarProperty Name="EmailedDateTime" ColumnName="EmailedDateTime" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="AmerigroupEmailedID" ColumnName="AmerigroupEmailedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAuditLogs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblAuditLog">
+        <MappingFragment StoreEntitySet="tblAuditLog">
+          <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="UPDATENOTES" ColumnName="UPDATENOTES" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="MRNUMBER" ColumnName="MRNUMBER" />
+          <ScalarProperty Name="IDFROMAPP" ColumnName="IDFROMAPP" />
+          <ScalarProperty Name="APPNAME" ColumnName="APPNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBedStatusUpdates">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblBedStatusUpdate">
+        <MappingFragment StoreEntitySet="tblBedStatusUpdate">
+          <ScalarProperty Name="Staff" ColumnName="Staff" />
+          <ScalarProperty Name="UpdatedWhen" ColumnName="UpdatedWhen" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+          <ScalarProperty Name="BedStatusUpdatedID" ColumnName="BedStatusUpdatedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCallerPreferredNumbers">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblCallerPreferredNumber">
+        <MappingFragment StoreEntitySet="tblCallerPreferredNumber">
+          <ScalarProperty Name="PreferredType" ColumnName="PreferredType" />
+          <ScalarProperty Name="PreferredNumber" ColumnName="PreferredNumber" />
+          <ScalarProperty Name="CallerId" ColumnName="CallerId" />
+          <ScalarProperty Name="CallerPreferredID" ColumnName="CallerPreferredID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCallers">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblCaller">
+        <MappingFragment StoreEntitySet="tblCallers">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Assignment" ColumnName="Assignment" />
+          <ScalarProperty Name="CallerEmail" ColumnName="CallerEmail" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="CallerPager" ColumnName="CallerPager" />
+          <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+          <ScalarProperty Name="CallerTitle" ColumnName="CallerTitle" />
+          <ScalarProperty Name="CallerFirstName" ColumnName="CallerFirstName" />
+          <ScalarProperty Name="CallerLastName" ColumnName="CallerLastName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCallerTitles">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblCallerTitle">
+        <MappingFragment StoreEntitySet="tblCallerTitle">
+          <ScalarProperty Name="ReqTitle" ColumnName="ReqTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCareLevels">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblCareLevel">
+        <MappingFragment StoreEntitySet="tblCareLevel">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="LevelOfCare" ColumnName="LevelOfCare" />
+          <ScalarProperty Name="carelevelID" ColumnName="carelevelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCareLevelChanges">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblCareLevelChange">
+        <MappingFragment StoreEntitySet="tblCareLevelChange">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="datetimeentered" ColumnName="datetimeentered" />
+          <ScalarProperty Name="vunetID" ColumnName="vunetID" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="NeededCareLevel" ColumnName="NeededCareLevel" />
+          <ScalarProperty Name="RequestedCareLevel" ColumnName="RequestedCareLevel" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+          <ScalarProperty Name="CareLevelChangeID" ColumnName="CareLevelChangeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblChargeRNPageOnOffs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblChargeRNPageOnOff">
+        <MappingFragment StoreEntitySet="tblChargeRNPageOnOff">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="SendChargeRNPage" ColumnName="SendChargeRNPage" />
+          <ScalarProperty Name="ChargeRNYesNoID" ColumnName="ChargeRNYesNoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblConfirmationEmailEMS">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblConfirmationEmailEM">
+        <MappingFragment StoreEntitySet="tblConfirmationEmailEMS">
+          <ScalarProperty Name="emailedby" ColumnName="emailedby" />
+          <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+          <ScalarProperty Name="emailedagency" ColumnName="emailedagency" />
+          <ScalarProperty Name="emailedon" ColumnName="emailedon" />
+          <ScalarProperty Name="reqID" ColumnName="reqID" />
+          <ScalarProperty Name="emsemailID" ColumnName="emsemailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblConfirmationPages">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblConfirmationPage">
+        <MappingFragment StoreEntitySet="tblConfirmationPage">
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="sentby" ColumnName="sentby" />
+          <ScalarProperty Name="senttopager" ColumnName="senttopager" />
+          <ScalarProperty Name="senttoname" ColumnName="senttoname" />
+          <ScalarProperty Name="senton" ColumnName="senton" />
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+          <ScalarProperty Name="confirmationpageID" ColumnName="confirmationpageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDelayReasons">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDelayReason">
+        <MappingFragment StoreEntitySet="tblDelayReasons">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="delayreasonactive" ColumnName="delayreasonactive" />
+          <ScalarProperty Name="delayreason" ColumnName="delayreason" />
+          <ScalarProperty Name="delayreasonID" ColumnName="delayreasonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDeleteRecords">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDeleteRecord">
+        <MappingFragment StoreEntitySet="tblDeleteRecord">
+          <ScalarProperty Name="oktodelete" ColumnName="oktodelete" />
+          <ScalarProperty Name="deleteID" ColumnName="deleteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeATNumbers">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeATNumber">
+        <MappingFragment StoreEntitySet="tblDischargeATNumber">
+          <ScalarProperty Name="POCreatedBy" ColumnName="POCreatedBy" />
+          <ScalarProperty Name="POPaidOn" ColumnName="POPaidOn" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="InvoiceCreatedBy" ColumnName="InvoiceCreatedBy" />
+          <ScalarProperty Name="InvoiceCreatedOn" ColumnName="InvoiceCreatedOn" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="Payor" ColumnName="Payor" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="PayingReason" ColumnName="PayingReason" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="ATNumber" ColumnName="ATNumber" />
+          <ScalarProperty Name="ATID" ColumnName="ATID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeComplaints">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeComplaint">
+        <MappingFragment StoreEntitySet="tblDischargeComplaint">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="DelayReasonID" ColumnName="DelayReasonID" />
+          <ScalarProperty Name="ComplaintTypeID" ColumnName="ComplaintTypeID" />
+          <ScalarProperty Name="Resolved" ColumnName="Resolved" />
+          <ScalarProperty Name="ResolvedDateTime" ColumnName="ResolvedDateTime" />
+          <ScalarProperty Name="Complaint" ColumnName="Complaint" />
+          <ScalarProperty Name="HospitalAOCNotified" ColumnName="HospitalAOCNotified" />
+          <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+          <ScalarProperty Name="ComplaintEntereddatetime" ColumnName="ComplaintEntereddatetime" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="DischargeComplaintID" ColumnName="DischargeComplaintID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeComplaintLogs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeComplaintLog">
+        <MappingFragment StoreEntitySet="tblDischargeComplaintLog">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="LogDateTime" ColumnName="LogDateTime" />
+          <ScalarProperty Name="ComplaintID" ColumnName="ComplaintID" />
+          <ScalarProperty Name="ComplaintLogID" ColumnName="ComplaintLogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeComplaintTypes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeComplaintType">
+        <MappingFragment StoreEntitySet="tblDischargeComplaintTypes">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="ComplaintTypeActive" ColumnName="ComplaintTypeActive" />
+          <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+          <ScalarProperty Name="ComplaintTypeID" ColumnName="ComplaintTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeNeeds">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeNeed">
+        <MappingFragment StoreEntitySet="tblDischargeNeeds">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="specialneedsid" ColumnName="specialneedsid" />
+          <ScalarProperty Name="patientid" ColumnName="patientid" />
+          <ScalarProperty Name="dischargeneedid" ColumnName="dischargeneedid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeRequests">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeRequest">
+        <MappingFragment StoreEntitySet="tblDischargeRequest">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="FatigueScore" ColumnName="FatigueScore" />
+          <ScalarProperty Name="VUEMSUnit" ColumnName="VUEMSUnit" />
+          <ScalarProperty Name="BedStatusUpdated" ColumnName="BedStatusUpdated" />
+          <ScalarProperty Name="EmailSentToFirstCall" ColumnName="EmailSentToFirstCall" />
+          <ScalarProperty Name="MedicalNecessityFormEmailed" ColumnName="MedicalNecessityFormEmailed" />
+          <ScalarProperty Name="ConfirmationPagetoCallerSent" ColumnName="ConfirmationPagetoCallerSent" />
+          <ScalarProperty Name="ComplaintExists" ColumnName="ComplaintExists" />
+          <ScalarProperty Name="BalloonPump" ColumnName="BalloonPump" />
+          <ScalarProperty Name="Ventilator" ColumnName="Ventilator" />
+          <ScalarProperty Name="Trach" ColumnName="Trach" />
+          <ScalarProperty Name="VAD" ColumnName="VAD" />
+          <ScalarProperty Name="BiPap" ColumnName="BiPap" />
+          <ScalarProperty Name="CPAP" ColumnName="CPAP" />
+          <ScalarProperty Name="Isolette" ColumnName="Isolette" />
+          <ScalarProperty Name="Pacer" ColumnName="Pacer" />
+          <ScalarProperty Name="PulseOx" ColumnName="PulseOx" />
+          <ScalarProperty Name="CardiacMonitor" ColumnName="CardiacMonitor" />
+          <ScalarProperty Name="IVMeds" ColumnName="IVMeds" />
+          <ScalarProperty Name="Oxygen" ColumnName="Oxygen" />
+          <ScalarProperty Name="PreAuthComplete" ColumnName="PreAuthComplete" />
+          <ScalarProperty Name="AuthorizationRx" ColumnName="AuthorizationRx" />
+          <ScalarProperty Name="AuthNumber" ColumnName="AuthNumber" />
+          <ScalarProperty Name="ATNumber" ColumnName="ATNumber" />
+          <ScalarProperty Name="PayorVUMCReason" ColumnName="PayorVUMCReason" />
+          <ScalarProperty Name="PrimaryPayor" ColumnName="PrimaryPayor" />
+          <ScalarProperty Name="InsurancePhone" ColumnName="InsurancePhone" />
+          <ScalarProperty Name="RequiresPreauth" ColumnName="RequiresPreauth" />
+          <ScalarProperty Name="InsuranceIDNumber" ColumnName="InsuranceIDNumber" />
+          <ScalarProperty Name="InsuranceProvider" ColumnName="InsuranceProvider" />
+          <ScalarProperty Name="ICD9Diagnosis" ColumnName="ICD9Diagnosis" />
+          <ScalarProperty Name="ICD9" ColumnName="ICD9" />
+          <ScalarProperty Name="PatientAgeAtTransport" ColumnName="PatientAgeAtTransport" />
+          <ScalarProperty Name="PatientInfectios" ColumnName="PatientInfectios" />
+          <ScalarProperty Name="PatientWeight" ColumnName="PatientWeight" />
+          <ScalarProperty Name="PatientPhone" ColumnName="PatientPhone" />
+          <ScalarProperty Name="PatientCounty" ColumnName="PatientCounty" />
+          <ScalarProperty Name="PatientZipcode" ColumnName="PatientZipcode" />
+          <ScalarProperty Name="PatientState" ColumnName="PatientState" />
+          <ScalarProperty Name="PatientCity" ColumnName="PatientCity" />
+          <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
+          <ScalarProperty Name="PatientSS" ColumnName="PatientSS" />
+          <ScalarProperty Name="PatientDOB" ColumnName="PatientDOB" />
+          <ScalarProperty Name="PatientMRN" ColumnName="PatientMRN" />
+          <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
+          <ScalarProperty Name="PatientLastName" ColumnName="PatientLastName" />
+          <ScalarProperty Name="TransportCost" ColumnName="TransportCost" />
+          <ScalarProperty Name="EMSAgencySpecialInstructions" ColumnName="EMSAgencySpecialInstructions" />
+          <ScalarProperty Name="EMSAgencyBedsidePageSent" ColumnName="EMSAgencyBedsidePageSent" />
+          <ScalarProperty Name="EMSAgencyBedSide" ColumnName="EMSAgencyBedSide" />
+          <ScalarProperty Name="EMSAgencyCareLevel" ColumnName="EMSAgencyCareLevel" />
+          <ScalarProperty Name="EMSAgencyReqDateTime" ColumnName="EMSAgencyReqDateTime" />
+          <ScalarProperty Name="EMSAgencyPhone" ColumnName="EMSAgencyPhone" />
+          <ScalarProperty Name="EMSAgency" ColumnName="EMSAgency" />
+          <ScalarProperty Name="EMSAgencyID" ColumnName="EMSAgencyID" />
+          <ScalarProperty Name="EMSAgencyAssignedDateTime" ColumnName="EMSAgencyAssignedDateTime" />
+          <ScalarProperty Name="EMSRotationAgency" ColumnName="EMSRotationAgency" />
+          <ScalarProperty Name="TransportMode" ColumnName="TransportMode" />
+          <ScalarProperty Name="GroundTime" ColumnName="GroundTime" />
+          <ScalarProperty Name="GroundMiles" ColumnName="GroundMiles" />
+          <ScalarProperty Name="DestinationPhone" ColumnName="DestinationPhone" />
+          <ScalarProperty Name="DestinationRoom" ColumnName="DestinationRoom" />
+          <ScalarProperty Name="DestinationCounty" ColumnName="DestinationCounty" />
+          <ScalarProperty Name="DestinationZip" ColumnName="DestinationZip" />
+          <ScalarProperty Name="DestinationState" ColumnName="DestinationState" />
+          <ScalarProperty Name="DestinationCity" ColumnName="DestinationCity" />
+          <ScalarProperty Name="DestinationAddress" ColumnName="DestinationAddress" />
+          <ScalarProperty Name="DestinationFacility" ColumnName="DestinationFacility" />
+          <ScalarProperty Name="DestinationFacilityFVID" ColumnName="DestinationFacilityFVID" />
+          <ScalarProperty Name="PickUpRoom" ColumnName="PickUpRoom" />
+          <ScalarProperty Name="PickUpUnit" ColumnName="PickUpUnit" />
+          <ScalarProperty Name="PickupBldg" ColumnName="PickupBldg" />
+          <ScalarProperty Name="PickupTime" ColumnName="PickupTime" />
+          <ScalarProperty Name="PickupDate" ColumnName="PickupDate" />
+          <ScalarProperty Name="PickUpDateTime" ColumnName="PickUpDateTime" />
+          <ScalarProperty Name="CallerFax" ColumnName="CallerFax" />
+          <ScalarProperty Name="CallerTitle" ColumnName="CallerTitle" />
+          <ScalarProperty Name="CallerPager" ColumnName="CallerPager" />
+          <ScalarProperty Name="CallerPhone" ColumnName="CallerPhone" />
+          <ScalarProperty Name="CallerName" ColumnName="CallerName" />
+          <ScalarProperty Name="CallerID" ColumnName="CallerID" />
+          <ScalarProperty Name="reqStatus" ColumnName="reqStatus" />
+          <ScalarProperty Name="ReqTakerVuNet" ColumnName="ReqTakerVuNet" />
+          <ScalarProperty Name="ReqDateTime" ColumnName="ReqDateTime" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeRequestLogs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeRequestLog">
+        <MappingFragment StoreEntitySet="tblDischargeRequestLog">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="LogDateTime" ColumnName="LogDateTime" />
+          <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+          <ScalarProperty Name="ReqLogID" ColumnName="ReqLogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeRequestPageLogs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeRequestPageLog">
+        <MappingFragment StoreEntitySet="tblDischargeRequestPageLog">
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="senttoName" ColumnName="senttoName" />
+          <ScalarProperty Name="senttoPager" ColumnName="senttoPager" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="DCStaff" ColumnName="DCStaff" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+          <ScalarProperty Name="pageID" ColumnName="pageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeRequestPhoneNumbers">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeRequestPhoneNumber">
+        <MappingFragment StoreEntitySet="tblDischargeRequestPhoneNumbers">
+          <ScalarProperty Name="PhoneNotes" ColumnName="PhoneNotes" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneName" ColumnName="PhoneName" />
+          <ScalarProperty Name="phoneID" ColumnName="phoneID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeRequestUnits">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeRequestUnit">
+        <MappingFragment StoreEntitySet="tblDischargeRequestUnits">
+          <ScalarProperty Name="CNPager" ColumnName="CNPager" />
+          <ScalarProperty Name="UnitPhone" ColumnName="UnitPhone" />
+          <ScalarProperty Name="reqUnitID" ColumnName="reqUnitID" />
+          <ScalarProperty Name="ReqUnit" ColumnName="ReqUnit" />
+          <ScalarProperty Name="ReqBuilding" ColumnName="ReqBuilding" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDrivingInfoes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDrivingInfo">
+        <MappingFragment StoreEntitySet="tblDrivingInfo">
+          <ScalarProperty Name="DriveTime" ColumnName="DriveTime" />
+          <ScalarProperty Name="DriveMileage" ColumnName="DriveMileage" />
+          <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmailAddresses">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblEmailAddress">
+        <MappingFragment StoreEntitySet="tblEmailAddresses">
+          <ScalarProperty Name="EmailAddresses" ColumnName="EmailAddresses" />
+          <ScalarProperty Name="EmailName" ColumnName="EmailName" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmailQueues">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblEmailQueue">
+        <MappingFragment StoreEntitySet="tblEmailQueue">
+          <ScalarProperty Name="patientlastname" ColumnName="patientlastname" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+          <ScalarProperty Name="emailqueued" ColumnName="emailqueued" />
+          <ScalarProperty Name="emailsent" ColumnName="emailsent" />
+          <ScalarProperty Name="emailattachment" ColumnName="emailattachment" />
+          <ScalarProperty Name="emailbody" ColumnName="emailbody" />
+          <ScalarProperty Name="emailtype" ColumnName="emailtype" />
+          <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+          <ScalarProperty Name="emailID" ColumnName="emailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmsAgencyLocals">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblEmsAgencyLocal">
+        <MappingFragment StoreEntitySet="tblEmsAgencyLocal">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="IVPump" ColumnName="IVPump" />
+          <ScalarProperty Name="Bariatric" ColumnName="Bariatric" />
+          <ScalarProperty Name="Vent" ColumnName="Vent" />
+          <ScalarProperty Name="ALS" ColumnName="ALS" />
+          <ScalarProperty Name="BLS" ColumnName="BLS" />
+          <ScalarProperty Name="taxID" ColumnName="taxID" />
+          <ScalarProperty Name="DispatchEmail" ColumnName="DispatchEmail" />
+          <ScalarProperty Name="MileageRate" ColumnName="MileageRate" />
+          <ScalarProperty Name="BaseRate" ColumnName="BaseRate" />
+          <ScalarProperty Name="TransferUse" ColumnName="TransferUse" />
+          <ScalarProperty Name="LocalUse" ColumnName="LocalUse" />
+          <ScalarProperty Name="SpecialEquipment" ColumnName="SpecialEquipment" />
+          <ScalarProperty Name="Nextel" ColumnName="Nextel" />
+          <ScalarProperty Name="Phones" ColumnName="Phones" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RotationSequenceTranser" ColumnName="RotationSequenceTranser" />
+          <ScalarProperty Name="RotationSequence" ColumnName="RotationSequence" />
+          <ScalarProperty Name="EMSID" ColumnName="EMSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEMSAgencyRates">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblEMSAgencyRate">
+        <MappingFragment StoreEntitySet="tblEMSAgencyRates">
+          <ScalarProperty Name="A0435" ColumnName="A0435" />
+          <ScalarProperty Name="A0434" ColumnName="A0434" />
+          <ScalarProperty Name="A0430" ColumnName="A0430" />
+          <ScalarProperty Name="A0429" ColumnName="A0429" />
+          <ScalarProperty Name="A0428" ColumnName="A0428" />
+          <ScalarProperty Name="A0427" ColumnName="A0427" />
+          <ScalarProperty Name="A0426" ColumnName="A0426" />
+          <ScalarProperty Name="A0425" ColumnName="A0425" />
+          <ScalarProperty Name="EMSAgencyID" ColumnName="EMSAgencyID" />
+          <ScalarProperty Name="RateID" ColumnName="RateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEMSArrivedBedsideLogs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblEMSArrivedBedsideLog">
+        <MappingFragment StoreEntitySet="tblEMSArrivedBedsideLog">
+          <ScalarProperty Name="senttopager" ColumnName="senttopager" />
+          <ScalarProperty Name="senttoname" ColumnName="senttoname" />
+          <ScalarProperty Name="sentondatetime" ColumnName="sentondatetime" />
+          <ScalarProperty Name="sentby" ColumnName="sentby" />
+          <ScalarProperty Name="reqID" ColumnName="reqID" />
+          <ScalarProperty Name="emsconfpageID" ColumnName="emsconfpageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInsuranceAgencies">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblInsuranceAgency">
+        <MappingFragment StoreEntitySet="tblInsuranceAgencies">
+          <ScalarProperty Name="UPDATEDON" ColumnName="UPDATEDON" />
+          <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+          <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="HASOWNPAPEROWORK" ColumnName="HASOWNPAPEROWORK" />
+          <ScalarProperty Name="PREAUTHREQUIRED" ColumnName="PREAUTHREQUIRED" />
+          <ScalarProperty Name="INSTRUCTIONS" ColumnName="INSTRUCTIONS" />
+          <ScalarProperty Name="INSURANCEFAX" ColumnName="INSURANCEFAX" />
+          <ScalarProperty Name="INSURANCEPHONE" ColumnName="INSURANCEPHONE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="INSAGENCYNAME" ColumnName="INSAGENCYNAME" />
+          <ScalarProperty Name="INSURANCEID" ColumnName="INSURANCEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInsuranceAgencyContacts">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblInsuranceAgencyContact">
+        <MappingFragment StoreEntitySet="tblInsuranceAgencyContact">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ContactNote" ColumnName="ContactNote" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
+          <ScalarProperty Name="InsContactID" ColumnName="InsContactID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInsuranceCompanies">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblInsuranceCompany">
+        <MappingFragment StoreEntitySet="tblInsuranceCompanies">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="HasOwnPaperowork" ColumnName="HasOwnPaperowork" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="LinktoDocumentation" ColumnName="LinktoDocumentation" />
+          <ScalarProperty Name="PreauthRequired" ColumnName="PreauthRequired" />
+          <ScalarProperty Name="InsuranceFax" ColumnName="InsuranceFax" />
+          <ScalarProperty Name="InsurancePhone" ColumnName="InsurancePhone" />
+          <ScalarProperty Name="InsuranceName" ColumnName="InsuranceName" />
+          <ScalarProperty Name="InsuranceCompanyID" ColumnName="InsuranceCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInsuranceCompanyContacts">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblInsuranceCompanyContact">
+        <MappingFragment StoreEntitySet="tblInsuranceCompanyContacts">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="ContactNote" ColumnName="ContactNote" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="InsuranceCompanyID" ColumnName="InsuranceCompanyID" />
+          <ScalarProperty Name="InsuranceCompanyContactID" ColumnName="InsuranceCompanyContactID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInsuranceEmsXrefs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblInsuranceEmsXref">
+        <MappingFragment StoreEntitySet="tblInsuranceEmsXref">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+          <ScalarProperty Name="InsuranceProviderID" ColumnName="InsuranceProviderID" />
+          <ScalarProperty Name="InsuranceEmsID" ColumnName="InsuranceEmsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLogonEvents">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblLogonEvent">
+        <MappingFragment StoreEntitySet="tblLogonEvent">
+          <ScalarProperty Name="logondatetime" ColumnName="logondatetime" />
+          <ScalarProperty Name="vunetID" ColumnName="vunetID" />
+          <ScalarProperty Name="logoneventID" ColumnName="logoneventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMbrCensus">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblMbrCensu">
+        <MappingFragment StoreEntitySet="tblMbrCensus">
+          <ScalarProperty Name="PreviousCencusID" ColumnName="PreviousCencusID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PavillionCode" ColumnName="PavillionCode" />
+          <ScalarProperty Name="Bed" ColumnName="Bed" />
+          <ScalarProperty Name="MrNumber" ColumnName="MrNumber" />
+          <ScalarProperty Name="MbrCensusID" ColumnName="MbrCensusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMbrCoverages">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblMbrCoverage">
+        <MappingFragment StoreEntitySet="tblMbrCoverage">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="VerifiedDate" ColumnName="VerifiedDate" />
+          <ScalarProperty Name="VerifiedByUser" ColumnName="VerifiedByUser" />
+          <ScalarProperty Name="VerifiedStatus" ColumnName="VerifiedStatus" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CoverageTypeName" ColumnName="CoverageTypeName" />
+          <ScalarProperty Name="CoverageTypeID" ColumnName="CoverageTypeID" />
+          <ScalarProperty Name="MrNumber" ColumnName="MrNumber" />
+          <ScalarProperty Name="MbrCoverageID" ColumnName="MbrCoverageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMbrInsurances">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblMbrInsurance">
+        <MappingFragment StoreEntitySet="tblMbrInsurance">
+          <ScalarProperty Name="ICDCode" ColumnName="ICDCode" />
+          <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Termination" ColumnName="Termination" />
+          <ScalarProperty Name="Effective" ColumnName="Effective" />
+          <ScalarProperty Name="FinancialName" ColumnName="FinancialName" />
+          <ScalarProperty Name="SubscriberName" ColumnName="SubscriberName" />
+          <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+          <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+          <ScalarProperty Name="PayorName" ColumnName="PayorName" />
+          <ScalarProperty Name="MrNumber" ColumnName="MrNumber" />
+          <ScalarProperty Name="FillingOrder" ColumnName="FillingOrder" />
+          <ScalarProperty Name="PlanID" ColumnName="PlanID" />
+          <ScalarProperty Name="PayorID" ColumnName="PayorID" />
+          <ScalarProperty Name="MedipacPlanID" ColumnName="MedipacPlanID" />
+          <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
+          <ScalarProperty Name="MbrInsuranceID" ColumnName="MbrInsuranceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMedicareCodes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblMedicareCode">
+        <MappingFragment StoreEntitySet="tblMedicareCodes">
+          <ScalarProperty Name="VUMCRate" ColumnName="VUMCRate" />
+          <ScalarProperty Name="MedicareAllowable" ColumnName="MedicareAllowable" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="HCPCSCode" ColumnName="HCPCSCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblNursingHomes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblNursingHome">
+        <MappingFragment StoreEntitySet="tblNursingHomes">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="UseInScholarships" ColumnName="UseInScholarships" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DriveTime" ColumnName="DriveTime" />
+          <ScalarProperty Name="Miles" ColumnName="Miles" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NursingHomeID" ColumnName="NursingHomeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPageLogs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblPageLog">
+        <MappingFragment StoreEntitySet="tblPageLog">
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="SentOn" ColumnName="SentOn" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="Receipents" ColumnName="Receipents" />
+          <ScalarProperty Name="DischargeRequestId" ColumnName="DischargeRequestId" />
+          <ScalarProperty Name="PageLogId" ColumnName="PageLogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPatients">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblPatient">
+        <MappingFragment StoreEntitySet="tblPatient">
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="MrNumber" ColumnName="MrNumber" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Social" ColumnName="Social" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPatientNotes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblPatientNote">
+        <MappingFragment StoreEntitySet="tblPatientNotes">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="enteredBy" ColumnName="enteredBy" />
+          <ScalarProperty Name="ptNotes" ColumnName="ptNotes" />
+          <ScalarProperty Name="ptMRN" ColumnName="ptMRN" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPrintFaxLogs">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblPrintFaxLog">
+        <MappingFragment StoreEntitySet="tblPrintFaxLog">
+          <ScalarProperty Name="reportname" ColumnName="reportname" />
+          <ScalarProperty Name="printedby" ColumnName="printedby" />
+          <ScalarProperty Name="printeddatetime" ColumnName="printeddatetime" />
+          <ScalarProperty Name="reqID" ColumnName="reqID" />
+          <ScalarProperty Name="printfaxlogID" ColumnName="printfaxlogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblQuotes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblQuote">
+        <MappingFragment StoreEntitySet="tblQuotes">
+          <ScalarProperty Name="QuoteNotes" ColumnName="QuoteNotes" />
+          <ScalarProperty Name="QuoteDateTime" ColumnName="QuoteDateTime" />
+          <ScalarProperty Name="Quote" ColumnName="Quote" />
+          <ScalarProperty Name="EMSAgency" ColumnName="EMSAgency" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="quoteID" ColumnName="quoteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblQuotesTransfers">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblQuotesTransfer">
+        <MappingFragment StoreEntitySet="tblQuotesTransfer">
+          <ScalarProperty Name="QuoteNotes" ColumnName="QuoteNotes" />
+          <ScalarProperty Name="QuoteDateTime" ColumnName="QuoteDateTime" />
+          <ScalarProperty Name="Quote" ColumnName="Quote" />
+          <ScalarProperty Name="EMSAgency" ColumnName="EMSAgency" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="quoteID" ColumnName="quoteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRateConversions">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblRateConversion">
+        <MappingFragment StoreEntitySet="tblRateConversion">
+          <ScalarProperty Name="RateCode" ColumnName="RateCode" />
+          <ScalarProperty Name="RateName" ColumnName="RateName" />
+          <ScalarProperty Name="rateconversionID" ColumnName="rateconversionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRecordOpeneds">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblRecordOpened">
+        <MappingFragment StoreEntitySet="tblRecordOpened">
+          <ScalarProperty Name="opendatetime" ColumnName="opendatetime" />
+          <ScalarProperty Name="vunetID" ColumnName="vunetID" />
+          <ScalarProperty Name="reqID" ColumnName="reqID" />
+          <ScalarProperty Name="recordopenID" ColumnName="recordopenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRecordOpenedTransfers">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblRecordOpenedTransfer">
+        <MappingFragment StoreEntitySet="tblRecordOpenedTransfer">
+          <ScalarProperty Name="opendatetime" ColumnName="opendatetime" />
+          <ScalarProperty Name="vunetID" ColumnName="vunetID" />
+          <ScalarProperty Name="reqID" ColumnName="reqID" />
+          <ScalarProperty Name="recordopenID" ColumnName="recordopenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRequestStatus">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblRequestStatu">
+        <MappingFragment StoreEntitySet="tblRequestStatus">
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ReqStatusID" ColumnName="ReqStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSpecialNeeds">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblSpecialNeed">
+        <MappingFragment StoreEntitySet="tblSpecialNeeds">
+          <ScalarProperty Name="SpecialNeed" ColumnName="SpecialNeed" />
+          <ScalarProperty Name="SpecialNeedID" ColumnName="SpecialNeedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTransferRequests">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblTransferRequest">
+        <MappingFragment StoreEntitySet="tblTransferRequest">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="EstimatedWaitTime" ColumnName="EstimatedWaitTime" />
+          <ScalarProperty Name="WaitReturn" ColumnName="WaitReturn" />
+          <ScalarProperty Name="ApptTime" ColumnName="ApptTime" />
+          <ScalarProperty Name="ApptDate" ColumnName="ApptDate" />
+          <ScalarProperty Name="ApptDateTime" ColumnName="ApptDateTime" />
+          <ScalarProperty Name="VUEMSUnit" ColumnName="VUEMSUnit" />
+          <ScalarProperty Name="EmailSentToFirstCall" ColumnName="EmailSentToFirstCall" />
+          <ScalarProperty Name="MedicalNecessityFormEmailed" ColumnName="MedicalNecessityFormEmailed" />
+          <ScalarProperty Name="ConfirmationPagetoCallerSent" ColumnName="ConfirmationPagetoCallerSent" />
+          <ScalarProperty Name="ComplaintExists" ColumnName="ComplaintExists" />
+          <ScalarProperty Name="BalloonPump" ColumnName="BalloonPump" />
+          <ScalarProperty Name="Ventilator" ColumnName="Ventilator" />
+          <ScalarProperty Name="Trach" ColumnName="Trach" />
+          <ScalarProperty Name="VAD" ColumnName="VAD" />
+          <ScalarProperty Name="BiPap" ColumnName="BiPap" />
+          <ScalarProperty Name="CPAP" ColumnName="CPAP" />
+          <ScalarProperty Name="Isolette" ColumnName="Isolette" />
+          <ScalarProperty Name="Pacer" ColumnName="Pacer" />
+          <ScalarProperty Name="PulseOx" ColumnName="PulseOx" />
+          <ScalarProperty Name="CardiacMonitor" ColumnName="CardiacMonitor" />
+          <ScalarProperty Name="IVMeds" ColumnName="IVMeds" />
+          <ScalarProperty Name="Oxygen" ColumnName="Oxygen" />
+          <ScalarProperty Name="PreAuthComplete" ColumnName="PreAuthComplete" />
+          <ScalarProperty Name="AuthorizationRx" ColumnName="AuthorizationRx" />
+          <ScalarProperty Name="AuthNumber" ColumnName="AuthNumber" />
+          <ScalarProperty Name="ATNumber" ColumnName="ATNumber" />
+          <ScalarProperty Name="PayorVUMCReason" ColumnName="PayorVUMCReason" />
+          <ScalarProperty Name="PrimaryPayor" ColumnName="PrimaryPayor" />
+          <ScalarProperty Name="InsurancePhone" ColumnName="InsurancePhone" />
+          <ScalarProperty Name="RequiresPreauth" ColumnName="RequiresPreauth" />
+          <ScalarProperty Name="InsuranceIDNumber" ColumnName="InsuranceIDNumber" />
+          <ScalarProperty Name="InsuranceProvider" ColumnName="InsuranceProvider" />
+          <ScalarProperty Name="ICD9Diagnosis" ColumnName="ICD9Diagnosis" />
+          <ScalarProperty Name="ICD9" ColumnName="ICD9" />
+          <ScalarProperty Name="PatientAgeAtTransport" ColumnName="PatientAgeAtTransport" />
+          <ScalarProperty Name="PatientInfectios" ColumnName="PatientInfectios" />
+          <ScalarProperty Name="PatientWeight" ColumnName="PatientWeight" />
+          <ScalarProperty Name="PatientPhone" ColumnName="PatientPhone" />
+          <ScalarProperty Name="PatientCounty" ColumnName="PatientCounty" />
+          <ScalarProperty Name="PatientZipcode" ColumnName="PatientZipcode" />
+          <ScalarProperty Name="PatientState" ColumnName="PatientState" />
+          <ScalarProperty Name="PatientCity" ColumnName="PatientCity" />
+          <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
+          <ScalarProperty Name="PatientSS" ColumnName="PatientSS" />
+          <ScalarProperty Name="PatientDOB" ColumnName="PatientDOB" />
+          <ScalarProperty Name="PatientMRN" ColumnName="PatientMRN" />
+          <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
+          <ScalarProperty Name="PatientLastName" ColumnName="PatientLastName" />
+          <ScalarProperty Name="TransportCost" ColumnName="TransportCost" />
+          <ScalarProperty Name="EMSAgencySpecialInstructions" ColumnName="EMSAgencySpecialInstructions" />
+          <ScalarProperty Name="EMSAgencyBedsidePageSent" ColumnName="EMSAgencyBedsidePageSent" />
+          <ScalarProperty Name="EMSAgencyBedSide" ColumnName="EMSAgencyBedSide" />
+          <ScalarProperty Name="EMSAgencyCareLevel" ColumnName="EMSAgencyCareLevel" />
+          <ScalarProperty Name="EMSAgencyReqDateTime" ColumnName="EMSAgencyReqDateTime" />
+          <ScalarProperty Name="EMSAgencyPhone" ColumnName="EMSAgencyPhone" />
+          <ScalarProperty Name="EMSAgency" ColumnName="EMSAgency" />
+          <ScalarProperty Name="EMSAgencyID" ColumnName="EMSAgencyID" />
+          <ScalarProperty Name="EMSAgencyAssignedDateTime" ColumnName="EMSAgencyAssignedDateTime" />
+          <ScalarProperty Name="EMSRotationAgency" ColumnName="EMSRotationAgency" />
+          <ScalarProperty Name="TransportMode" ColumnName="TransportMode" />
+          <ScalarProperty Name="GroundTime" ColumnName="GroundTime" />
+          <ScalarProperty Name="GroundMiles" ColumnName="GroundMiles" />
+          <ScalarProperty Name="DestinationPhone" ColumnName="DestinationPhone" />
+          <ScalarProperty Name="DestinationRoom" ColumnName="DestinationRoom" />
+          <ScalarProperty Name="DestinationCounty" ColumnName="DestinationCounty" />
+          <ScalarProperty Name="DestinationZip" ColumnName="DestinationZip" />
+          <ScalarProperty Name="DestinationState" ColumnName="DestinationState" />
+          <ScalarProperty Name="DestinationCity" ColumnName="DestinationCity" />
+          <ScalarProperty Name="DestinationAddress" ColumnName="DestinationAddress" />
+          <ScalarProperty Name="DestinationFacility" ColumnName="DestinationFacility" />
+          <ScalarProperty Name="DestinationFacilityFVID" ColumnName="DestinationFacilityFVID" />
+          <ScalarProperty Name="PickupFacilityID" ColumnName="PickupFacilityID" />
+          <ScalarProperty Name="PickUpRoom" ColumnName="PickUpRoom" />
+          <ScalarProperty Name="PickupTime" ColumnName="PickupTime" />
+          <ScalarProperty Name="PickupDate" ColumnName="PickupDate" />
+          <ScalarProperty Name="PickUpDateTime" ColumnName="PickUpDateTime" />
+          <ScalarProperty Name="CallerFax" ColumnName="CallerFax" />
+          <ScalarProperty Name="CallerTitle" ColumnName="CallerTitle" />
+          <ScalarProperty Name="CallerPager" ColumnName="CallerPager" />
+          <ScalarProperty Name="CallerPhone" ColumnName="CallerPhone" />
+          <ScalarProperty Name="CallerName" ColumnName="CallerName" />
+          <ScalarProperty Name="CallerID" ColumnName="CallerID" />
+          <ScalarProperty Name="reqStatus" ColumnName="reqStatus" />
+          <ScalarProperty Name="ReqTakerVuNet" ColumnName="ReqTakerVuNet" />
+          <ScalarProperty Name="ReqDateTime" ColumnName="ReqDateTime" />
+          <ScalarProperty Name="TransferRequestID" ColumnName="TransferRequestID" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="VACLevel" ColumnName="VACLevel" />
+          <ScalarProperty Name="DTMLevel" ColumnName="DTMLevel" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="VUNetID" ColumnName="VUNetID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVUMCPayorReasons">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblVUMCPayorReason">
+        <MappingFragment StoreEntitySet="tblVUMCPayorReason">
+          <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBuildings">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblBuilding">
+        <MappingFragment StoreEntitySet="tblBuildings">
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHospitals">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblHospital">
+        <MappingFragment StoreEntitySet="tblHospitals">
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="SharedWithFlightcall" ColumnName="SharedWithFlightcall" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="JurisdictionID" ColumnName="JurisdictionID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+          <ScalarProperty Name="DefaultPUDOType" ColumnName="DefaultPUDOType" />
+          <ScalarProperty Name="PUDOGroundLon" ColumnName="PUDOGroundLon" />
+          <ScalarProperty Name="PUDOGroundLat" ColumnName="PUDOGroundLat" />
+          <ScalarProperty Name="PUDOGroundDescription" ColumnName="PUDOGroundDescription" />
+          <ScalarProperty Name="PUDOGroundID" ColumnName="PUDOGroundID" />
+          <ScalarProperty Name="PUDOGroundType" ColumnName="PUDOGroundType" />
+          <ScalarProperty Name="PUDORotorLon" ColumnName="PUDORotorLon" />
+          <ScalarProperty Name="PUDORotorLat" ColumnName="PUDORotorLat" />
+          <ScalarProperty Name="PUDORotorDescription" ColumnName="PUDORotorDescription" />
+          <ScalarProperty Name="PUDORotorID" ColumnName="PUDORotorID" />
+          <ScalarProperty Name="PUDORotorType" ColumnName="PUDORotorType" />
+          <ScalarProperty Name="PUDOFixedLon" ColumnName="PUDOFixedLon" />
+          <ScalarProperty Name="PUDOFixedLat" ColumnName="PUDOFixedLat" />
+          <ScalarProperty Name="PUDOFixedDescription" ColumnName="PUDOFixedDescription" />
+          <ScalarProperty Name="PUDOFixedID" ColumnName="PUDOFixedID" />
+          <ScalarProperty Name="PUDOFixedType" ColumnName="PUDOFixedType" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="EMRC" ColumnName="EMRC" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="HudID" ColumnName="HudID" />
+          <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
+          <ScalarProperty Name="GPSWaypoint" ColumnName="GPSWaypoint" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="ID2" ColumnName="ID2" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Airport" ColumnName="Airport" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblICDCodes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblICDCode">
+        <MappingFragment StoreEntitySet="tblICDCodes">
+          <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+          <ScalarProperty Name="ICDCode" ColumnName="ICDCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTransportModes">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblTransportMode">
+        <MappingFragment StoreEntitySet="tblTransportMode">
+          <ScalarProperty Name="TransportMode" ColumnName="TransportMode" />
+          <ScalarProperty Name="ModeID" ColumnName="ModeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblZipCityStates">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblZipCityState">
+        <MappingFragment StoreEntitySet="tblZipCityState">
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Union_Facilities">
+      <EntityTypeMapping TypeName="lifeflightappsModel.Union_Facilities">
+        <MappingFragment StoreEntitySet="Union_Facilities">
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="COUNTY" ColumnName="COUNTY" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="id2" ColumnName="id2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeRequests1">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeRequest1">
+        <MappingFragment StoreEntitySet="tblDischargeRequests">
+          <ScalarProperty Name="EmsUnitId" ColumnName="EmsUnitId" />
+          <ScalarProperty Name="AppointmentTime" ColumnName="AppointmentTime" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+          <ScalarProperty Name="EMSAgencyArrived" ColumnName="EMSAgencyArrived" />
+          <ScalarProperty Name="EMSAgencyResponded" ColumnName="EMSAgencyResponded" />
+          <ScalarProperty Name="EMSAgencyContacted" ColumnName="EMSAgencyContacted" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+          <ScalarProperty Name="PickupID" ColumnName="PickupID" />
+          <ScalarProperty Name="EmsAgencyId" ColumnName="EmsAgencyId" />
+          <ScalarProperty Name="LifeSupport" ColumnName="LifeSupport" />
+          <ScalarProperty Name="CallReceivedDate" ColumnName="CallReceivedDate" />
+          <ScalarProperty Name="CallReceivedBy" ColumnName="CallReceivedBy" />
+          <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
+          <ScalarProperty Name="DischargeTime" ColumnName="DischargeTime" />
+          <ScalarProperty Name="SpecialInstructions" ColumnName="SpecialInstructions" />
+          <ScalarProperty Name="ModeOfTransport" ColumnName="ModeOfTransport" />
+          <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+          <ScalarProperty Name="MrNumber" ColumnName="MrNumber" />
+          <ScalarProperty Name="CallerID" ColumnName="CallerID" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargeDestinations">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargeDestination">
+        <MappingFragment StoreEntitySet="tblDischargeDestination">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="TravelTime" ColumnName="TravelTime" />
+          <ScalarProperty Name="Miles" ColumnName="Miles" />
+          <ScalarProperty Name="DestInstructions" ColumnName="DestInstructions" />
+          <ScalarProperty Name="DestinationType" ColumnName="DestinationType" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="AddressLineTwo" ColumnName="AddressLineTwo" />
+          <ScalarProperty Name="AddressLineOne" ColumnName="AddressLineOne" />
+          <ScalarProperty Name="DestinationName" ColumnName="DestinationName" />
+          <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDischargePickups">
+      <EntityTypeMapping TypeName="lifeflightappsModel.tblDischargePickup">
+        <MappingFragment StoreEntitySet="tblDischargePickup">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="AddressLineTwo" ColumnName="AddressLineTwo" />
+          <ScalarProperty Name="AddressLineOne" ColumnName="AddressLineOne" />
+          <ScalarProperty Name="PickupInstructions" ColumnName="PickupInstructions" />
+          <ScalarProperty Name="PickupLocationName" ColumnName="PickupLocationName" />
+          <ScalarProperty Name="PickupID" ColumnName="PickupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

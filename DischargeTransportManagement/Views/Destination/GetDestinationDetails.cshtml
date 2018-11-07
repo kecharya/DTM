@@ -1,0 +1,59 @@
+﻿@model DischargeTransportManagement.Models.Destination
+
+@{
+    ViewBag.Title = "GetDestinationDetails";
+}
+
+<div class="container">
+    <div class="content-wrapper">
+        <div class="panel panel-default" id="contactPanel">
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="pv-lg">
+                            <h3 class="m0 text-bold">@Html.DisplayFor(model => model.DestinationName)</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" id="contactDetails">
+                        <p class="lead bb">Destination Information</p>
+                        <form class="form-horizontal p-20">
+                            <div class="form-group">
+                                <div class="col-sm-4">Address</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.Address</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">City</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.City</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">County</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.County</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">State</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.State</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Phone Number</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.Phone</strong>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

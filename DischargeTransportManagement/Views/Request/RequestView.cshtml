@@ -1,0 +1,384 @@
+﻿@model DischargeTransportManagement.Models.RequestModel
+
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+
+<h2></h2>
+@using (Html.BeginForm())
+{
+    <div class="content-wrapper">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="h3 text-center">Choose a Request Type</div>
+                <div class="col-sm-10 col-lg-offset-5">
+                    <div data-toggle="buttons" class="btn-group" id="ttradio">
+                        <label class="radio-inline"><input type="radio" class="myRadio" id="optDischarge" name="RequestType" value="Discharge" checked onclick="DischargeSelected()">Discharge</label>
+                        <label class="radio-inline"><input type="radio" class="myRadio" id="optAlt" name="RequestType" value="ALT Funding" onclick="ALTSelected()">ALT Funding</label>
+                        <label class="radio-inline"><input type="radio" class="myRadio" id="optVhan" name="RequestType" value="VHAN" onclick="VhanSelected()">VHAN</label>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row pv-lg">
+                        <div class="col-sm-12">
+                            <div class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblStatus">Status</label>
+                                            </div>
+                                            <div class="col-sm-4 ">
+                                                @Html.DropDownList("RequesStatus", Model.GetStatuses(), new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblCallerName">Caller Name </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="callerRequestSearch" name="CallerName" placeholder="LastName FirstName" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblMrN">MR Number</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="MrN" name="MrNumber" onblur="validateMr()" onkeypress="clearErrors()" required />
+                                                <label style="color:red;" id="lblMRError"></label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="button" id="btnMRNByName" class="btn btn-info btn-outline" value="MRN By Name?" onclick="displaySearch()" />
+                                            </div>
+                                            <div hidden id="patientName">
+                                                <div class="col-sm-1">
+                                                    <label id="lblPatientName">Patient Name</label>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" id="txtPatientName" name="PatientName" placeholder="FirstName, LastName" onkeydown="FormatPatientName(event)" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" hidden id="searchGroup"></div>
+                                <div class="row" hidden id="searchRow">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="patientFname">First Name </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="fName" name="fName" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="patientLname">Last Name </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="lName" name="lName" />
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="button" class="btn btn-primary btn-outline" value="Search" id="bntSearch" name="bntSearch" onclick="retrieveMrn()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" hidden id="patientInsuranceGroup"></div>
+                                <div class="row" hidden id="patientInsuranceRow">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblPatientInsuranceProvider">Payor Name</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" id="txtPatientInsuranceProvider" class="form-control" name="PatientInsuranceProvider" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblPatientInsuranceId">Insurance ID</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="txtPatientInsuranceId" name="PatientInsuranceId" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="formpickup" hidden> </div>
+                                <div class="row" id="rowpickup" hidden>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblpickuplocationname">Pickup Location Name</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" id="txtpickupname" name="PickupName" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblpickupinstructions">Pickup Instructions</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" id="txtpickupinstructions" name="PickupInstructions" class="form-control" placeholder="contact#, Name ..." />
+                                            </div>
+                                            <div class="col-sm-2" hidden>
+                                                <input type="text" id="txtpickupPhone" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="formpickup1" hidden></div>
+                                <div class="row" id="rowpickup1" hidden>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblpickupAddressln1"> Pickup Address</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="PickupAddressLine1" id="txtpickupaddressline1" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblpickupCity">City</label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" name="PickupCity" id="txtpickupCity" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblpickupState">State</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                @Html.DropDownList("PickupState", Model.GetStatesList(), new { @class = "form-control ignoreField" })
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblpickupZip">Zip</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="text" class="form-control" name="PickupZip" id="txtpickupZip" onblur="getpickupCityState()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="rowdestinationtype">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblddlDestination">Destination Type</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select id="destinationTypeSelection" name="DestinationType" class="form-control" required>
+                                                    <option value="">Select One</option>
+                                                    <option id="AOF" value="Address On File">Address On File</option>
+                                                    <option id="HorN" value="Hospital/NursingHome">Hospital/NursingHome</option>
+                                                    <option id="other" value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="formdestinationdetails" hidden></div>
+                                <div class="row" id="rowdestinationdetails" hidden>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblDestination">Destination Name </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="txtRequestDestinationSearch" name="DestinationName" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lbldestinationinstructions">Destination Instructions</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" id="txtdestinationinstructions" name="DestinationInstructions" class="form-control" placeholder="Bed, Room#, Floor..." />
+                                            </div>
+                                            <div hidden class="col-sm-2">
+                                                <input type="text" id="txtDestinationPhone" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="OtherAddress">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblDestinationAddress">Destination Address </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="AddressLineOne" id="txtaddressln1" required />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblCity">City</label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" name="City" id="txtCity" required />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblState"> State </label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                @Html.DropDownList("State", Model.GetStatesList(), new { @class = "form-control ignoreField" })
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblZip">Zip</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="text" class="form-control" name="Zip" id="txtZip" required onblur="getCityState()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblTransportMode">Transport Mode</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.DropDownList("SelectedEmsAgency", Model.GetModesOfTransport(), "Choose Mode", new { @class = "form-control required" })
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblCareLevel">CareLevel</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <select id="lifeSupportSelection" name="LifeSupport" class="form-control">
+                                                    <option value="N/A">N/A</option>
+                                                    <option value="ALS">ALS</option>
+                                                    <option value="BLS">BLS</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblWeight">Weight</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="number" class="form-control" id="patientWeight" name="patientWeight" required />
+                                                <label style="color:red;" id="lblWeightError"></label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblWeightUnit">Units</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <select id="weightUnitSelection" name="weightUnit" class="form-control" required onblur="ValidateWeight()">
+                                                    <option value="LB">LB</option>
+                                                    <option value="KG">KG</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblPickupTime">Pickup Time</label>
+                                            </div>
+                                            <div class='col-sm-2'>
+                                                <input type="text" class="form-control" id="datetimepicker1" name="DischargeTime" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblMiles">Miles</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="number" class="form-control" id="txtMiles" name="Miles" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblTravelTime">TravelTime</label>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="text" class="form-control" id="txtTravelTime" name="TravelTime" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblAppointmentTime">AppointmentTime</label>
+                                            </div>
+                                            <div class=" col-sm-2">
+                                                <input type="text" class="form-control" id="dtpApptTime" name="AppointmentTime" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblSpecialInstructions">Special Instructions </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <textarea rows="5" cols="20" class="form-control" id="txtSpecialInstructions" name="SpecialInstructions" autocomplete="off"></textarea>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <label id="lblSpecialNeeds">Special Needs </label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                @{
+                                                    Model.SpecialNeeds = Model.GetSpecialNeeds().ToList();
+                                                    for (var i = 0; i < Model.SpecialNeeds.Count(); i++)
+                                                    {
+                                                        <div class="col-sm-4">
+                                                            @Html.CheckBoxFor(model => model.SpecialNeeds[i].Selected, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.HiddenFor(model => model.SpecialNeeds[i].Value)
+                                                            @Html.HiddenFor(model => model.SpecialNeeds[i].Text)
+                                                            @Html.DisplayFor(model => model.SpecialNeeds[i].Text, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-1">
+                                                <label id="lblNotes">NOTES </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <textarea rows="3" cols="20" class="form-control" id="txtNotes" name="Notes"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group pull-right" style="margin-right: 10px;">
+                                            <label style="color:red;" id="lblDirectionsError"></label>
+                                            <input type="button" class="btn btn-info" value="Get Directions" onclick="GetDirections()" />
+                                            <input type="submit" class="btn btn-success" value="Submit" id="btnSubmit" style="margin-left:2px;" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="SaveConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title">Discharge Request Confirmation</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <strong><label id="modalMessage"></label></strong>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="GoHome()">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div hidden>
+        <input type="text" value="@Model.IsPostSuccess" id="txtIsPostSuccess" hidden="hidden" />
+    </div>
+}

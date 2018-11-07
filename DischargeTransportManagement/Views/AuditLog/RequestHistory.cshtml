@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DischargeTransportManagement.Models.AuditLog>
+
+@{
+    ViewBag.Title = "RequestHistory";
+}
+
+
+
+<div class="container">
+    <div class="content-wrapper" id="lgContentWrapper">
+        
+        @*<h3 class="text-center">Request History</h3>*@
+        <div class="row">
+
+
+            <div class="h3 text-bold text-center">Request History</div>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Notes)
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,264 @@
+﻿@model DischargeTransportManagement.Models.PrintableDetails
+
+@{
+    ViewBag.Title = "GeneratePrintableReport";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#navbar1').hide();
+    });
+
+</script>
+
+@*class="A4"*@
+<div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="well well-lg">
+                <p class="text-center" style="font: 900"><b><u>Vanderbilt Discharge Transportation Management</u></b></p>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="col-sm-12">
+
+
+            <div class="col-sm-2">
+
+            </div>
+            <div class="col-sm-8">
+                <div class="well well-sm">
+                    <p>
+                        * This fax contains a Discharge Transportation Request from Vanderbilt Medical Center. <br />
+                        * Please call 322-7433 to confirm receipt of this request and to confirm that you will be able to provide transport of this patient at the requested time.<br />
+                        * If you feel you have received this fax in error please discard and call 615-322-7433.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Bedside Date/Time:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.BedsideDateTime" class="form-control" disabled="disabled" id="txtBedsideDateTime" />
+                </div>
+
+                @*<div class="col-sm-2"></div>*@
+                <div class="col-sm-2">
+                    <label>Care Level:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.CareLevel" class="form-control" disabled="disabled" id="txtCareLevel" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Special Needs:</label>
+                </div>
+                <div class="col-sm-10">
+                    @for (var i = 0; i < Model.SpecialNeeds.Count(); i++)
+                    {
+                        @Html.CheckBoxFor(model => model.SpecialNeeds[i].Selected)
+                        @Html.DisplayFor(model => model.SpecialNeeds[i].Text)
+                        <a></a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Patient:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.PatientName" class="form-control" disabled="disabled" id="txtPatientName" />
+                </div>
+                @*<div class="col-sm-2"></div>*@
+                <div class="col-sm-2">
+                    <label>Date Of Birth:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.DOB" class="form-control" disabled="disabled" id="txtDob" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>SSN:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.SSN" class="form-control" disabled="disabled" id="txtSocial" />
+                </div>
+                @*<div class="col-sm-2"></div>*@
+                <div class="col-sm-2">
+                    <label>Weight:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.weight" class="form-control" disabled="disabled" id="txtWeight" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Patient Notes:</label>
+                </div>
+                <div class="col-sm-6">
+                    <div class="well well-sm">
+                    <p >@Model.PatientNotes</p>
+                    </div>
+                    @*<textarea class="form-control"  disabled="disabled" id="txtNotes">@Model.PatientNotes</textarea>*@
+                    @*<input type="text" value="@Model.PatientNotes" class="form-control" disabled="disabled" id="txtNotes" />*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Patient Location:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.PatientLocation" class="form-control" disabled="disabled" id="txtpatientLocation" />
+                </div>
+                @*<div class="col-sm-2"></div>*@
+                <div class="col-sm-2">
+                    <label>Destination:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.Destination" class="form-control" disabled="disabled" id="txtDestination" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Destination Address:</label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" value="@Model.DestinationAddress" class="form-control" disabled="disabled" id="txtdestinationAddress" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="col-sm-2">
+                <label>Drive Mileage:</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" value="@Model.DriveMileage" class="form-control" disabled="disabled" id="txtDriveMileage" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Primary Payor:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.PrimaryPayor" class="form-control" disabled="disabled" id="txtprimaryPayor" />
+                </div>
+                @*<div class="col-sm-2"></div>*@
+                <div class="col-sm-2">
+                    <label>Insurance Provider:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.InsuranceProvider" class="form-control" disabled="disabled" id="txtinsuranceProvider" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>Insurance ID:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.InsuranceId" class="form-control" disabled="disabled" id="txtinsuranceID" />
+                </div>
+                @*<div class="col-sm-2"></div>*@
+                <div class="col-sm-2">
+                    <label>Pre-Auth Number:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.PreAuthNumber" class="form-control" disabled="disabled" id="txtpreAuthNumber" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label>AT Number:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.AtNumber" class="form-control" disabled="disabled" id="txtatNumber" />
+                </div>
+                @*<div class="col-sm-2"></div>*@
+                <div class="col-sm-2">
+                    <label>Cost:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" value="@Model.Cost" class="form-control" disabled="disabled" id="txtcost" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group"> </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <p class="text-center"><input type="button" onclick="window.print()" value="Print" /></p>
+            </div>
+        </div>
+    </div>
+
+</div>

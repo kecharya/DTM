@@ -1,0 +1,97 @@
+﻿@model DischargeTransportManagement.Models.Caller
+
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+    <div class="content-wrapper">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="h4 text-center">New Caller Information</div>
+                <div class="row pv-lg">
+                    <div class="col-sm-12">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    @Html.Label("Title", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.CallerTitle, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.CallerTitle, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.Label("Assignment", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.Assignment, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Assignment, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("First Name", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.CallerFirstName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.CallerFirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.Label("Last Name", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.CallerLastName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.CallerLastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Office", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.OfficePhone, new { htmlAttributes = new { @class = "form-control", onblur = "ValidateOffice(this)"} })
+                                        <span class="text-danger field-validation-error">
+                                            <label id="OfficePhone-error"></label>
+                                        </span>
+                                    </div>
+                                    @Html.Label("Pager", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.CallerPager, new { htmlAttributes = new { @class = "form-control", onblur = "ValidatePager(this)", required = "required" } })
+                                        <span class="text-danger field-validation-error">
+                                            <label id="PagerPhone-error"></label>
+                                        </span>
+                                    </div>
+                                    @Html.Label("Mobile", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.MobilePhone, new { htmlAttributes = new { @class = "form-control", onblur = "ValidateMobile(this)" } })
+                                        <span class="text-danger field-validation-error">
+                                            <label id="MobilePhone-error"></label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Preferred", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-5">
+                                        <select id="preferredNumberSelection" name="PreferredNumberType" class="form-control">
+                                            <option value="Pager">Pager</option>
+                                            <option value="Mobile">Mobile</option>
+                                        </select>
+                                    </div>
+                                    @Html.Label("Email", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.CallerEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CallerEmail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="pull-right" style="margin-right: 10px;">
+                                        <label style="color:red;" id="lblError"></label>
+                                        <input type="submit" value="Create" class="btn btn-success" onclick="ValidatePhoneNumber()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

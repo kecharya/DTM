@@ -1,0 +1,43 @@
+﻿@model DischargeTransportManagement.Models.InsuranceAgencyViewModel
+
+<div class="container">
+    <h2></h2>
+    <div class="content-wrapper">
+        <h3>Insurance Agency Admin</h3>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-4 col-lg-offset-4">
+                        @Html.DropDownList("ddlInsurances", Model.Insurances, "Choose Insurance Provider", new { @class = "form-control", onchange = "ddlInsurancesChange()" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group"></div>
+            <div class="col-md-5">
+                <div class="panel b">
+                    <div class="h2 text-bold text-center">Agencies Covered</div>
+                    <select class="form-control" size="20" multiple style="width:100%; max-width:none;" id="selectedAgencies"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="panel b" style="min-height:100%">
+                    <div class="h4 text-bold text-center" style="margin-top: 50px;">Add/Remove</div>
+                    <button type="button" class="btn btn-info center-block" onclick="RemoveAgencies()" id="btnremove" name="remove" style="margin-top:135px; margin-bottom:50px;"><em class="icon-arrow-right"></em></button>
+                    <button type="button" class="btn btn-info center-block" onclick="AddAgencies()" id="btnadd" name="add" style="margin-bottom:140px;"><em class="icon-arrow-left"></em></button>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="panel b">
+                    <div class="h2 text-bold text-center">Agencies Not Covered</div>
+                    <select class="form-control" size="20" style="width:100%; max-width:none;" multiple id="selectAllAgencies"></select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>

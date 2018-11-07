@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2ca68f4d-fd71-4d1c-97d9-3b78528de3f7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ApplicationSecurity.xsd" MetadataType="Schema" ID="1f7e83b8-93c8-44e0-9a93-48cc7153dde5" SourceId="1" SourceUrl="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd1" />
+    <MetadataFile FileName="ApplicationSecurity1.xsd" MetadataType="Schema" ID="0fa457e5-cb1d-46f7-85a4-c5b0fea689a8" SourceId="1" SourceUrl="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd2" />
+    <MetadataFile FileName="ApplicationSecurity2.xsd" MetadataType="Schema" ID="b37e04ca-8f70-4a1e-9023-c8548865be70" SourceId="1" SourceUrl="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd3" />
+    <MetadataFile FileName="ApplicationSecurity3.xsd" MetadataType="Schema" ID="4c1f145d-61cc-45bd-a14a-1467efaffe0d" SourceId="1" SourceUrl="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd0" />
+    <MetadataFile FileName="ApplicationSecurity.wsdl" MetadataType="Wsdl" ID="c0c83d7f-8161-4f1b-bece-2cdc99f5c17d" SourceId="1" SourceUrl="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?wsdl" />
+    <MetadataFile FileName="ApplicationSecurity.disco" MetadataType="Disco" ID="fe96c9ce-cb52-431b-9530-ecbaa2b98475" SourceId="1" SourceUrl="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ApplicationSecurity" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="ApplicationSecurity_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationSecurityDTO" />
+      <xsd:import schemaLocation="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IApplicationSecurity_GetAllApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllApplications" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddApplication" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddUserToApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToApplication" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddUserToApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllUsersInApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInApplication" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllUsersInApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRoles" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddRoleToApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleToApplication" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddRoleToApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleToApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllRolesInApp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRolesInApp" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllRolesInApp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRolesInAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllUsersInAppRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInAppRole" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAllUsersInAppRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInAppRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddUserToAppRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToAppRole" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_AddUserToAppRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToAppRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetUserRolesInApp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesInApp" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetUserRolesInApp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesInAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAppUserWithRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppUserWithRoles" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_GetAppUserWithRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppUserWithRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_UpdateAppUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAppUserRole" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationSecurity_UpdateAppUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAppUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IApplicationSecurity">
+    <wsdl:operation name="GetAllApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllApplications" message="tns:IApplicationSecurity_GetAllApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllApplicationsResponse" message="tns:IApplicationSecurity_GetAllApplications_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/AddApplication" message="tns:IApplicationSecurity_AddApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/AddApplicationResponse" message="tns:IApplicationSecurity_AddApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllUsers" message="tns:IApplicationSecurity_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllUsersResponse" message="tns:IApplicationSecurity_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/AddUserToApplication" message="tns:IApplicationSecurity_AddUserToApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/AddUserToApplicationResponse" message="tns:IApplicationSecurity_AddUserToApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllUsersInApplication" message="tns:IApplicationSecurity_GetAllUsersInApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllUsersInApplicationResponse" message="tns:IApplicationSecurity_GetAllUsersInApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllRoles" message="tns:IApplicationSecurity_GetAllRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllRolesResponse" message="tns:IApplicationSecurity_GetAllRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRoleToApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/AddRoleToApplication" message="tns:IApplicationSecurity_AddRoleToApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/AddRoleToApplicationResponse" message="tns:IApplicationSecurity_AddRoleToApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRolesInApp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllRolesInApp" message="tns:IApplicationSecurity_GetAllRolesInApp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllRolesInAppResponse" message="tns:IApplicationSecurity_GetAllRolesInApp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInAppRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllUsersInAppRole" message="tns:IApplicationSecurity_GetAllUsersInAppRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAllUsersInAppRoleResponse" message="tns:IApplicationSecurity_GetAllUsersInAppRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToAppRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/AddUserToAppRole" message="tns:IApplicationSecurity_AddUserToAppRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/AddUserToAppRoleResponse" message="tns:IApplicationSecurity_AddUserToAppRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRolesInApp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetUserRolesInApp" message="tns:IApplicationSecurity_GetUserRolesInApp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetUserRolesInAppResponse" message="tns:IApplicationSecurity_GetUserRolesInApp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppUserWithRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAppUserWithRoles" message="tns:IApplicationSecurity_GetAppUserWithRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/GetAppUserWithRolesResponse" message="tns:IApplicationSecurity_GetAppUserWithRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAppUserRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationSecurity/UpdateAppUserRole" message="tns:IApplicationSecurity_UpdateAppUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationSecurity/UpdateAppUserRoleResponse" message="tns:IApplicationSecurity_UpdateAppUserRole_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ApplicationSecurity" type="tns:IApplicationSecurity">
+    <wsp:PolicyReference URI="#ApplicationSecurity_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllApplications">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetAllApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddApplication">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/AddApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToApplication">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/AddUserToApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInApplication">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetAllUsersInApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoles">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetAllRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRoleToApplication">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/AddRoleToApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRolesInApp">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetAllRolesInApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInAppRole">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetAllUsersInAppRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToAppRole">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/AddUserToAppRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRolesInApp">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetUserRolesInApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppUserWithRoles">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/GetAppUserWithRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAppUserRole">
+      <soap:operation soapAction="http://tempuri.org/IApplicationSecurity/UpdateAppUserRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApplicationSecurity">
+    <wsdl:port name="ApplicationSecurity" binding="tns:ApplicationSecurity">
+      <soap:address location="https://lifeflightportaltest.mc.vanderbilt.edu/ApplicationSecurityService/ApplicationSecurity.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

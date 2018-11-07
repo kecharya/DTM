@@ -1,0 +1,36 @@
+﻿<style>
+    .navbar {
+        visibility: hidden;
+    }
+</style>
+
+@{
+    ViewBag.Title = "LoginPage";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="block-center mt-xl wd-xl">
+        <div class="panel panel-flat">
+            <div class="panel-heading text-center" id="loginHeader">
+                @*<a style="color:#fff">Discharge Transport Management</a>*@
+                <h3>Discharge Transport Management</h3>
+            </div>
+            <div class="panel-body">
+                <p class="text-center pv">SIGN IN TO CONTINUE.</p>
+                <form role="form" method="post" data-parsley-validate="" novalidate="" class="mb-lg">
+                    <div class="form-group has-feedback">
+                        <input id="Username" name="Username" type="text" placeholder="VUnetID" autocomplete="off" required="" class="form-control">
+                        <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input id="Password" name="Password" type="password" placeholder="ePassword" required="" class="form-control">
+                        <span class="fa fa-lock form-control-feedback text-muted"></span>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary mt-lg">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}

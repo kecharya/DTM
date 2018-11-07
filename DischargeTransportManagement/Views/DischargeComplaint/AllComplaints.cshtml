@@ -1,0 +1,54 @@
+﻿@model PagedList.IPagedList<DischargeTransportManagement.Models.DischargeComplaintModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "AllComplaints";
+}
+
+<div class="container">
+    <div class="content-wrapper" id="lgContentWrapper">
+        <div class="row">
+
+
+            <div class="h3 text-bold text-center">Complaints</div>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th class="text-center">Patient</th>
+                    <th class="text-center">MRN</th>
+                    <th class="text-center">Request Date</th>
+                    <th class="text-center">Agency</th>
+                    <th class="text-center">Destination</th>
+                    <th class="text-center">Location</th>
+                </tr>
+                
+                @foreach (var item in Model.GroupBy(x => x.PatientName).ToList())
+                {
+
+                    <tr>
+                        <td class="text-center">@item.Key</td>
+                        <td class="text-center">@item.Select(x => x.MRN).FirstOrDefault()</td>
+                        <td class="text-center">@item.Select(x => x.RequestDate).FirstOrDefault()</td>
+                        <td class="text-center">@item.Select(x => x.Agency).FirstOrDefault()</td>
+                        <td class="text-center">@item.Select(x => x.Destination).FirstOrDefault()</td>
+                        @if (item.Select(x => x.Location).FirstOrDefault() == "N/A-N/A")
+                        {
+                            <td></td>
+                        }
+                        else
+                        {
+                            <td class="text-center">@item.Select(x => x.Location).FirstOrDefault()</td>
+                        }
+                        <td class="text-center"><a href="@Url.Action("FullDetails","DischargeComplaint", new { @RequestId = item.Select(x => x.RequestId).FirstOrDefault() })" class="btn btn-xs btn-circle btn-info"><span><em class="icon-magnifier"></em></span></a> </td>
+                    </tr>
+
+                }
+            </table>
+            <div class="row">
+                <div class="text-center">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("AllComplaints", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

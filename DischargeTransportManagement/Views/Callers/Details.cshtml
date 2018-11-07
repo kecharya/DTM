@@ -1,0 +1,77 @@
+﻿@model DischargeTransportManagement.Models.Caller
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <div class="content-wrapper">
+        <div class="panel panel-default" id="contactPanel">
+            <div class="panel-heading">
+                <button class="btn btn-primary btn-xs pull-right" data-toggle="tooltip" title="Edit" onclick="location.href='@Url.Action("Edit", "Callers", new { @id = Model.CallerId })'"><em class="fa fa-edit"></em></button>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="pv-lg">
+                            <h3 class="m0 text-bold">@Html.DisplayFor(model => model.CallerFirstName) @Html.DisplayFor(model => model.CallerLastName)</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+
+                        @if (Model.Assignment != null)
+                        {
+                            <strong>@Model.CallerTitle</strong><strong> - </strong><strong>@Model.Assignment</strong>
+                        }
+                        else
+                        {
+                            <strong>@Model.CallerTitle</strong>
+                        }
+                    </div>
+                    
+                    <div class="col-md-12" id="contactDetails">
+                        <p class="lead bb">Contact Information</p>
+                        <form class="form-horizontal p-20">
+                            <div class="form-group">
+                                <div class="col-sm-4">Office</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.OfficePhone</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Pager</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.CallerPager</strong>
+                                </div>
+                            </div>
+                            @if (Model.MobilePhone != null)
+                            {
+                                <div class="form-group">
+                                    <div class="col-sm-4">Mobile</div>
+                                    <div class="col-sm-8">
+                                        <strong>@Model.MobilePhone</strong>
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.PreferredNumberType != null)
+                            {
+                                <div class="form-group">
+                                    <div class="col-sm-4">Preferred</div>
+                                    <div class="col-sm-8">
+                                        <strong>@Model.PreferredNumberType</strong>
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-group">
+                                <div class="col-sm-4">Email</div>
+                                <div class="col-sm-8">
+                                    <strong>@Model.CallerEmail</strong>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

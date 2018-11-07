@@ -1,0 +1,143 @@
+﻿@model DischargeTransportManagement.Models.Caller
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Caller</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CallerLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallerLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CallerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CallerTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallerTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfficePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfficePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CallerPager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallerPager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobilePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobilePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CallerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assignment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assignment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $("#PassId").autocomplete({
+        source: function (request, response) {
+            var customer = new Array();
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "POST",
+                url: "@(Url.Action("Autocomplete", "Home"))",
+                data: { "term": request.term },
+                success: function (data) {
+                    for (var i = 0; i < data.length ; i++) {
+                        customer[i] = { label: data[i].Value, Id: data[i].Key };
+                    }
+                }
+            });
+            response(customer);
+        },
+         select: function (event, ui) {
+             //fill selected customer details on form
+             $.ajax({
+                 cache: false,
+                 async: false,
+                 type: "POST",
+                 url: "@(Url.Action("GetDetail", " Home"))",
+                data: { "id": ui.item.Id },
+
+                success: function (data) {
+                    $('#VisitorDetail').show();
+                    $("#Name").html(data.VisitorName)
+                    $("#PatientName").html(data.PatientName)
+                    //alert(data.ArrivingTime.Hours)
+                    $("#VisitorId").val(data.VisitorId)
+                    $("#Date").html(data.Date)
+                    $("#ArrivingTime").html(data.ArrivingTime)
+                    $("#OverTime").html(data.OverTime)
+
+                    action = data.Action;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Failed to retrieve states.');
+                }
+            });
+        }
+     });
+</script>

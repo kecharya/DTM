@@ -1,0 +1,1340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="lifeflightappsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="lifeflightapps" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAmerigroupEmails" EntityType="lifeflightappsModel.tblAmerigroupEmail" />
+    <EntitySet Name="tblAuditLogs" EntityType="lifeflightappsModel.tblAuditLog" />
+    <EntitySet Name="tblBedStatusUpdates" EntityType="lifeflightappsModel.tblBedStatusUpdate" />
+    <EntitySet Name="tblCallerPreferredNumbers" EntityType="lifeflightappsModel.tblCallerPreferredNumber" />
+    <EntitySet Name="tblCallers" EntityType="lifeflightappsModel.tblCaller" />
+    <EntitySet Name="tblCallerTitles" EntityType="lifeflightappsModel.tblCallerTitle" />
+    <EntitySet Name="tblCareLevels" EntityType="lifeflightappsModel.tblCareLevel" />
+    <EntitySet Name="tblCareLevelChanges" EntityType="lifeflightappsModel.tblCareLevelChange" />
+    <EntitySet Name="tblChargeRNPageOnOffs" EntityType="lifeflightappsModel.tblChargeRNPageOnOff" />
+    <EntitySet Name="tblConfirmationEmailEMS" EntityType="lifeflightappsModel.tblConfirmationEmailEM" />
+    <EntitySet Name="tblConfirmationPages" EntityType="lifeflightappsModel.tblConfirmationPage" />
+    <EntitySet Name="tblDelayReasons" EntityType="lifeflightappsModel.tblDelayReason" />
+    <EntitySet Name="tblDeleteRecords" EntityType="lifeflightappsModel.tblDeleteRecord" />
+    <EntitySet Name="tblDischargeATNumbers" EntityType="lifeflightappsModel.tblDischargeATNumber" />
+    <EntitySet Name="tblDischargeComplaints" EntityType="lifeflightappsModel.tblDischargeComplaint" />
+    <EntitySet Name="tblDischargeComplaintLogs" EntityType="lifeflightappsModel.tblDischargeComplaintLog" />
+    <EntitySet Name="tblDischargeComplaintTypes" EntityType="lifeflightappsModel.tblDischargeComplaintType" />
+    <EntitySet Name="tblDischargeNeeds" EntityType="lifeflightappsModel.tblDischargeNeed" />
+    <EntitySet Name="tblDischargeRequests" EntityType="lifeflightappsModel.tblDischargeRequest" />
+    <EntitySet Name="tblDischargeRequestLogs" EntityType="lifeflightappsModel.tblDischargeRequestLog" />
+    <EntitySet Name="tblDischargeRequestPageLogs" EntityType="lifeflightappsModel.tblDischargeRequestPageLog" />
+    <EntitySet Name="tblDischargeRequestPhoneNumbers" EntityType="lifeflightappsModel.tblDischargeRequestPhoneNumber" />
+    <EntitySet Name="tblDischargeRequestUnits" EntityType="lifeflightappsModel.tblDischargeRequestUnit" />
+    <EntitySet Name="tblDrivingInfoes" EntityType="lifeflightappsModel.tblDrivingInfo" />
+    <EntitySet Name="tblEmailAddresses" EntityType="lifeflightappsModel.tblEmailAddress" />
+    <EntitySet Name="tblEmailQueues" EntityType="lifeflightappsModel.tblEmailQueue" />
+    <EntitySet Name="tblEmsAgencyLocals" EntityType="lifeflightappsModel.tblEmsAgencyLocal" />
+    <EntitySet Name="tblEMSAgencyRates" EntityType="lifeflightappsModel.tblEMSAgencyRate" />
+    <EntitySet Name="tblEMSArrivedBedsideLogs" EntityType="lifeflightappsModel.tblEMSArrivedBedsideLog" />
+    <EntitySet Name="tblInsuranceAgencies" EntityType="lifeflightappsModel.tblInsuranceAgency" />
+    <EntitySet Name="tblInsuranceAgencyContacts" EntityType="lifeflightappsModel.tblInsuranceAgencyContact" />
+    <EntitySet Name="tblInsuranceCompanies" EntityType="lifeflightappsModel.tblInsuranceCompany" />
+    <EntitySet Name="tblInsuranceCompanyContacts" EntityType="lifeflightappsModel.tblInsuranceCompanyContact" />
+    <EntitySet Name="tblInsuranceEmsXrefs" EntityType="lifeflightappsModel.tblInsuranceEmsXref" />
+    <EntitySet Name="tblLogonEvents" EntityType="lifeflightappsModel.tblLogonEvent" />
+    <EntitySet Name="tblMbrCensus" EntityType="lifeflightappsModel.tblMbrCensu" />
+    <EntitySet Name="tblMbrCoverages" EntityType="lifeflightappsModel.tblMbrCoverage" />
+    <EntitySet Name="tblMbrInsurances" EntityType="lifeflightappsModel.tblMbrInsurance" />
+    <EntitySet Name="tblMedicareCodes" EntityType="lifeflightappsModel.tblMedicareCode" />
+    <EntitySet Name="tblNursingHomes" EntityType="lifeflightappsModel.tblNursingHome" />
+    <EntitySet Name="tblPageLogs" EntityType="lifeflightappsModel.tblPageLog" />
+    <EntitySet Name="tblPatients" EntityType="lifeflightappsModel.tblPatient" />
+    <EntitySet Name="tblPatientNotes" EntityType="lifeflightappsModel.tblPatientNote" />
+    <EntitySet Name="tblPrintFaxLogs" EntityType="lifeflightappsModel.tblPrintFaxLog" />
+    <EntitySet Name="tblQuotes" EntityType="lifeflightappsModel.tblQuote" />
+    <EntitySet Name="tblQuotesTransfers" EntityType="lifeflightappsModel.tblQuotesTransfer" />
+    <EntitySet Name="tblRateConversions" EntityType="lifeflightappsModel.tblRateConversion" />
+    <EntitySet Name="tblRecordOpeneds" EntityType="lifeflightappsModel.tblRecordOpened" />
+    <EntitySet Name="tblRecordOpenedTransfers" EntityType="lifeflightappsModel.tblRecordOpenedTransfer" />
+    <EntitySet Name="tblRequestStatus" EntityType="lifeflightappsModel.tblRequestStatu" />
+    <EntitySet Name="tblSpecialNeeds" EntityType="lifeflightappsModel.tblSpecialNeed" />
+    <EntitySet Name="tblTransferRequests" EntityType="lifeflightappsModel.tblTransferRequest" />
+    <EntitySet Name="tblUsers" EntityType="lifeflightappsModel.tblUser" />
+    <EntitySet Name="tblVUMCPayorReasons" EntityType="lifeflightappsModel.tblVUMCPayorReason" />
+    <EntitySet Name="tblBuildings" EntityType="lifeflightappsModel.tblBuilding" />
+    <EntitySet Name="tblHospitals" EntityType="lifeflightappsModel.tblHospital" />
+    <EntitySet Name="tblICDCodes" EntityType="lifeflightappsModel.tblICDCode" />
+    <EntitySet Name="tblTransportModes" EntityType="lifeflightappsModel.tblTransportMode" />
+    <EntitySet Name="tblZipCityStates" EntityType="lifeflightappsModel.tblZipCityState" />
+    <AssociationSet Name="FK__tblCaller__Calle__4F3DA442" Association="lifeflightappsModel.FK__tblCaller__Calle__4F3DA442">
+      <End Role="tblCaller" EntitySet="tblCallers" />
+      <End Role="tblCallerPreferredNumber" EntitySet="tblCallerPreferredNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DELAYREASON" Association="lifeflightappsModel.FK_DELAYREASON">
+      <End Role="tblDelayReason" EntitySet="tblDelayReasons" />
+      <End Role="tblDischargeComplaint" EntitySet="tblDischargeComplaints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintLog" Association="lifeflightappsModel.FK_ComplaintLog">
+      <End Role="tblDischargeComplaint" EntitySet="tblDischargeComplaints" />
+      <End Role="tblDischargeComplaintLog" EntitySet="tblDischargeComplaintLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintType" Association="lifeflightappsModel.FK_ComplaintType">
+      <End Role="tblDischargeComplaintType" EntitySet="tblDischargeComplaintTypes" />
+      <End Role="tblDischargeComplaint" EntitySet="tblDischargeComplaints" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblDischa__patie__17ED6F58" Association="lifeflightappsModel.FK__tblDischa__patie__17ED6F58">
+      <End Role="tblPatient" EntitySet="tblPatients" />
+      <End Role="tblDischargeNeed" EntitySet="tblDischargeNeeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblDischa__speci__18E19391" Association="lifeflightappsModel.FK__tblDischa__speci__18E19391">
+      <End Role="tblSpecialNeed" EntitySet="tblSpecialNeeds" />
+      <End Role="tblDischargeNeed" EntitySet="tblDischargeNeeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pagelog_Agencies" Association="lifeflightappsModel.FK_pagelog_Agencies">
+      <End Role="tblEmsAgencyLocal" EntitySet="tblEmsAgencyLocals" />
+      <End Role="tblInsuranceEmsXref" EntitySet="tblInsuranceEmsXrefs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblInsura__Insur__1A5FC7AF" Association="lifeflightappsModel.FK__tblInsura__Insur__1A5FC7AF">
+      <End Role="tblInsuranceAgency" EntitySet="tblInsuranceAgencies" />
+      <End Role="tblInsuranceAgencyContact" EntitySet="tblInsuranceAgencyContacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pagelog_InsuranceAgencies" Association="lifeflightappsModel.FK_pagelog_InsuranceAgencies">
+      <End Role="tblInsuranceAgency" EntitySet="tblInsuranceAgencies" />
+      <End Role="tblInsuranceEmsXref" EntitySet="tblInsuranceEmsXrefs" />
+    </AssociationSet>
+    <EntitySet Name="Union_Facilities" EntityType="lifeflightappsModel.Union_Facilities" />
+    <EntitySet Name="tblDischargeRequests1" EntityType="lifeflightappsModel.tblDischargeRequest1" />
+    <AssociationSet Name="FK__tblDischa__Reque__7FE0DB9D" Association="lifeflightappsModel.FK__tblDischa__Reque__7FE0DB9D">
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+      <End Role="tblDischargeATNumber" EntitySet="tblDischargeATNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dischargerequests_Census" Association="lifeflightappsModel.fk_dischargerequests_Census">
+      <End Role="tblMbrCensu" EntitySet="tblMbrCensus" />
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dischargerequests_Insurance" Association="lifeflightappsModel.fk_dischargerequests_Insurance">
+      <End Role="tblMbrInsurance" EntitySet="tblMbrInsurances" />
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dischargerequests_Patient" Association="lifeflightappsModel.fk_dischargerequests_Patient">
+      <End Role="tblPatient" EntitySet="tblPatients" />
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dischargerequests_Status" Association="lifeflightappsModel.fk_dischargerequests_Status">
+      <End Role="tblRequestStatu" EntitySet="tblRequestStatus" />
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pagelog_DischargeRequests" Association="lifeflightappsModel.FK_pagelog_DischargeRequests">
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+      <End Role="tblPageLog" EntitySet="tblPageLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDischargeRequests_EmsAgency" Association="lifeflightappsModel.FK_tblDischargeRequests_EmsAgency">
+      <End Role="tblEmsAgencyLocal" EntitySet="tblEmsAgencyLocals" />
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+    </AssociationSet>
+    <EntitySet Name="tblDischargeDestinations" EntityType="lifeflightappsModel.tblDischargeDestination" />
+    <AssociationSet Name="FK_tblDischargeRequests_Destination" Association="lifeflightappsModel.FK_tblDischargeRequests_Destination">
+      <End Role="tblDischargeDestination" EntitySet="tblDischargeDestinations" />
+      <End Role="tblDischargeRequest1" EntitySet="tblDischargeRequests1" />
+    </AssociationSet>
+    <EntitySet Name="tblDischargePickups" EntityType="lifeflightappsModel.tblDischargePickup" />
+  </EntityContainer>
+  <EntityType Name="tblAmerigroupEmail">
+    <Key>
+      <PropertyRef Name="AmerigroupEmailedID" />
+    </Key>
+    <Property Name="AmerigroupEmailedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestID" Type="Int32" />
+    <Property Name="EmailedDateTime" Type="DateTime" Precision="0" />
+    <Property Name="emailedBy" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblAuditLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="APPNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDFROMAPP" Type="Int32" Nullable="false" />
+    <Property Name="MRNUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UPDATENOTES" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CREATEDON" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblBedStatusUpdate">
+    <Key>
+      <PropertyRef Name="BedStatusUpdatedID" />
+    </Key>
+    <Property Name="BedStatusUpdatedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReqID" Type="Int32" />
+    <Property Name="UpdatedWhen" Type="DateTime" Precision="0" />
+    <Property Name="Staff" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblCallerPreferredNumber">
+    <Key>
+      <PropertyRef Name="CallerPreferredID" />
+    </Key>
+    <Property Name="CallerPreferredID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CallerId" Type="Int32" Nullable="false" />
+    <Property Name="PreferredNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PreferredType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblCaller" Relationship="lifeflightappsModel.FK__tblCaller__Calle__4F3DA442" FromRole="tblCallerPreferredNumber" ToRole="tblCaller" />
+  </EntityType>
+  <EntityType Name="tblCaller">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CallerLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CallerFirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CallerTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="OfficePhone" Type="Double" />
+    <Property Name="CallerPager" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePhone" Type="Double" />
+    <Property Name="CallerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Assignment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblCallerPreferredNumbers" Relationship="lifeflightappsModel.FK__tblCaller__Calle__4F3DA442" FromRole="tblCaller" ToRole="tblCallerPreferredNumber" />
+  </EntityType>
+  <EntityType Name="tblCallerTitle">
+    <Key>
+      <PropertyRef Name="ReqTitle" />
+    </Key>
+    <Property Name="ReqTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblCareLevel">
+    <Key>
+      <PropertyRef Name="carelevelID" />
+    </Key>
+    <Property Name="carelevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LevelOfCare" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblCareLevelChange">
+    <Key>
+      <PropertyRef Name="CareLevelChangeID" />
+    </Key>
+    <Property Name="CareLevelChangeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReqID" Type="Int32" />
+    <Property Name="RequestedCareLevel" Type="Int32" />
+    <Property Name="NeededCareLevel" Type="Int32" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vunetID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="datetimeentered" Type="DateTime" Precision="0" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblChargeRNPageOnOff">
+    <Key>
+      <PropertyRef Name="ChargeRNYesNoID" />
+    </Key>
+    <Property Name="ChargeRNYesNoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SendChargeRNPage" Type="Boolean" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblConfirmationEmailEM">
+    <Key>
+      <PropertyRef Name="emsemailID" />
+    </Key>
+    <Property Name="emsemailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reqID" Type="Int32" />
+    <Property Name="emailedon" Type="DateTime" Precision="0" />
+    <Property Name="emailedagency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emailaddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="emailedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblConfirmationPage">
+    <Key>
+      <PropertyRef Name="confirmationpageID" />
+    </Key>
+    <Property Name="confirmationpageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="requestID" Type="Int32" />
+    <Property Name="senton" Type="DateTime" Precision="0" />
+    <Property Name="senttoname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="senttopager" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sentby" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDelayReason">
+    <Key>
+      <PropertyRef Name="delayreasonID" />
+    </Key>
+    <Property Name="delayreasonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="delayreason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="delayreasonactive" Type="Boolean" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblDischargeComplaints" Relationship="lifeflightappsModel.FK_DELAYREASON" FromRole="tblDelayReason" ToRole="tblDischargeComplaint" />
+  </EntityType>
+  <EntityType Name="tblDeleteRecord">
+    <Key>
+      <PropertyRef Name="deleteID" />
+    </Key>
+    <Property Name="deleteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="oktodelete" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDischargeATNumber">
+    <Key>
+      <PropertyRef Name="ATID" />
+    </Key>
+    <Property Name="ATID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ATNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RequestID" Type="Int32" Nullable="false" />
+    <Property Name="PayingReason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Payor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PONumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="POPaidOn" Type="DateTime" Precision="0" />
+    <Property Name="POCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDischargeRequest" Relationship="lifeflightappsModel.FK__tblDischa__Reque__7FE0DB9D" FromRole="tblDischargeATNumber" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <EntityType Name="tblDischargeComplaint">
+    <Key>
+      <PropertyRef Name="DischargeComplaintID" />
+    </Key>
+    <Property Name="DischargeComplaintID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestID" Type="Int32" Nullable="false" />
+    <Property Name="ComplaintEntereddatetime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="EnteredBy" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="HospitalAOCNotified" Type="Boolean" Nullable="false" />
+    <Property Name="Complaint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ResolvedDateTime" Type="DateTime" Precision="0" />
+    <Property Name="Resolved" Type="Boolean" Nullable="false" />
+    <Property Name="ComplaintTypeID" Type="Int32" />
+    <Property Name="DelayReasonID" Type="Int32" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblDelayReason" Relationship="lifeflightappsModel.FK_DELAYREASON" FromRole="tblDischargeComplaint" ToRole="tblDelayReason" />
+    <NavigationProperty Name="tblDischargeComplaintLogs" Relationship="lifeflightappsModel.FK_ComplaintLog" FromRole="tblDischargeComplaint" ToRole="tblDischargeComplaintLog" />
+    <NavigationProperty Name="tblDischargeComplaintType" Relationship="lifeflightappsModel.FK_ComplaintType" FromRole="tblDischargeComplaint" ToRole="tblDischargeComplaintType" />
+  </EntityType>
+  <EntityType Name="tblDischargeComplaintLog">
+    <Key>
+      <PropertyRef Name="ComplaintLogID" />
+    </Key>
+    <Property Name="ComplaintLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComplaintID" Type="Int32" />
+    <Property Name="LogDateTime" Type="DateTime" Precision="0" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblDischargeComplaint" Relationship="lifeflightappsModel.FK_ComplaintLog" FromRole="tblDischargeComplaintLog" ToRole="tblDischargeComplaint" />
+  </EntityType>
+  <EntityType Name="tblDischargeComplaintType">
+    <Key>
+      <PropertyRef Name="ComplaintTypeID" />
+    </Key>
+    <Property Name="ComplaintTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComplaintType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ComplaintTypeActive" Type="Boolean" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblDischargeComplaints" Relationship="lifeflightappsModel.FK_ComplaintType" FromRole="tblDischargeComplaintType" ToRole="tblDischargeComplaint" />
+  </EntityType>
+  <EntityType Name="tblDischargeNeed">
+    <Key>
+      <PropertyRef Name="dischargeneedid" />
+    </Key>
+    <Property Name="dischargeneedid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="patientid" Type="Int32" Nullable="false" />
+    <Property Name="specialneedsid" Type="Int32" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblPatient" Relationship="lifeflightappsModel.FK__tblDischa__patie__17ED6F58" FromRole="tblDischargeNeed" ToRole="tblPatient" />
+    <NavigationProperty Name="tblSpecialNeed" Relationship="lifeflightappsModel.FK__tblDischa__speci__18E19391" FromRole="tblDischargeNeed" ToRole="tblSpecialNeed" />
+  </EntityType>
+  <EntityType Name="tblDischargeRequest">
+    <Key>
+      <PropertyRef Name="ReqID" />
+    </Key>
+    <Property Name="ReqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReqDateTime" Type="DateTime" Precision="0" />
+    <Property Name="ReqTakerVuNet" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="reqStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CallerID" Type="Int32" />
+    <Property Name="CallerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CallerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CallerPager" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CallerTitle" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CallerFax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PickUpDateTime" Type="DateTime" Precision="0" />
+    <Property Name="PickupDate" Type="DateTime" Precision="0" />
+    <Property Name="PickupTime" Type="DateTime" Precision="0" />
+    <Property Name="PickupBldg" Type="Int32" />
+    <Property Name="PickUpUnit" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="PickUpRoom" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationFacilityFVID" Type="Int32" />
+    <Property Name="DestinationFacility" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationZip" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationCounty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationRoom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GroundMiles" Type="Int32" />
+    <Property Name="GroundTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TransportMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMSRotationAgency" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyAssignedDateTime" Type="DateTime" Precision="0" />
+    <Property Name="EMSAgencyID" Type="Int32" />
+    <Property Name="EMSAgency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyReqDateTime" Type="DateTime" Precision="0" />
+    <Property Name="EMSAgencyCareLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyBedSide" Type="DateTime" Precision="0" />
+    <Property Name="EMSAgencyBedsidePageSent" Type="Boolean" />
+    <Property Name="EMSAgencySpecialInstructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TransportCost" Type="Int32" />
+    <Property Name="PatientLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientMRN" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+    <Property Name="PatientDOB" Type="DateTime" Precision="0" />
+    <Property Name="PatientSS" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="PatientAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PatientCity" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="PatientZipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="PatientCounty" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PatientWeight" Type="Int32" />
+    <Property Name="PatientInfectios" Type="Boolean" />
+    <Property Name="PatientAgeAtTransport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ICD9" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="ICD9Diagnosis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsuranceProvider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsuranceIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RequiresPreauth" Type="Boolean" />
+    <Property Name="InsurancePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryPayor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PayorVUMCReason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ATNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="AuthNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizationRx" Type="DateTime" Precision="0" />
+    <Property Name="PreAuthComplete" Type="Boolean" />
+    <Property Name="Oxygen" Type="Boolean" />
+    <Property Name="IVMeds" Type="Boolean" />
+    <Property Name="CardiacMonitor" Type="Boolean" />
+    <Property Name="PulseOx" Type="Boolean" />
+    <Property Name="Pacer" Type="Boolean" />
+    <Property Name="Isolette" Type="Boolean" />
+    <Property Name="CPAP" Type="Boolean" />
+    <Property Name="BiPap" Type="Boolean" />
+    <Property Name="VAD" Type="Boolean" />
+    <Property Name="Trach" Type="Boolean" />
+    <Property Name="Ventilator" Type="Boolean" />
+    <Property Name="BalloonPump" Type="Boolean" />
+    <Property Name="ComplaintExists" Type="Boolean" />
+    <Property Name="ConfirmationPagetoCallerSent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MedicalNecessityFormEmailed" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EmailSentToFirstCall" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="BedStatusUpdated" Type="DateTime" Precision="0" />
+    <Property Name="VUEMSUnit" Type="Int32" />
+    <Property Name="FatigueScore" Type="Int32" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblDischargeRequestLog">
+    <Key>
+      <PropertyRef Name="ReqLogID" />
+    </Key>
+    <Property Name="ReqLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReqID" Type="Int32" />
+    <Property Name="EnteredBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LogDateTime" Type="DateTime" Precision="0" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblDischargeRequestPageLog">
+    <Key>
+      <PropertyRef Name="pageID" />
+    </Key>
+    <Property Name="pageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReqID" Type="Int32" />
+    <Property Name="DCStaff" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="datetime" Type="DateTime" Precision="0" />
+    <Property Name="senttoPager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="senttoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDischargeRequestPhoneNumber">
+    <Key>
+      <PropertyRef Name="phoneID" />
+    </Key>
+    <Property Name="phoneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PhoneName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDischargeRequestUnit">
+    <Key>
+      <PropertyRef Name="reqUnitID" />
+    </Key>
+    <Property Name="ReqBuilding" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ReqUnit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="reqUnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitPhone" Type="Int32" />
+    <Property Name="CNPager" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDrivingInfo">
+    <Key>
+      <PropertyRef Name="FacilityID" />
+    </Key>
+    <Property Name="FacilityID" Type="Int32" Nullable="false" />
+    <Property Name="DriveMileage" Type="Int32" />
+    <Property Name="DriveTime" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblEmailAddress">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddresses" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblEmailQueue">
+    <Key>
+      <PropertyRef Name="emailID" />
+    </Key>
+    <Property Name="emailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailaddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emailtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emailbody" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="emailattachment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emailsent" Type="DateTime" Precision="0" />
+    <Property Name="emailqueued" Type="DateTime" Precision="0" />
+    <Property Name="ReqID" Type="Int32" Nullable="false" />
+    <Property Name="patientlastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblEmsAgencyLocal">
+    <Key>
+      <PropertyRef Name="EMSID" />
+    </Key>
+    <Property Name="EMSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RotationSequence" Type="Int32" />
+    <Property Name="RotationSequenceTranser" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="County" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phones" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Nextel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialEquipment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LocalUse" Type="Boolean" Nullable="false" />
+    <Property Name="TransferUse" Type="Boolean" />
+    <Property Name="BaseRate" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MileageRate" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DispatchEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="taxID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BLS" Type="Boolean" />
+    <Property Name="ALS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Vent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Bariatric" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IVPump" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Other" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblInsuranceEmsXrefs" Relationship="lifeflightappsModel.FK_pagelog_Agencies" FromRole="tblEmsAgencyLocal" ToRole="tblInsuranceEmsXref" />
+    <NavigationProperty Name="tblDischargeRequests" Relationship="lifeflightappsModel.FK_tblDischargeRequests_EmsAgency" FromRole="tblEmsAgencyLocal" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <EntityType Name="tblEMSAgencyRate">
+    <Key>
+      <PropertyRef Name="RateID" />
+    </Key>
+    <Property Name="RateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMSAgencyID" Type="Int32" />
+    <Property Name="A0425" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="A0426" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="A0427" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="A0428" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="A0429" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="A0430" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="A0434" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="A0435" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="tblEMSArrivedBedsideLog">
+    <Key>
+      <PropertyRef Name="emsconfpageID" />
+    </Key>
+    <Property Name="emsconfpageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reqID" Type="Int32" />
+    <Property Name="sentby" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="sentondatetime" Type="DateTime" Precision="0" />
+    <Property Name="senttoname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="senttopager" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblInsuranceAgency">
+    <Key>
+      <PropertyRef Name="INSURANCEID" />
+    </Key>
+    <Property Name="INSURANCEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="INSAGENCYNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="INSURANCEPHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="INSURANCEFAX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="INSTRUCTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PREAUTHREQUIRED" Type="Boolean" />
+    <Property Name="HASOWNPAPEROWORK" Type="Boolean" />
+    <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CREATEDON" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UPDATEDON" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblInsuranceAgencyContacts" Relationship="lifeflightappsModel.FK__tblInsura__Insur__1A5FC7AF" FromRole="tblInsuranceAgency" ToRole="tblInsuranceAgencyContact" />
+    <NavigationProperty Name="tblInsuranceEmsXrefs" Relationship="lifeflightappsModel.FK_pagelog_InsuranceAgencies" FromRole="tblInsuranceAgency" ToRole="tblInsuranceEmsXref" />
+  </EntityType>
+  <EntityType Name="tblInsuranceAgencyContact">
+    <Key>
+      <PropertyRef Name="InsContactID" />
+    </Key>
+    <Property Name="InsContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsuranceID" Type="Int32" Nullable="false" />
+    <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactFax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblInsuranceAgency" Relationship="lifeflightappsModel.FK__tblInsura__Insur__1A5FC7AF" FromRole="tblInsuranceAgencyContact" ToRole="tblInsuranceAgency" />
+  </EntityType>
+  <EntityType Name="tblInsuranceCompany">
+    <Key>
+      <PropertyRef Name="InsuranceCompanyID" />
+    </Key>
+    <Property Name="InsuranceCompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsuranceName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InsurancePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="InsuranceFax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PreauthRequired" Type="Boolean" />
+    <Property Name="LinktoDocumentation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HasOwnPaperowork" Type="Boolean" />
+    <Property Name="ReportName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblInsuranceCompanyContact">
+    <Key>
+      <PropertyRef Name="InsuranceCompanyContactID" />
+    </Key>
+    <Property Name="InsuranceCompanyContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsuranceCompanyID" Type="Int32" />
+    <Property Name="ContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ContactFax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblInsuranceEmsXref">
+    <Key>
+      <PropertyRef Name="InsuranceEmsID" />
+    </Key>
+    <Property Name="InsuranceEmsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsuranceProviderID" Type="Int32" Nullable="false" />
+    <Property Name="AgencyId" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="tblEmsAgencyLocal" Relationship="lifeflightappsModel.FK_pagelog_Agencies" FromRole="tblInsuranceEmsXref" ToRole="tblEmsAgencyLocal" />
+    <NavigationProperty Name="tblInsuranceAgency" Relationship="lifeflightappsModel.FK_pagelog_InsuranceAgencies" FromRole="tblInsuranceEmsXref" ToRole="tblInsuranceAgency" />
+  </EntityType>
+  <EntityType Name="tblLogonEvent">
+    <Key>
+      <PropertyRef Name="logoneventID" />
+    </Key>
+    <Property Name="logoneventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vunetID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="logondatetime" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblMbrCensu">
+    <Key>
+      <PropertyRef Name="MbrCensusID" />
+    </Key>
+    <Property Name="MbrCensusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MrNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Bed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PavillionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="PreviousCencusID" Type="Int32" />
+    <NavigationProperty Name="tblDischargeRequests" Relationship="lifeflightappsModel.fk_dischargerequests_Census" FromRole="tblMbrCensu" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <EntityType Name="tblMbrCoverage">
+    <Key>
+      <PropertyRef Name="MbrCoverageID" />
+    </Key>
+    <Property Name="MbrCoverageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MrNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CoverageTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CoverageTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="VerifiedStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VerifiedByUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VerifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblMbrInsurance">
+    <Key>
+      <PropertyRef Name="MbrInsuranceID" />
+    </Key>
+    <Property Name="MbrInsuranceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsuranceID" Type="Int64" Nullable="false" />
+    <Property Name="MedipacPlanID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PayorID" Type="Int32" Nullable="false" />
+    <Property Name="PlanID" Type="Int32" Nullable="false" />
+    <Property Name="FillingOrder" Type="Int32" Nullable="false" />
+    <Property Name="MrNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PayorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PlanName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PlanType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubscriberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FinancialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Effective" Type="DateTime" Precision="3" />
+    <Property Name="Termination" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="AuthCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ICDCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDischargeRequests" Relationship="lifeflightappsModel.fk_dischargerequests_Insurance" FromRole="tblMbrInsurance" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <EntityType Name="tblMedicareCode">
+    <Key>
+      <PropertyRef Name="HCPCSCode" />
+    </Key>
+    <Property Name="HCPCSCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MedicareAllowable" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="VUMCRate" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="tblNursingHome">
+    <Key>
+      <PropertyRef Name="NursingHomeID" />
+    </Key>
+    <Property Name="NursingHomeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="County" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="Double" />
+    <Property Name="Miles" Type="Int32" />
+    <Property Name="DriveTime" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UseInScholarships" Type="Boolean" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblPageLog">
+    <Key>
+      <PropertyRef Name="PageLogId" />
+    </Key>
+    <Property Name="PageLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DischargeRequestId" Type="Int32" Nullable="false" />
+    <Property Name="Receipents" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MessageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SentOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Response" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDischargeRequest" Relationship="lifeflightappsModel.FK_pagelog_DischargeRequests" FromRole="tblPageLog" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <EntityType Name="tblPatient">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Weight" Type="Int32" />
+    <Property Name="Social" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="MrNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WeightUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblDischargeNeeds" Relationship="lifeflightappsModel.FK__tblDischa__patie__17ED6F58" FromRole="tblPatient" ToRole="tblDischargeNeed" />
+    <NavigationProperty Name="tblDischargeRequests" Relationship="lifeflightappsModel.fk_dischargerequests_Patient" FromRole="tblPatient" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <EntityType Name="tblPatientNote">
+    <Key>
+      <PropertyRef Name="patientID" />
+    </Key>
+    <Property Name="patientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ptMRN" Type="Int32" />
+    <Property Name="ptNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="enteredBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Precision="0" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblPrintFaxLog">
+    <Key>
+      <PropertyRef Name="printfaxlogID" />
+    </Key>
+    <Property Name="printfaxlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reqID" Type="Int32" />
+    <Property Name="printeddatetime" Type="DateTime" Precision="0" />
+    <Property Name="printedby" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="reportname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblQuote">
+    <Key>
+      <PropertyRef Name="quoteID" />
+    </Key>
+    <Property Name="quoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestID" Type="Int32" />
+    <Property Name="EMSAgency" Type="Int32" />
+    <Property Name="Quote" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="QuoteDateTime" Type="DateTime" Precision="0" />
+    <Property Name="QuoteNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblQuotesTransfer">
+    <Key>
+      <PropertyRef Name="quoteID" />
+    </Key>
+    <Property Name="quoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestID" Type="Int32" />
+    <Property Name="EMSAgency" Type="Int32" />
+    <Property Name="Quote" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="QuoteDateTime" Type="DateTime" Precision="0" />
+    <Property Name="QuoteNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblRateConversion">
+    <Key>
+      <PropertyRef Name="rateconversionID" />
+    </Key>
+    <Property Name="rateconversionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RateName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RateCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblRecordOpened">
+    <Key>
+      <PropertyRef Name="recordopenID" />
+    </Key>
+    <Property Name="recordopenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reqID" Type="Int32" />
+    <Property Name="vunetID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="opendatetime" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblRecordOpenedTransfer">
+    <Key>
+      <PropertyRef Name="recordopenID" />
+    </Key>
+    <Property Name="recordopenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reqID" Type="Int32" />
+    <Property Name="vunetID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="opendatetime" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblRequestStatu">
+    <Key>
+      <PropertyRef Name="ReqStatusID" />
+    </Key>
+    <Property Name="ReqStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDischargeRequests" Relationship="lifeflightappsModel.fk_dischargerequests_Status" FromRole="tblRequestStatu" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <EntityType Name="tblSpecialNeed">
+    <Key>
+      <PropertyRef Name="SpecialNeedID" />
+    </Key>
+    <Property Name="SpecialNeedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SpecialNeed" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDischargeNeeds" Relationship="lifeflightappsModel.FK__tblDischa__speci__18E19391" FromRole="tblSpecialNeed" ToRole="tblDischargeNeed" />
+  </EntityType>
+  <EntityType Name="tblTransferRequest">
+    <Key>
+      <PropertyRef Name="ReqID" />
+    </Key>
+    <Property Name="ReqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransferRequestID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ReqDateTime" Type="DateTime" Precision="0" />
+    <Property Name="ReqTakerVuNet" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="reqStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CallerID" Type="Int32" />
+    <Property Name="CallerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CallerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CallerPager" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CallerTitle" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CallerFax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PickUpDateTime" Type="DateTime" Precision="0" />
+    <Property Name="PickupDate" Type="DateTime" Precision="0" />
+    <Property Name="PickupTime" Type="DateTime" Precision="0" />
+    <Property Name="PickUpRoom" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PickupFacilityID" Type="Int32" />
+    <Property Name="DestinationFacilityFVID" Type="Int32" />
+    <Property Name="DestinationFacility" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationZip" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationCounty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationRoom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GroundMiles" Type="Int32" />
+    <Property Name="GroundTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TransportMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMSRotationAgency" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyAssignedDateTime" Type="DateTime" Precision="0" />
+    <Property Name="EMSAgencyID" Type="Int32" />
+    <Property Name="EMSAgency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyReqDateTime" Type="DateTime" Precision="0" />
+    <Property Name="EMSAgencyCareLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyBedSide" Type="DateTime" Precision="0" />
+    <Property Name="EMSAgencyBedsidePageSent" Type="Boolean" />
+    <Property Name="EMSAgencySpecialInstructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TransportCost" Type="Int32" />
+    <Property Name="PatientLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientMRN" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+    <Property Name="PatientDOB" Type="DateTime" Precision="0" />
+    <Property Name="PatientSS" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="PatientAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PatientCity" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="PatientZipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="PatientCounty" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PatientPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PatientWeight" Type="Int32" />
+    <Property Name="PatientInfectios" Type="Boolean" />
+    <Property Name="PatientAgeAtTransport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ICD9" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="ICD9Diagnosis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsuranceProvider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsuranceIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RequiresPreauth" Type="Boolean" />
+    <Property Name="InsurancePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryPayor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PayorVUMCReason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ATNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="AuthNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizationRx" Type="DateTime" Precision="0" />
+    <Property Name="PreAuthComplete" Type="Boolean" />
+    <Property Name="Oxygen" Type="Boolean" />
+    <Property Name="IVMeds" Type="Boolean" />
+    <Property Name="CardiacMonitor" Type="Boolean" />
+    <Property Name="PulseOx" Type="Boolean" />
+    <Property Name="Pacer" Type="Boolean" />
+    <Property Name="Isolette" Type="Boolean" />
+    <Property Name="CPAP" Type="Boolean" />
+    <Property Name="BiPap" Type="Boolean" />
+    <Property Name="VAD" Type="Boolean" />
+    <Property Name="Trach" Type="Boolean" />
+    <Property Name="Ventilator" Type="Boolean" />
+    <Property Name="BalloonPump" Type="Boolean" />
+    <Property Name="ComplaintExists" Type="Boolean" />
+    <Property Name="ConfirmationPagetoCallerSent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MedicalNecessityFormEmailed" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EmailSentToFirstCall" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="VUEMSUnit" Type="Int32" />
+    <Property Name="ApptDateTime" Type="DateTime" Precision="0" />
+    <Property Name="ApptDate" Type="DateTime" Precision="0" />
+    <Property Name="ApptTime" Type="DateTime" Precision="0" />
+    <Property Name="WaitReturn" Type="Boolean" />
+    <Property Name="EstimatedWaitTime" Type="Int32" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="VUNetID" />
+    </Key>
+    <Property Name="ID" Type="Double" />
+    <Property Name="VUNetID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Name" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DTMLevel" Type="Int32" />
+    <Property Name="VACLevel" Type="Int32" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblVUMCPayorReason">
+    <Key>
+      <PropertyRef Name="Reason" />
+    </Key>
+    <Property Name="Reason" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblBuilding">
+    <Key>
+      <PropertyRef Name="BuildingID" />
+      <PropertyRef Name="Building" />
+    </Key>
+    <Property Name="BuildingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Building" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblHospital">
+    <Key>
+      <PropertyRef Name="ID2" />
+      <PropertyRef Name="HudID" />
+      <PropertyRef Name="Deleted" />
+      <PropertyRef Name="EMRC" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="SharedWithFlightcall" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Airport" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="County" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ID2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GPSWaypoint" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="VideoURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HudID" Type="Int32" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="EMRC" Type="Boolean" Nullable="false" />
+    <Property Name="Country" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PUDOFixedType" Type="Int32" />
+    <Property Name="PUDOFixedID" Type="Int32" />
+    <Property Name="PUDOFixedDescription" Type="String" MaxLength="510" FixedLength="false" Unicode="true" />
+    <Property Name="PUDOFixedLat" Type="Double" />
+    <Property Name="PUDOFixedLon" Type="Double" />
+    <Property Name="PUDORotorType" Type="Int32" />
+    <Property Name="PUDORotorID" Type="Int32" />
+    <Property Name="PUDORotorDescription" Type="String" MaxLength="510" FixedLength="false" Unicode="true" />
+    <Property Name="PUDORotorLat" Type="Double" />
+    <Property Name="PUDORotorLon" Type="Double" />
+    <Property Name="PUDOGroundType" Type="Int32" />
+    <Property Name="PUDOGroundID" Type="Int32" />
+    <Property Name="PUDOGroundDescription" Type="String" MaxLength="510" FixedLength="false" Unicode="true" />
+    <Property Name="PUDOGroundLat" Type="Double" />
+    <Property Name="PUDOGroundLon" Type="Double" />
+    <Property Name="DefaultPUDOType" Type="Int32" />
+    <Property Name="TemplateID" Type="Int32" />
+    <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="JurisdictionID" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SharedWithFlightcall" Type="Boolean" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="WebSite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblICDCode">
+    <Key>
+      <PropertyRef Name="ICDCode" />
+      <PropertyRef Name="Diagnosis" />
+    </Key>
+    <Property Name="ICDCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Diagnosis" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblTransportMode">
+    <Key>
+      <PropertyRef Name="ModeID" />
+      <PropertyRef Name="TransportMode" />
+    </Key>
+    <Property Name="ModeID" Type="Int32" Nullable="false" />
+    <Property Name="TransportMode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblZipCityState">
+    <Key>
+      <PropertyRef Name="City" />
+      <PropertyRef Name="StateCode" />
+      <PropertyRef Name="Zip" />
+      <PropertyRef Name="Latitude" />
+      <PropertyRef Name="Longitude" />
+      <PropertyRef Name="County" />
+    </Key>
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StateCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Zip" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
+    <Property Name="County" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__tblCaller__Calle__4F3DA442">
+    <End Type="lifeflightappsModel.tblCaller" Role="tblCaller" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblCallerPreferredNumber" Role="tblCallerPreferredNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCaller">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblCallerPreferredNumber">
+        <PropertyRef Name="CallerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DELAYREASON">
+    <End Type="lifeflightappsModel.tblDelayReason" Role="tblDelayReason" Multiplicity="0..1" />
+    <End Type="lifeflightappsModel.tblDischargeComplaint" Role="tblDischargeComplaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDelayReason">
+        <PropertyRef Name="delayreasonID" />
+      </Principal>
+      <Dependent Role="tblDischargeComplaint">
+        <PropertyRef Name="DelayReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintLog">
+    <End Type="lifeflightappsModel.tblDischargeComplaint" Role="tblDischargeComplaint" Multiplicity="0..1" />
+    <End Type="lifeflightappsModel.tblDischargeComplaintLog" Role="tblDischargeComplaintLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDischargeComplaint">
+        <PropertyRef Name="DischargeComplaintID" />
+      </Principal>
+      <Dependent Role="tblDischargeComplaintLog">
+        <PropertyRef Name="ComplaintID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintType">
+    <End Type="lifeflightappsModel.tblDischargeComplaintType" Role="tblDischargeComplaintType" Multiplicity="0..1" />
+    <End Type="lifeflightappsModel.tblDischargeComplaint" Role="tblDischargeComplaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDischargeComplaintType">
+        <PropertyRef Name="ComplaintTypeID" />
+      </Principal>
+      <Dependent Role="tblDischargeComplaint">
+        <PropertyRef Name="ComplaintTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblDischa__patie__17ED6F58">
+    <End Type="lifeflightappsModel.tblPatient" Role="tblPatient" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeNeed" Role="tblDischargeNeed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPatient">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="tblDischargeNeed">
+        <PropertyRef Name="patientid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblDischa__speci__18E19391">
+    <End Type="lifeflightappsModel.tblSpecialNeed" Role="tblSpecialNeed" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeNeed" Role="tblDischargeNeed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSpecialNeed">
+        <PropertyRef Name="SpecialNeedID" />
+      </Principal>
+      <Dependent Role="tblDischargeNeed">
+        <PropertyRef Name="specialneedsid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pagelog_Agencies">
+    <End Type="lifeflightappsModel.tblEmsAgencyLocal" Role="tblEmsAgencyLocal" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblInsuranceEmsXref" Role="tblInsuranceEmsXref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEmsAgencyLocal">
+        <PropertyRef Name="EMSID" />
+      </Principal>
+      <Dependent Role="tblInsuranceEmsXref">
+        <PropertyRef Name="AgencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblInsura__Insur__1A5FC7AF">
+    <End Type="lifeflightappsModel.tblInsuranceAgency" Role="tblInsuranceAgency" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblInsuranceAgencyContact" Role="tblInsuranceAgencyContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblInsuranceAgency">
+        <PropertyRef Name="INSURANCEID" />
+      </Principal>
+      <Dependent Role="tblInsuranceAgencyContact">
+        <PropertyRef Name="InsuranceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pagelog_InsuranceAgencies">
+    <End Type="lifeflightappsModel.tblInsuranceAgency" Role="tblInsuranceAgency" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblInsuranceEmsXref" Role="tblInsuranceEmsXref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblInsuranceAgency">
+        <PropertyRef Name="INSURANCEID" />
+      </Principal>
+      <Dependent Role="tblInsuranceEmsXref">
+        <PropertyRef Name="InsuranceProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Union_Facilities">
+    <Key>
+      <PropertyRef Name="id2" />
+    </Key>
+    <Property Name="id2" Type="Int32" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CITY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="COUNTY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ZIP" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDischargeRequest1">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CallerID" Type="Int32" />
+    <Property Name="MrNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationID" Type="Int32" Nullable="false" />
+    <Property Name="ModeOfTransport" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialInstructions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DischargeTime" Type="DateTime" Precision="3" />
+    <Property Name="InsuranceID" Type="Int32" Nullable="false" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="LocationID" Type="Int32" Nullable="false" />
+    <Property Name="RequestStatusID" Type="Int32" Nullable="false" />
+    <Property Name="CallReceivedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CallReceivedDate" Type="DateTime" Precision="3" />
+    <Property Name="LifeSupport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmsAgencyId" Type="Int32" />
+    <Property Name="PickupID" Type="Int32" />
+    <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMSAgencyContacted" Type="DateTime" Precision="3" />
+    <Property Name="EMSAgencyResponded" Type="DateTime" Precision="3" />
+    <Property Name="EMSAgencyArrived" Type="DateTime" Precision="3" />
+    <Property Name="CaseNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AppointmentTime" Type="DateTime" Precision="3" />
+    <Property Name="EmsUnitId" Type="Int32" />
+    <NavigationProperty Name="tblDischargeATNumbers" Relationship="lifeflightappsModel.FK__tblDischa__Reque__7FE0DB9D" FromRole="tblDischargeRequest1" ToRole="tblDischargeATNumber" />
+    <NavigationProperty Name="tblMbrCensu" Relationship="lifeflightappsModel.fk_dischargerequests_Census" FromRole="tblDischargeRequest1" ToRole="tblMbrCensu" />
+    <NavigationProperty Name="tblMbrInsurance" Relationship="lifeflightappsModel.fk_dischargerequests_Insurance" FromRole="tblDischargeRequest1" ToRole="tblMbrInsurance" />
+    <NavigationProperty Name="tblPatient" Relationship="lifeflightappsModel.fk_dischargerequests_Patient" FromRole="tblDischargeRequest1" ToRole="tblPatient" />
+    <NavigationProperty Name="tblRequestStatu" Relationship="lifeflightappsModel.fk_dischargerequests_Status" FromRole="tblDischargeRequest1" ToRole="tblRequestStatu" />
+    <NavigationProperty Name="tblPageLogs" Relationship="lifeflightappsModel.FK_pagelog_DischargeRequests" FromRole="tblDischargeRequest1" ToRole="tblPageLog" />
+    <NavigationProperty Name="tblEmsAgencyLocal" Relationship="lifeflightappsModel.FK_tblDischargeRequests_EmsAgency" FromRole="tblDischargeRequest1" ToRole="tblEmsAgencyLocal" />
+    <NavigationProperty Name="tblDischargeDestination" Relationship="lifeflightappsModel.FK_tblDischargeRequests_Destination" FromRole="tblDischargeRequest1" ToRole="tblDischargeDestination" />
+  </EntityType>
+  <Association Name="FK__tblDischa__Reque__7FE0DB9D">
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeATNumber" Role="tblDischargeATNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDischargeRequest1">
+        <PropertyRef Name="RequestID" />
+      </Principal>
+      <Dependent Role="tblDischargeATNumber">
+        <PropertyRef Name="RequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dischargerequests_Census">
+    <End Type="lifeflightappsModel.tblMbrCensu" Role="tblMbrCensu" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMbrCensu">
+        <PropertyRef Name="MbrCensusID" />
+      </Principal>
+      <Dependent Role="tblDischargeRequest1">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dischargerequests_Insurance">
+    <End Type="lifeflightappsModel.tblMbrInsurance" Role="tblMbrInsurance" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMbrInsurance">
+        <PropertyRef Name="MbrInsuranceID" />
+      </Principal>
+      <Dependent Role="tblDischargeRequest1">
+        <PropertyRef Name="InsuranceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dischargerequests_Patient">
+    <End Type="lifeflightappsModel.tblPatient" Role="tblPatient" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPatient">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="tblDischargeRequest1">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dischargerequests_Status">
+    <End Type="lifeflightappsModel.tblRequestStatu" Role="tblRequestStatu" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRequestStatu">
+        <PropertyRef Name="ReqStatusID" />
+      </Principal>
+      <Dependent Role="tblDischargeRequest1">
+        <PropertyRef Name="RequestStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pagelog_DischargeRequests">
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblPageLog" Role="tblPageLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDischargeRequest1">
+        <PropertyRef Name="RequestID" />
+      </Principal>
+      <Dependent Role="tblPageLog">
+        <PropertyRef Name="DischargeRequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDischargeRequests_EmsAgency">
+    <End Type="lifeflightappsModel.tblEmsAgencyLocal" Role="tblEmsAgencyLocal" Multiplicity="0..1" />
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEmsAgencyLocal">
+        <PropertyRef Name="EMSID" />
+      </Principal>
+      <Dependent Role="tblDischargeRequest1">
+        <PropertyRef Name="EmsAgencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblDischargeDestination">
+    <Key>
+      <PropertyRef Name="DestinationID" />
+    </Key>
+    <Property Name="DestinationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DestinationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLineOne" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLineTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StateCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DestinationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DestInstructions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Miles" Type="Int32" />
+    <Property Name="TravelTime" Type="Time" Precision="7" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDischargeRequests" Relationship="lifeflightappsModel.FK_tblDischargeRequests_Destination" FromRole="tblDischargeDestination" ToRole="tblDischargeRequest1" />
+  </EntityType>
+  <Association Name="FK_tblDischargeRequests_Destination">
+    <End Type="lifeflightappsModel.tblDischargeDestination" Role="tblDischargeDestination" Multiplicity="1" />
+    <End Type="lifeflightappsModel.tblDischargeRequest1" Role="tblDischargeRequest1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDischargeDestination">
+        <PropertyRef Name="DestinationID" />
+      </Principal>
+      <Dependent Role="tblDischargeRequest1">
+        <PropertyRef Name="DestinationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblDischargePickup">
+    <Key>
+      <PropertyRef Name="PickupID" />
+    </Key>
+    <Property Name="PickupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PickupLocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PickupInstructions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLineOne" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLineTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StateCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

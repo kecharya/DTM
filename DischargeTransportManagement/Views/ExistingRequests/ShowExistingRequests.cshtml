@@ -1,0 +1,589 @@
+﻿@model DischargeTransportManagement.Models.ExistingRequestsModel
+@using System.Text.RegularExpressions
+
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+<script type="text/javascript">
+    resetTimer = false;
+    setInterval(function () {
+        if ($('#editAltModal').is(':visible')) {
+            console.log('modal open');
+            resetTimer = true;
+        }
+        else {
+            window.location.reload();
+        }
+        //if (!resetTimer) {
+        //    //document.getElementById('status').innerText = 'Refreshing';
+        //    //if ($('#editAltModal').is(':visible')) {
+        //    //    console.log('modal open');
+        //    //}
+        //    //else {
+        //    //    document.reload();
+        //    //}
+        //    window.location.reload();
+        //}
+        //else {
+        //    //document.getElementById('status').innerText = 'Skip Refresh';
+        //}
+        resetTimer = false;
+    }, 60000);
+</script>
+
+
+<div class="content-wrapper" id="lgContentWrapper">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel b">
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-link">
+                            <em class="fa fa-ellipsis-v fa-lg"></em>
+                        </button>
+                        <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInLeft">
+                            <li>
+                                <a value="New Request" onclick="window.open('@Url.Action("RequestView", "Request" )')"><em class="fa fa-fw fa-plus mr"></em>Create New Request</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="h3 text-bold text-center">Discharge Requests</div>
+                <table class="table table-bordered" id="tblOne">
+                    <tr>
+                        <th hidden> MrNumber</th>
+                        <th></th>
+                        <th class="text-center">Patient</th>
+                        <th hidden="hidden">PatientId</th>
+                        <th class="text-center">Destination</th>
+                        <th hidden="hidden">DestinationId</th>
+                        <th class="text-center">Agency</th>
+                        <th class="text-center">Scheduled</th>
+                        <th class=" hidden">ScheduledDate</th>
+                        <th hidden="hidden">LocationId</th>
+                        <th class="text-center">ETA</th>
+                        @*
+                            <th>Location</th>*@
+                        <th class="text-center">Status</th>
+                        <th hidden="hidden">DischargeRequestId</th>
+                    </tr>
+
+                    @foreach (var item in Model.Discharges)
+                    {
+                        var statusColor = item.StatusColor;
+                        <tr class="rowItem">
+                            @if (item.AgencyResponded == null && !string.IsNullOrEmpty(item.WarningMessage))
+                            {
+                                <td id="agencyContactedWarn"><a href="#" @*class="whiteLink"*@ title="Agency Warning" data-toggle="popover" data-trigger="hover" data-content="@item.WarningMessage and Agency has not responded"><span><em class="fa fa-warning whiteLink"></em></span></a></td>
+                            }
+                            else if (!string.IsNullOrEmpty(item.WarningMessage))
+                            {
+                                <td id="agencyContactedWarn"><a href="#" @*class="whiteLink"*@ title="Agency Warning" data-toggle="popover" data-trigger="hover" data-content="@item.WarningMessage"><span><em class="fa fa-warning whiteLink"></em></span></a></td>
+                            }
+                            else if (item.AgencyResponded == null)
+                            {
+                                <td id="agencyContactedWarn"><a href="#" title="Agency Warning" data-toggle="popover" data-trigger="hover" data-content="Agency has been contacted but we have not received a response from the agency."><span><em class="fa fa-warning blackLink"></em></span></a></td>
+                            }
+                            else
+                            {
+                                <td id="agencyContactedWarn"><span><em class="fa fa-check-circle"></em></span></td>
+                            }
+                            <td hidden>@Html.DisplayFor(modelItem => item.MrNumber, new { id = "txtMrNumber" })</td>
+                            <td>@Html.ActionLink(item.PatientName.ToUpper(), "RequestDetails", new { id = item.DischargeRequestId }, new { @class = "whiteLink", @id = "Name" })</td>
+                            <td hidden="hidden">@Html.DisplayFor(modelItem => item.PatientId)</td>
+                            @*<td>@Html.DisplayFor(modelItem => item.DestinationName)</td>*@
+                            @if (item.DestinationName.Length < 25)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.DestinationName)</td>
+                            }
+                            else
+                            {
+                                <td>@item.DestinationName.Substring(0, 25)</td>
+                            }
+                            <td hidden="hidden">@Html.DisplayFor(modelItem => item.DestinationId)</td>
+                            @if (item.EmsAgency.Length < 30)
+                            {
+                                if (item.EmsAgency == "Vanderbilt EMS")
+                                {
+                                    var emsUnit = item.EmsAgency + " " + item.EmsUnitId;
+                                    <td>@Html.DisplayFor(modelItem => emsUnit)</td>
+                                }
+                                else
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.EmsAgency)</td>
+                                }
+                            }
+                            else
+                            {
+                                <td>@item.EmsAgency.Substring(0, 30)</td>
+                            }
+
+                            <td>@Regex.Replace(@item.ScheduledTime, @"\/(\d{4})", " ")</td>
+                            <td class="timer" hidden="hidden">@Html.DisplayFor(modelItem => item.ScheduledTime, new { id = "txtscheduledTime" })</td>
+                            <td hidden="hidden">@Html.DisplayFor(modelItem => item.LocationId)</td>
+
+                            <td class="status"></td>
+                            <td class="statusColor">
+                                @if (item.Status.Equals("Scheduled") && item.AgencyResponded == null)
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-inverse" style="color:red; width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                    @*<button type="button" id="btnAltStatus" class="form-control btn btn-xs btn-inverse" style="width:100%; color:red;" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>*@
+                                }
+                                else if (item.Status.Equals("Scheduled"))
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-danger" style="width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                }
+                                else if (item.AgencyResponded == null)
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-inverse" style="width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                }
+                                else
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-default" style="width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                }
+                            </td>
+                            <td hidden="hidden">@Html.DisplayFor(modelItem => item.DischargeRequestId)</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel b" id="altPanel">
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-link">
+                            <em class="fa fa-ellipsis-v fa-lg"></em>
+                        </button>
+                        <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInLeft">
+                            <li>
+                                <a value="New Request" onclick="window.open('@Url.Action("RequestView", "Request" )')"><em class="fa fa-fw fa-plus mr"></em>Create New Request</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="h3 text-bold text-center">Alternative Funding & VHAN Requests</div>
+                <table class="table table-bordered" id="tblTwo">
+                    <tr>
+                        <th></th>
+                        <th class="text-center">Patient</th>
+                        <th hidden="hidden">PatientId</th>
+                        <th class="text-center">Pickup</th>
+                        <th class="text-center">Destination</th>
+                        <th hidden="hidden">DestinationId</th>
+                        <th class="text-center">Agency</th>
+                        <th class="text-center">Scheduled</th>
+                        <th class=" hidden">ScheduledDate</th>
+                        <th class="text-center">ETA</th>
+                        @*
+
+                            <th>Location</th>*@
+                        <th class="text-center">Status</th>
+                        <th hidden="hidden">DischargeRequestId</th>
+                    </tr>
+
+                    @foreach (var item in Model.OtherRequests)
+                    {
+                        var statusColor = item.StatusColor;
+                        <tr class="rowItem">
+
+                            @if (item.AgencyResponded == null)
+                            {
+                                <td id="agencyContactedWarn"><a href="#" title="Agency Warning" data-toggle="popover" data-trigger="hover" data-content="Agency has been contacted but we have not received a response from the agency."><span><em class="fa fa-warning blackLink"></em></span></a></td>
+                            }
+                            else
+                            {
+                                <td id="agencyContactedWarn"><span><em class="fa fa-check-circle"></em></span></td>
+                            }
+                            <td>@Html.ActionLink(item.PatientName.ToUpper(), "RequestDetails", new { id = item.DischargeRequestId }, new { @class = "whiteLink", @id = "Name" })</td>
+                            <td hidden="hidden">@Html.DisplayFor(modelItem => item.PatientId)</td>
+                            @if (item.PickupName.Length < 25)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.PickupName)</td>
+                            }
+                            else
+                            {
+                                <td>@item.PickupName.Substring(0, 25)</td>
+                            }
+
+
+                            @if (@item.DestinationName.Length < 25)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.DestinationName)</td>
+                            }
+                            else
+                            {
+                                <td>@item.DestinationName.Substring(0, 25)</td>
+                            }
+
+                            <td hidden="hidden">@Html.DisplayFor(modelItem => item.DestinationId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EmsAgency)</td>
+                            <td>@Regex.Replace(@item.ScheduledTime, @"\/(\d{4})", " ")</td>
+                            <td class="timer" hidden="hidden">@Html.DisplayFor(modelItem => item.ScheduledTime, new { id = "txtscheduledTime" })</td>
+
+                            <td class="status"></td>
+                            <td class="statusColor">
+                                @if (item.Status.Equals("Scheduled") && item.AgencyResponded == null)
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-inverse" style="color:red; width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                    @*<button type="button" id="btnAltStatus" class="form-control btn btn-xs btn-inverse" style="width:100%; color:red;" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>*@
+                                }
+                                else if (item.Status.Equals("Scheduled"))
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-danger" style="width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                }
+                                else if (item.AgencyResponded == null)
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-inverse" style="width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                }
+                                else
+                                {
+                                    <button type="button" id="btnAltStatus" class="btn btn-xs btn-default" style="width:100%" onclick="ShowAltModal('@item.DischargeRequestId', '@item.ScheduledTime', '@item.Status', '@item.RequestType');">@item.Status</button>
+                                }
+                            </td>
+                            <td hidden="hidden">@Html.DisplayFor(modelItem => item.DischargeRequestId)</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="form-group">
+
+</div>
+
+<div class="modal fade" id="editAltModal" role="dialog" @*data-backdrop="false"*@>
+    <div class="modal-dialog modal-lg" @*style="width:50%; height:90%; padding:0;"*@>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Update Time & Status</h4>
+            </div>
+            <div class="modal-body" id="altModalBody">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            @Html.Label("Discharge Time")
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" id="dtpScheduledTime" />
+                        </div>
+                        <div class="col-lg-2">
+                            @Html.Label("Status")
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("StatusDropdown", Model.GetStatuses(), "-Choose One-", new { @class = "form-control", onchange = "StatusChange()" })
+                        </div>
+                        <input hidden id="dischargeRequestIdHidden" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            @Html.Label("Transport Mode")
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control" id="ddlModes" onchange="ddlTModesChange()"></select>
+                        </div>
+                        <div class="col-lg-2">
+                            @Html.Label("EMS Agency")
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control" id="ddlAgencies" onchange="ddlAgencyChange()"></select>
+                        </div>
+                        <input hidden id="agencyValue" />
+                        <div id="helpContainer">
+                            <div class="col-sm-1">
+                                @*<input type="checkbox" id="cbNonLocalAgencies" onclick="UpdateAgencies()" /> Show All*@
+                                <input type="checkbox" id="toggle-ems" data-toggle="toggle" data-on="On" data-off="Off" />
+                            </div>
+                            <div class="col-sm-1" id="helpQuestionContainer">
+                                <a href="#" title="Agency Selection" data-toggle="popover" data-trigger="hover" data-content="Select 'ON' to view a full list of agenices. Select 'OFF' to view the filtered short list."><span class="icon-question" id="helpQuestion"></span></a>
+                                @*<span><em class="icon-question"></em></span>*@
+                            </div>
+                        </div>
+                        <div id="VanderbiltUnit" hidden="hidden">
+                            <div class="col-sm-2">
+                                <select class="form-control" id="EmsUnitId">
+                                    <option class="text-center" selected>Choose One</option>
+                                    <option class="text-center">22</option>
+                                    <option class="text-center">23</option>
+                                    <option class="text-center">24</option>
+                                    <option class="text-center">25</option>
+                                    <option class="text-center">26</option>
+                                    <option class="text-center">27</option>
+                                    <option class="text-center">28</option>
+                                    <option class="text-center">29</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                @*<input type="checkbox" id="cbNonLocalAgencies" onclick="UpdateAgencies()" /> Show All
+                                <input type="checkbox" id="toggle-ems1" data-toggle="toggle" />
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            @Html.Label("Agency Receipt")
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="datetime" class="form-control" id="dtpAgencyResponded" onclick="SetAgencyRespondedTime()" />
+                        </div>
+                        <div class="col-lg-2">
+                            @Html.Label("Agency Arrived")
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="datetime" class="form-control" id="dtpAgencyArrived" onclick="SetAgencyArrivedTime()" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <label id="lblSpecialInstructions">Special Instructions</label>
+                        </div>
+                        <div class="col-lg-10">
+                            <textarea rows="2" cols="10" class="form-control" id="txtSpecialInstructions" name="SpecialInstructions"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <label id="lblSpecialInstructions">Notes</label>
+                        </div>
+                        <div class="col-lg-10">
+                            <textarea rows="2" cols="10" class="form-control" id="txtNotes" name="Notes"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <text id="txtError" hidden style="color:red; "></text>
+                    <text id="txtInfo" hidden style="color:lightseagreen"></text>
+                </div>
+                <div class="form-group">
+                    <div class="btn-group-justified" role="group">
+                        <div class="btn-group" role="group">
+                            <a href="#" class="btn btn-oval btn-primary" onclick="PreviewMessage()" id="btnPreviewMessage">Preview Confirmation</a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a href="#" class="btn btn-oval btn-primary" onclick="PreviewArrivalMessage()" id="btnPreviewMessage">Preview Arrival</a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a href="#" class="btn btn-oval btn-primary" onclick="PreviewCallerMessage()" id="btnPageCaller">Page Caller</a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a href="#" class="btn btn-oval btn-primary" onclick="printPDF()" id="btnPrint">Print</a>
+                        </div>
+                        @*<a href="#" class="btn btn-primary" onclick="reportProblem()" id="btnProbelm">Problem</a>*@
+                    </div>
+                </div>
+                <div class="row" hidden id="rowPreviewMessage">
+                    <div class="col-sm-12">
+                        <div class="col-sm-12 well well-sm">
+                            @*<p id="pMessagePreview" class="text-bold col-sm-8"></p>*@
+                            <div class="col-sm-11">
+                                <textarea class="form-control text-bold" id="txtpageCaller"></textarea>
+                            </div>
+
+                            <input type="button" class="pull-right btn btn-sm btn-primary btn-outline" value="Send" id="btnSendPage" onclick="SendPage()" />
+                            <input type="button" class="pull-right btn btn-sm btn-primary btn-outline" value="LogOnly" id="btnLogPage" onclick="LogPage()" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <p id="pReceipents" class="col-sm-4" hidden></p>
+                        <p id="pMessageType" hidden></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse btn-outline pull-left" onclick="reportProblem()" id="btnProblem">Problem?</button>
+                <button type="button" class="btn btn-inverse btn-outline pull-left" onclick="requestHistory()" id="btnHistory">Request History</button>
+                <button type="button" class="btn btn-inverse btn-outline pull-left" onclick="messageClipboard()" id="btnClipboard">Copy To Clipboard</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="btnUpdateAltStatus" onclick="UpdateAltStatus();">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade modal-second" id="problemModal" role="dialog" @*style="z-index:1050;"*@ data-backdrop="false">
+    <div class="modal-dialog modal-lg" @*style="width:40%; height:90%; padding:0;"*@>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Report a Problem</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label id="lblComplaintType">Complaint Type</label>
+                                </div>
+                                <div class="col-sm-5">
+                                    @Html.DropDownList("ComplaintType", Model.dischargeComplaintModel.GetComplaintTypes(), new { @class = "form-control", onchange = "Delay()", id = "complaintType" })
+                                </div>
+                                <div class="col-sm-2">
+                                    <label id="lblAocNotified">AOC Notified?</label>
+                                </div>
+
+                                <div class="col-sm-1">
+                                    <input type="checkbox" id="toggle-AocNotification" data-toggle="toggle" data-on="Yes" data-off="No" onclick="$('#divid').toggle();" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="row" id="delayReason" style="display: none;">
+                                <div class="col-sm-2">
+                                    <label id="lblComplaintType">Delay Reason</label>
+                                </div>
+                                <div class="col-sm-5">
+                                    @Html.DropDownList("DelayReason", Model.dischargeComplaintModel.GetDelayReasons(), new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label id="lblStatus">Complaint</label>
+                                </div>
+                                <div class="col-sm-10 ">
+                                    <textarea class="form-control" id="txtComplaint" name="Complaint"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" id="btnUpdateComplaint" onclick="SaveOrUpdateComplaint();">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-second" id="historyModal" role="dialog" @*style="z-index:1050;"*@ data-backdrop="false">
+    <div class="modal-dialog modal-lg" @*style="width:40%; height:90%; padding:0;"*@>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Request History</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-responsive" id="tblRequestHistory">
+                            <thead>
+                                <tr>
+                                    <th><strong>Created By:</strong></th>
+                                    <th><strong>Created On:</strong></th>
+                                    <th><strong>Update Notes:</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr></tr>
+                            </tbody>
+                            @*@if (Model.AuditLogs.Count() > 0)
+                                {
+                                    foreach (var item in Model.AuditLogs)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreatedBy)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Notes)
+                                            </td>
+                                        </tr>
+                                    }
+                                }*@
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ClearTable();">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-second" id="FreeTextModal" role="dialog" @*style="z-index:1050;"*@ data-backdrop="false">
+    <div class="modal-dialog modal-lg" @*style="width:40%; height:90%; padding:0;"*@>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Send Message</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <label id="lblMessageBody">Message</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control text-bold" id="txtFreeMessage"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <label id="lblFreeTextRecipient">Recipient</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" id="txtFreeMessageRecipients" placeholder="10 digit phone numbers only seperated by ;"></textarea>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="button" class="btn btn-success" id="btnFreeTextPage" onclick="SendFreeTextPage();">SendPage</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

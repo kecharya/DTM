@@ -1,0 +1,45 @@
+﻿@model DischargeTransportManagement.Models.DischargeComplaintModel
+
+
+<div class="content-wrapper">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row pv-lg">
+                <div class="col-sm-12">
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="col-sm-1">
+                                        <label id="lblComplaintType">Complaint Type</label>
+                                    </div>
+                                    <div class="col-sm-2 ">
+                                        @Html.DropDownList("ComplaintType", Model.GetComplaintTypes(), new { @class = "form-control" })
+                                    </div>
+                                    <div class=" col-sm-1">
+                                        <label id="lblAocNotified">Is AOC Notified</label>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" id="toggle-AocNotification" data-toggle="toggle" data-on="On" data-off="Off" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="col-sm-1">
+                                        <label id="lblStatus">Complaint</label>
+                                    </div>
+                                    <div class="col-sm-4 ">
+                                        <textarea class="form-control" id="txtComplaint" name="Complaint"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

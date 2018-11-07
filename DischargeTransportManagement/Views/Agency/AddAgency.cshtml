@@ -1,0 +1,114 @@
+﻿@model DischargeTransportManagement.Models.AgencyModel
+
+<div class="container">
+
+
+    <div class="content-wrapper">
+        <div class="panel panel-default" id="contactPanel">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="pv-lg">
+                            <h3 class="m0 text-bold">New Agency</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" id="contactDetails">
+                        <form class="form-horizontal p-20">
+                            <div class="form-group">
+                                <div class="col-sm-4">Name</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtName" name="AgencyName" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Address</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtAddress" name="AddressLn1" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">City</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtCity" name="City" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">County</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtCounty" name="County" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">State</div>
+                                <div class="col-sm-8">
+                                    @Html.DropDownList("StateCode", Model.StatesList, new { @class = "form-control" })
+                                    @*<input type="text" id="txtState" name="State" class="form-control" required />*@
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Zip</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtZip" name="Zip" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Phone</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtPhone" name="Phone" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Local Use</div>
+                                <div class="col-sm-8">
+                                    <select id="LocalUseSelection" name="LocalUse" class="form-control" required>
+                                        <option value="True">True</option>
+                                        <option value="False">False</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Agency Type</div>
+                                <div class="col-sm-8">
+                                    <select id="AgencyTypeSelection" name="AgencyType" class="form-control" required>
+                                        <option value="Air">Air</option>
+                                        <option value="Bus">Bus</option>
+                                        <option value="Ground Ems">Ground Ems</option>
+                                        <option value="Taxi">Taxi</option>
+                                        <option value="Van">Van</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">BaseRate</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtBaseRate" name="BaseRate" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">MileageRate</div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="txtMileageRate" name="MileageRate" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Notes</div>
+                                <div class="col-sm-8">
+                                    <textarea rows="3" cols="20" id="txtNotes" name="Notes" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="pull-right" style="margin-right: 10px;">
+                                    <label style="color:red;" id="lblError"></label>
+                                    <input type="submit" value="Add Agency" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

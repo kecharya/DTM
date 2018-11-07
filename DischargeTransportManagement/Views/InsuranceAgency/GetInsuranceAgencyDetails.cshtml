@@ -1,0 +1,204 @@
+﻿@model DischargeTransportManagement.Models.InsuranceModel
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+
+
+<div class="container">
+    <div class="content-wrapper">
+        <div class="panel panel-default" id="editContactPanel">
+            <div class="panel-body">
+                <div class="row pv-lg">
+                    <div class="col-sm-12">
+                        <div class="form-horizontal">
+                            <p class="lead bb">Insurance Agency Information</p>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-2" hidden>
+                                        <input type="text" value="@Model.InsuranceId" id="InsuranceId" />
+                                    </div>
+                                    @Html.Label("Insurance Name", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-4">
+                                        <input type="text" id="txtInsuranceName" class="form-control" value="@Model.InsuranceName" />
+                                        @*@Html.EditorFor(model => model.InsuranceName, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    </div>
+                                    @Html.Label("Description", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" id="txtInsuranceDescription" value="@Model.Description" />
+                                        @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.Label("Phone", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" id="txtInsurancePhone" value="@Model.InsurancePhone" />
+                                        @*@Html.EditorFor(model => model.InsurancePhone, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    </div>
+                                    @Html.Label("Fax", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" id="txtInsuranceFax" value="@Model.InsuranceFax" />
+                                        @*@Html.EditorFor(model => model.InsuranceFax, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.Label("PreAuth Required", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-4">
+                                        @if (Model.PreAuthRequired)
+                                        {
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-1" name="checkResp" value="false" checked data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="false" name="checkResp" type="hidden" />
+                                            </div>
+                                        }
+                                        else if (!Model.PreAuthRequired)
+                                        {
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-1" name="checkResp" value="true" data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="true" name="checkResp" type="hidden" />
+                                            </div>
+                                        }
+                                    </div>
+                                    @Html.Label("Own PaperWork", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-4">
+                                        @if (Model.HasOwnPaperWork)
+                                        {
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-2" name="checkResp1" value="false" checked data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="false" name="checkResp1" type="hidden" />
+                                            </div>
+                                        }
+                                        else if (!Model.HasOwnPaperWork)
+                                        {
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-2" name="checkResp1" value="true" data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="true" name="checkResp1" type="hidden" />
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.Label("Instructions", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <textarea rows="6" cols="20" class="form-control" id="txtInsuranceInstructions" name="InsuranceInstructions">@Model.Instructions</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="pull-right">
+                                        <input type="button" class="btn btn-success" value="Save" onclick="SaveInsuranceInfo()" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            @if (Model.contactModels.Count > 0)
+                            {
+                                <p class="lead bb">Contact Information</p>
+                                foreach (var item in Model.contactModels)
+                                {
+                                    <div class="row">
+                                        <div class="form-group">
+                                            @Html.Label("Contact Name", new { @class = "control-label col-md-2" })
+
+                                            <div class="col-md-4">
+                                                <input type="text" readonly class="form-control" value="@item.ContactName" />
+                                            </div>
+                                            @Html.Label("Contact Email", new { @class = "control-label col-md-2" })
+                                            <div class="col-md-4">
+                                                <input type="text" readonly class="form-control" value="@item.ContactEmail" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            @Html.Label("Contact Phone", new { @class = "control-label col-md-2" })
+                                            <div class="col-md-4">
+                                                <input type="text" readonly class="form-control" value="@item.ContactPhone" />
+                                            </div>
+                                            @Html.Label("Contact Fax", new { @class = "control-label col-md-2" })
+
+                                            <div class="col-md-4">
+                                                <input type="text" readonly class="form-control" value="@item.ContactFax" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            @Html.Label("Contact Note", new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <textarea rows="2" cols="20" readonly class="form-control">@item.ContactNote</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        <button class="btn btn-info" onclick="ShowContactPop()">
+                                            <span class="glyphicon glyphicon-pencil"></span> Add New Contact
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal Region*@
+
+<div class="modal fade" id="addContactModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" style="width:50%; height:90%; padding:0;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Add Contact</h4>
+            </div>
+            <div class="modal-body" id="contactModalBody">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Label("Contact Name")</div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="txtContactName" name="ContactName" /></div>
+                        <div class="col-sm-2">@Html.Label("Contact Email")</div>
+                        <div class="col-sm-4"><input type="email" class="form-control" id="txtContactEmail" name="ContactEmail" /></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Label("Contact Phone")</div>
+                        <div class="col-sm-4"><input type="tel" class="form-control" id="txtContactPhone" name="ContactPhone" /></div>
+                        <div class="col-sm-2">@Html.Label("Contact Fax")</div>
+                        <div class="col-sm-4"><input type="tel" class="form-control" id="txtContactFax" name="ContactFax" /></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Label("Contact Notes")</div>
+                        <div class="col-sm-10">
+                            <textarea rows="2" cols="10" class="form-control" id="txtContactNotes" name="ContactNotes"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="btnUpdateCaller" onclick="AddInsuranceContact();">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DischargeTransportManagement", "DischargeTransportManagement.csproj", "{2E083DDC-8C90-4B30-B345-F89E589F0958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DischargeTransportManagement.Domain", "..\DischargeTransportManagement.Domain\DischargeTransportManagement.Domain.csproj", "{7A42BE94-04DE-4495-9610-56490F8A282C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DischargeTransportManagementTests", "..\DischargeTransportManagementTests\DischargeTransportManagementTests.csproj", "{D118C44D-4AA1-4754-AF24-8D3CC5693A4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E083DDC-8C90-4B30-B345-F89E589F0958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E083DDC-8C90-4B30-B345-F89E589F0958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E083DDC-8C90-4B30-B345-F89E589F0958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E083DDC-8C90-4B30-B345-F89E589F0958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A42BE94-04DE-4495-9610-56490F8A282C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A42BE94-04DE-4495-9610-56490F8A282C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A42BE94-04DE-4495-9610-56490F8A282C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A42BE94-04DE-4495-9610-56490F8A282C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D118C44D-4AA1-4754-AF24-8D3CC5693A4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D118C44D-4AA1-4754-AF24-8D3CC5693A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D118C44D-4AA1-4754-AF24-8D3CC5693A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D118C44D-4AA1-4754-AF24-8D3CC5693A4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85D83B37-EACE-48FC-B8EE-520E50A87797}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.mc.vanderbilt.edu/tfs/vumc
+		SccProjectUniqueName0 = DischargeTransportManagement.csproj
+		SccProjectName0 = .
+		SccAuxPath0 = https://tfs.mc.vanderbilt.edu/tfs/vumc
+		SccLocalPath0 = .
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = ..\\DischargeTransportManagement.Domain\\DischargeTransportManagement.Domain.csproj
+		SccProjectName1 = ../DischargeTransportManagement.Domain
+		SccAuxPath1 = https://tfs.mc.vanderbilt.edu/tfs/vumc
+		SccLocalPath1 = ..\\DischargeTransportManagement.Domain
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

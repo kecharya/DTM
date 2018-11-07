@@ -1,0 +1,92 @@
+﻿@model DischargeTransportManagement.Models.AppUserRoleModel
+
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="content-wrapper">
+            <div class="panel panel-default" id="editContactPanel">
+                <div class="panel-body">
+                    <div class="h4 text-center">Add New User</div>
+                    <div class="row pv-lg">
+                        <div class="col-sm-12">
+                            <div class="form-horizontal">
+                                <div class="row">
+                                    <div class="form-group">
+                                        
+                                        <label class="control-label col-md-2">First Name</label>
+                                        <div class="col-md-4">
+                                        <input type="text" class="form-control" id="txtFirstName" name="FirstName" onclick="ClearUserError()" required/>
+                                            
+                                        </div>
+                                        <label class="control-label col-md-2">Last Name</label>
+                                        
+                                        <div class="col-md-4">
+                                        <input type="text" class="form-control" id="txtLastName" name="LastName" onclick="ClearUserError()" required />
+                                            
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">VunetID</label>
+                                        
+                                        <div class="col-md-4">
+                                        <input type="text" class="form-control" id="txtVunetId" name="VunetId" onclick="ClearUserError()" required />
+                                            
+                                        </div>
+                                        <label class="control-label col-md-2">Role</label>
+                                        
+                                        <div class="col-md-4">
+                                            @Html.DropDownList("RoleName", Model.GetRoles(), "Choose Role", new { @class = "form-control", onclick = "ClearUserError()" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color:red; margin-left:10px;" id="lblAddUserError" hidden></label>
+                                        <div class="pull-right" style="margin-right: 10px;">
+                                            <input type="button" value="Add New User" class="btn btn-success" onclick="AddNewUser()" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="editContactPanel">
+                <div class="panel-body">
+                    <div class="h4 text-center">Add New Role</div>
+                    <div class="row pv-lg">
+                        <div class=" col-sm-12">
+                            <div class=" form-horizontal">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Role Name</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="txtRoleName" onclick="ClearRoleError()" />
+                                        </div>
+                                        <label class="control-label col-md-2">Desctiption</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="txtDescription" onclick="ClearRoleError()" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label style="color:red; margin-left:10px;" id="lblRoleError" hidden></label>
+                                        <div class="pull-right" style="margin-right:10px;">
+                                            <input type="button" value="Add new Role" class="btn btn-success" onclick="AddNewRole()" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+

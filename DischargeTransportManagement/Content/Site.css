@@ -1,0 +1,183 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+/*textarea {
+    max-width: 280px;
+}*/
+/*Use this for border less tables*/
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.navbar-inverse {
+    background-color: #2674C8;
+    border-color:transparent;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #2674C8;
+    box-shadow: 0 -3px 0 #0c54a0 inset;
+}
+
+.bgDelayed {
+    /*background-color: palevioletred;*/
+    /*background-color: indianred;*/
+    background-color: #ec3b42;
+    color: white;
+}
+
+.bgConfirmed {
+    /*background-color: blue;*/
+    background-color: #2674C8;
+    color: white;
+}
+
+.bgScheduled {
+    /*background-color: blue;*/
+    background-color: #2674C8;
+    color: white;
+}
+
+.bgPending {
+    /*background-color: #ffde6f;*/
+    background-color: #febf2c;
+    color: white;
+}
+
+.bgFuture {
+    /*background-color: #ffde6f;*/
+    background-color: darkgrey;
+    color: white;
+}
+
+/*.bgPending #Name {
+    color:black;
+}*/
+
+.blackLink {
+    color: black;
+}
+
+.blackLink > .a:hover, a:focus {
+    color: black;
+}
+
+.whiteLink {
+    color: white;
+}
+
+.whiteLink > .a:hover, a:focus {
+    color: white;
+}
+
+.bgQuote #Name{
+    color:black;
+}
+
+.input-validation-error {
+        border: 1px dotted red;
+}
+
+.fa-ellipsis-v {
+    color: black;
+}
+
+#contactPanel {
+    width: 35%;
+    margin-left: 33.33333333333333%;
+}
+
+#editContactPanel {
+    width: 65%;
+    margin-left: 16.666666666666664%;
+}
+
+#extendedLabel {
+    padding-left: 10px;
+}
+
+#extendedMileageRate{
+        padding-left: 2px;
+    padding-right: 0px;
+}
+
+#lgContentWrapper{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.whiteLink, a:hover, a:focus {
+  color: white;
+  /*text-decoration: underline;*/
+}
+
+#contactDetails{
+    margin-top:25px;
+}
+
+#helpQuestionContainer{
+    padding-top: 7px;
+    padding-left: 35px;
+}
+
+/*#helpQuestion > .a:hover {
+    color: red;
+}*/
+
+#helpQuestion{
+    color:black;
+}
+
+.popover{
+    min-width: 200px;
+    max-width: 500px;
+    color:black;
+}
+
+#problemModal {
+   /*position: absolute;
+   top: 100px;
+   right: 100px;
+   bottom: 0;
+   left: 0;*/
+   z-index: 10040;
+   /*overflow: auto;
+   overflow-y: auto;*/
+}
+
+#loginHeader{
+    background-color: #2674C8;
+    color: white;
+}
+
+#complaintPanelHeading{
+    padding-bottom: 0px;
+}
+
+.btn-group {
+    padding-left: 2px;
+    padding-right: 2px;
+}

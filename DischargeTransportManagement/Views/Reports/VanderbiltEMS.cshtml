@@ -1,0 +1,76 @@
+﻿
+@model PagedList.IPagedList<DischargeTransportManagement.Models.ReportModels.VanderbiltEMS>
+@using PagedList.Mvc;
+
+<div class="container">
+    <div class="content-wrapper" id="lgContentWrapper">
+
+        @using (Html.BeginForm("VanderbiltEMS", "Reports", FormMethod.Get))
+        {
+
+
+            <div class="row">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            <div class="col-sm-1">
+                                <label>From Date:</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="txtFromDate" name="start" />
+                            </div>
+                            <div class="col-sm-1">
+                                <label>To Date:</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="txtToDate" name="end" />
+                            </div>
+                            <div class="col-sm-1">
+                                <button class="btn btn-primary" type="submit">Refresh</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th class="text-center">Date/Time</th>
+                    <th class="text-center">CallerName</th>
+                    <th class="text-center">CallerTitle</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">From</th>
+                    <th class="text-center">Destination</th>
+                    <th class="text-center">Agency</th>
+                    <th class="text-center">Patient</th>
+                    <th class="text-center">PatientMRN</th>
+
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@item.PatientPickupTime</td>
+                        <td class="text-center">@item.CallerName</td>
+                        <td class="text-center">@item.CallerTitle</td>
+                        <td class="text-center">@item.RequestStatus</td>
+                        <td class="text-center">@item.Origin</td>
+                        <td class="text-center">@item.Destination</td>
+                        <td class="text-center">@item.EmsAgency</td>
+                        <td class="text-center">@item.Patient</td>
+                        <td class="text-center">@item.PatientMRN</td>
+
+                    </tr>
+                }
+            </table>
+            <div class="row">
+                <div class="text-center">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("VanderbiltEMS", new { page, start = Request.QueryString["start"], end = Request.QueryString["end"] }),
+new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

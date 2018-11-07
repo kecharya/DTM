@@ -1,0 +1,92 @@
+﻿@model DischargeTransportManagement.Models.InsuranceModel
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+        <div class="content-wrapper">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="h4 text-center">New Insurance Agency Information</div>
+                    <div class="row pv-lg">
+                        <div class="col-sm-12">
+                            <div class="form-horizontal">
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.Label("Insurance Name", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            @*@Html.EditorFor(model => model.InsuranceName, new { htmlAttributes = new { @class = "form-control", required = "required" } })*@
+                                            <input type="text" class="form-control" id="txtInsAgencySearch" name="InsuranceName" onblur="ValidateInsuranceName()" required />
+                                        </div>
+                                        @Html.Label("Description", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" id="InsuranceDescriptionSearch" name="Description" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Phone Number", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" id="InsurancePhone" name="InsurancePhone" />
+                                        </div>
+                                        @Html.Label("Fax Number", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" id="InsuranceFax" name="InsuranceFax" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Pre Auth?", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-1" name="checkResp" value="false" checked data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="false" name="checkResp" type="hidden" />
+                                            </div>
+                                        </div>
+                                        @Html.Label("Own PaperWork?", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-5">
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="toggle-2" name="checkResp" value="false" checked data-onstyle="success" data-offstyle="danger" data-size="mini">
+                                                <input value="false" name="checkResp" type="hidden" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Instructions", new { @class = "control-label col-md-1" })
+                                        <div class="col-md-11">
+                                            <textarea rows="5" cols="20" class="form-control" id="txtInsuranceInstructions" name="Instructions"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color:red;" id="lblInsError"></label>
+                                        <div class="pull-right" style="margin-right: 10px;">
+                                            <input type="button" value="Add Insurance Agency" class="btn btn-success" onclick="AddNewInsurance()" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="InsAddConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Insurance Added Confirmation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" hidden id="txtNewInsId"/>
+                        <strong><label id="modalMessage">New Insurance Agency has been added. Click OK to add contact information</label></strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="EditNewIns(document.getElementById('txtNewInsId').value)">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

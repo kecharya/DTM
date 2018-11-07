@@ -1,0 +1,27 @@
+﻿@model DTM_Preview.Models.PatientInformation
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Retrieve Patient Details From MRN</h2>
+@using (Html.BeginForm("Index", "PatientInfo", FormMethod.Get))
+{
+    <p>
+        <b>
+            Enter the MR# :
+        </b>
+        @Html.TextBox("mrNumber")
+        <input type="submit" value="Retrieve" />
+    </p>
+}
+@*<div>
+    <h4>PatientInformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

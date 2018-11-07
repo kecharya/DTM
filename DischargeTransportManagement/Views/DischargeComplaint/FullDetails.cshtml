@@ -1,0 +1,619 @@
+﻿@model DischargeTransportManagement.Models.DischargeViewModel
+<script type="text/javascript" src="~/Scripts/appJavaScript.js"></script>
+
+<div class="content-wrapper">
+    <h2></h2>
+    <h3>@Model.RequestModel.submittedPatient.FirstName @Model.RequestModel.submittedPatient.LastName  - @if (@Model.RequestModel.AgencyContacted.HasValue) { @Model.RequestModel.AgencyContacted.Value.ToShortDateString() }</h3>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div class="col-sm-4 col-lg-offset-4">
+                    @*@Html.DropDownList("ddlInsurances", Model.Insurances, "Choose Insurance Provider", new { @class = "form-control", onchange = "ddlInsurancesChange()" })*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row">*@
+    <div class="table-grid table-grid-desktop">
+        <div class="col col-md">
+            <div class="pr">
+                <div class="clearfix mb">
+                    <button type="button" data-toggle="collapse" data-target=".mb-boxes" class="btn btn-sm btn-default mb-toggle-button pull-right dropdown-toggle">
+                        <em class="fa fa-bars fa-fw fa-lg"></em>
+                    </button>
+                    @*<a href="#" class="btn btn-purple btn-sm mb-compose-button">
+                            <em class="fa fa-pencil"></em>
+                            <span>Compose</span>
+                        </a>*@
+                </div>
+                <!-- START mailbox list-->
+                <div class="mb-boxes collapse">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="p">
+                                    <small class="text-muted">CATEGORIES</small>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="ShowDetails()">
+                                        <em class="fa fa-fw fa-lg icon-info"></em>
+                                        <span>Discharge Details</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="ShowTimeLine()">
+                                        <em class="fa fa-fw fa-lg icon-clock"></em>
+                                        <span>Discharge Timeline</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="ShowRequestHistory()">
+                                        <em class="fa fa-fw fa-lg icon-book-open"></em>
+                                        <span>Request History</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="ShowComplaints()">
+                                        @{ var numComplaints = Model.ComplaintModels.Where(x => x.IsResolved != true).Count();
+                                            if (numComplaints > 0)
+                                            {
+                                                <span class="label label-green pull-right">@Model.ComplaintModels.Where(x => x.IsResolved != true).Count()</span>
+                                            }
+                                        }
+                                        <em class="fa fa-fw fa-lg fa-folder-open-o"></em>
+                                        <span>Complaints</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="RedirectToDischargeInfo()"> 
+                                        <em class="fa fa-fw fa-lg icon-pencil"></em>
+                                        <span>Edit Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END mailbox list-->
+            </div>
+        </div>
+
+
+        <div id="detailsId" style="display: block;">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel b">
+                            <div class="panel-body bb text-bold text-center">
+                                <p>Demographic Details</p>
+                            </div>
+                            <table class="table bb">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Name:</strong></td>
+                                        <td>@(Model.RequestModel.submittedPatient.FirstName + " " + Model.RequestModel.submittedPatient.LastName)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Date of Birth:</strong></td>
+                                        <td>@Model.RequestModel.submittedPatient.DOB</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Age:</strong></td>
+                                        <td>@Model.RequestModel.submittedPatient.Age</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Weight:</strong></td>
+                                        <td>@Model.RequestModel.submittedPatient.Weight</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Social:</strong></td>
+                                        <td>@Model.RequestModel.submittedPatient.Social</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Address:</strong></td>
+                                        <td>@(Model.RequestModel.submittedPatient.Address + " " + Model.RequestModel.submittedPatient.City + " " + Model.RequestModel.submittedPatient.State + " " + Model.RequestModel.submittedPatient.Zip)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Phone:</strong></td>
+                                        <td>@Model.RequestModel.submittedPatient.Phone</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>MR Number</strong></td>
+                                        <td id="txtMrN">@Model.RequestModel.submittedPatient.MRN</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Case Number</strong></td>
+                                        <td>@Model.RequestModel.submittedDischarge.CaseNumber</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel b">
+
+                            <div class="panel-body bb text-bold text-center">
+                                <p>Location Details</p>
+                            </div>
+                            @if (Model.RequestModel.submittedCensus.PavillionCode != "N/A")
+                            {
+                                <table class="table bb">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Pavillion Code:</strong></td>
+                                            <td>@Model.RequestModel.submittedCensus.PavillionCode</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Unit:</strong></td>
+                                            <td>@Model.RequestModel.submittedCensus.Unit</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Bed:</strong></td>
+                                            <td>@Model.RequestModel.submittedCensus.Bed</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <div class="text-center">
+                                    <label>No Census Info available for this patient</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        @*Aside Panel*@
+                        <div class="panel b">
+                            <div class="panel-body bb text-bold text-center">
+                                <p>Insurance Details</p>
+                            </div>
+                            @if (Model.RequestModel.submittedInsurance.InsuranceId != 999)
+                            {
+                                <table class="table bb">
+                                    <tbody>
+                                        <tr hidden>
+                                            <td id="mbrInsuranceId">@Model.RequestModel.submittedInsurance.MbrInsuranceId</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Insurance ID:</strong></td>
+                                            <td id="insuranceId">@Model.RequestModel.submittedInsurance.InsuranceId</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Financial Name:</strong></td>
+                                            <td>@Model.RequestModel.submittedInsurance.FinancialName</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Payor Name:</strong></td>
+                                            <td id="payorName">@Model.RequestModel.submittedInsurance.Payorname</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Medipac Plan ID:</strong></td>
+                                            <td>@Model.RequestModel.submittedInsurance.PlanId</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Plan Name:</strong></td>
+                                            <td id="planName">@Model.RequestModel.submittedInsurance.PlanName</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Plan Type:</strong></td>
+                                            <td id="planType">@Model.RequestModel.submittedInsurance.PlanType</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Subscriber Name:</strong></td>
+                                            <td>@Model.RequestModel.submittedInsurance.SubscriberName</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Effective Date:</strong></td>
+                                            <td>@(Model.RequestModel.submittedInsurance.EffectiveDate.HasValue ? Model.RequestModel.submittedInsurance.EffectiveDate.Value.ToShortDateString() : "N/A")</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Termination Date:</strong>
+                                            </td>
+                                            <td>@(Model.RequestModel.submittedInsurance.TerminationDate.HasValue ? Model.RequestModel.submittedInsurance.TerminationDate.Value.ToShortDateString() : "N/A")</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Authorization Code:</strong>
+                                            </td>
+                                            <td id="authCode">@Model.RequestModel.submittedInsurance.AuthCode</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <div class="text-center">
+                                    <label>No Insurance Info available for this patient</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel b">
+                            <div class="panel-body bb text-bold text-center">
+                                <p>Caller Details</p>
+                            </div>
+                            <table class="table bb">
+                                <tbody>
+                                    <tr>
+                                        <td hidden>CallerID</td>
+                                        <td hidden id="callerId">@Model.RequestModel.submittedCaller.CallerId</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Caller Name:</strong></td>
+                                        <td id="editcallerName">@(Model.RequestModel.submittedCaller.CallerFirstName + " " + Model.RequestModel.submittedCaller.CallerLastName)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Title:</strong></td>
+                                        <td>@Model.RequestModel.submittedCaller.CallerTitle</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Assignment:</strong></td>
+                                        <td>@Model.RequestModel.submittedCaller.Assignment</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Office:</strong></td>
+                                        <td>@Model.RequestModel.submittedCaller.OfficePhone</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pager:</strong></td>
+                                        <td>@Model.RequestModel.submittedCaller.CallerPager</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mobile:</strong></td>
+                                        <td>@Model.RequestModel.submittedCaller.MobilePhone</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel b">
+                            <div class="panel-body bb text-bold text-center">
+                                <p>Destination Details</p>
+                            </div>
+                            <table class="table bb">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Destination Type:</strong></td>
+                                        <td id="destinationType">@Model.RequestModel.submittedDestination.DestinationType</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Destination Name:</strong></td>
+                                        <td id="destinationName">@Model.RequestModel.submittedDestination.DestinationName</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Instructions:</strong></td>
+                                        <td id="destInstructions">@Model.RequestModel.submittedDestination.DestInstructions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Address:</strong></td>
+                                        <td id="destinationAddress">@Model.RequestModel.submittedDestination.Address</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>City:</strong></td>
+                                        <td id="destinationCity">@Model.RequestModel.submittedDestination.City</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>State:</strong></td>
+                                        <td id="destinationState">@Model.RequestModel.submittedDestination.State</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Zip:</strong></td>
+                                        <td id="destinationZip">@Model.RequestModel.submittedDestination.Zip</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Miles:</strong></td>
+                                        <td>@Model.RequestModel.submittedDestination.Miles</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Travel Time:</strong></td>
+                                        <td>@Model.RequestModel.submittedDestination.TravelTime</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel b">
+                            <div class="panel-body bb text-bold text-center">
+                                <p>Transport Details</p>
+                            </div>
+                            <table class="table bb">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Mode:</strong></td>
+                                        <td id="modeOfTransport">@Model.RequestModel.MOTSelected</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>EmsAgency:</strong></td>
+                                        <td id="emsAgency">@Model.RequestModel.EmsAgency</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Discharge Time:</strong></td>
+                                        <td id="dischargeTime">@Model.RequestModel.submittedDischarge.DischargeTime</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>SpecialInstructions</strong></td>
+                                        <td>@Model.RequestModel.submittedDischarge.SpecialInstructions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>RequestStatus</strong></td>
+                                        <td>@Model.RequestModel.RequestStatus</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>SpecialNeeds</strong></td>
+                                        <td>
+                                            @for (var i = 0; i < Model.RequestModel.SpecialNeedsSubmitted.Count(); i++)
+                                            {
+                                                @*@Html.CheckBoxFor(model => model.RequestModel.SpecialNeedsSubmitted[i].Selected)*@
+                                                @Html.DisplayFor(model => model.RequestModel.SpecialNeedsSubmitted[i].Text)
+                                                <a></a>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Care Level</strong></td>
+                                        <td>@Model.RequestModel.submittedDischarge.LifeSupport</td>
+                                    </tr>
+                                    <tr hidden>
+                                        <td><input hidden id="RequestId" value="@Model.RequestModel.submittedDischarge.DischargeRequestId" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="timelineId" style="display:none;">
+            <div class="col-lg-11 col-xs-10">
+                <ul class="timeline">
+                    @{int counter = 1;
+                        foreach (var item in Model.DischargeActions.OrderBy(x => x.ActionTime))
+                        {
+                            <li data-datetime="@item.ActionTime" class="timeline-separator"></li>
+                            if (counter % 2 != 0)
+                            {
+
+                                <li>
+                                    @if (item.Action.Equals("Discharge Requested"))
+                                    {
+                                        <div class="timeline-badge primary">
+                                            <em class="fa fa-circle-o-notch fa fa-spin"></em>
+                                        </div>
+                                    }
+                                    @*<div class="timeline-badge primary">
+                                            <em class="fa fa-phone"></em>
+                                        </div>*@
+                                    <div class="timeline-panel">
+                                        <div class="popover">
+                                            <h4 class="popover-title">@item.Action</h4>
+                                            <div class="arrow"></div>
+                                            <div class="popover-content">
+                                                <p>
+                                                    @item.ActionNotes
+                                                    @*<br>
+                                                        <small>Pellentesque ut diam velit, eget porttitor risus. Nullam posuere euismod volutpat.</small>*@
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge danger">
+                                        <em class="fa fa-phone"></em>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="popover right">
+                                            <h4 class="popover-title">@item.Action</h4>
+                                            <div class="arrow"></div>
+                                            <div class="popover-content">
+                                                <p>
+                                                    @item.ActionNotes
+                                                    @* Michael <a href="tel:+011654524578">(+011) 6545 24578 ext. 132</a>
+                                                        <br>
+                                                        <small>Pellentesque ut diam velit, eget porttitor risus. Nullam posuere euismod volutpat.</small>*@
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            counter++;
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div id="requestHistory" style="display:block;">
+            <div class="col-lg-12">
+                <div class="row">
+                    <table class="table table-bordered table-striped">
+
+                        <tr>
+                            <th><strong>Created By:</strong></th>
+                            <th><strong>Created On:</strong></th>
+                            <th><strong>Update Notes:</strong></th>
+                        </tr>
+
+                        @foreach (var item in Model.AuditLogs)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Notes)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="complaintsId" style="display:none;">
+            <div class="col-lg-11 col-xs-10">
+                @if (Model.ComplaintModels.Count() > 0)
+                {
+                    foreach (var item in Model.ComplaintModels)
+                    {
+                        <div class="panel">
+                            @if (item.IsResolved)
+                            {
+                                <div class="panel-heading" id="complaintPanelHeading">
+                                    <div role="alert" class="alert alert-success fade in">
+                                        Status: <strong> Resolved</strong>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="panel-heading" id="complaintPanelHeading">
+                                    <div role="alert" class="alert alert-warning fade in">
+                                        Status: <strong>Open</strong>
+                                    </div>
+                                </div>
+                            }
+                            <div class="panel-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 id="media-heading" class="media-heading">
+                                            @Html.Label(item.CreatedBy)
+                                            <small class="pull-right">@Html.Label(item.CreatedDate.ToString())</small>
+                                            @*<a href="#media-heading" class="anchorjs-link">
+                                                    <span class="anchorjs-icon"></span>
+                                                </a>*@
+                                        </h4>
+                                        <p class="col-sm-3">Complaint type: @Html.Label(item.ComplaintType)</p>
+                                        <p class="col-sm-3">Agency: @Html.Label(item.Agency)</p>
+                                        @if (item.DelayedReason != "")
+                                        {
+                                            <p class="col-sm-offset-3">Delay Reason: @Html.Label(item.DelayedReason)</p>
+                                        }
+
+                                        <p class="col-sm-12">Complaint: @Html.Label(item.Complaint, new { @style = "color:red;" })</p>
+
+                                    </div>
+                                </div>
+                                @*<hr>*@
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <em class="fa fa-pencil mr"></em>Add Comment or Resolve Complaint
+                            </div>
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <textarea id="post-comment" name="post-comment" rows="4" placeholder="Comment here.." class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-xs-1">
+                                            <button type="button" class="btn btn-effect-ripple btn-primary" @*onclick="ComplaintComment(@item.RequestId)"*@>Comment</button>
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <button type="submit" class="btn btn-effect-ripple btn-purple" @*onclick="ComplaintResolve()"*@>Resolve</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <em class="fa fa-pencil mr"></em>Add Complaint
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-2">
+                                                        <label id="lblComplaintType">Complaint Type</label>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        @Html.DropDownList("ComplaintType", Model.ComplaintModel.GetComplaintTypes(), new { @class = "form-control", onchange = "Delay()", id = "complaintType" })
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label id="lblAocNotified">AOC Notified?</label>
+                                                    </div>
+
+                                                    <div class="col-sm-1">
+                                                        <input type="checkbox" id="toggle-AocNotification" data-toggle="toggle" data-on="Yes" data-off="No" onclick="$('#divid').toggle();" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="row" id="delayReason" style="display: none;">
+                                                    <div class="col-sm-2">
+                                                        <label id="lblComplaintType">Delay Reason</label>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        @Html.DropDownList("DelayReason", Model.ComplaintModel.GetDelayReasons(), new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-2">
+                                                        <label id="lblStatus">Complaint</label>
+                                                    </div>
+                                                    <div class="col-sm-10 ">
+                                                        <textarea class="form-control" id="txtComplaint" name="Complaint"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-1">
+                                        <button type="button" class="btn btn-effect-ripple btn-primary" id="btnUpdateComplaint" onclick="AddComplaint();">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
